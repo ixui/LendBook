@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>書籍管理(仮)</title>
+    <!-- BootstrapのCSS読み込み -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/mycss.css">
+    <!-- jQuery読み込み -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- BootstrapのJS読み込み -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/myjs.js"></script>
+  </head>
+  
+<body>
+<!-- ヘッダー -->
+<div id="header"></div>
+
+
+<!-- ユーザー登録 -->
+<div class="container-fluid col-lg-offset-2 col-lg-8 text-center user-register">
+	<div class="row">
+	<h3>ユーザー情報変更</h3>
+	<form class="form-horizontal user-form">
+		<div class="form-group">
+			<label class="col-lg-3 col-lg-offset-1 text-right" >名前</label>
+			<div class="col-lg-4">
+				<input type="name" name="name" class="form-control" placeholder="中嶋">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-lg-3 col-lg-offset-1 text-right" >メールアドレス</label>
+			<div class="col-lg-4">
+				<input type="email" name="email" class="form-control" placeholder="nakajima-kohei@ixui.co.jp">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-lg-3 col-lg-offset-1 text-right">パスワード</label>
+			<div class="col-lg-4">
+				<input type="password" name="pass" class="form-control">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-lg-3 col-lg-offset-1 text-right">確認用パスワード</label>
+			<div class="col-lg-4">
+				<input type="password" name="pass" class="form-control">
+			</div>
+		</div>
+		<type="button" class="btn btn-def" data-toggle="modal" data-target="#myModal">変更</button>
+	</form>
+	</div>
+</div>
+</div>
+
+<!-- モーダル -->
+<div class="modal fade" id="myModal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			</div>
+			<div class="modal-body">変更しました。</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-def" data-dismiss="modal">閉じる</button>
+			</div>
+  		</div>
+	</div>
+</div>
+
+</body>
+</html>
