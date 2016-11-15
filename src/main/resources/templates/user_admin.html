@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+	<meta charset="utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>書籍管理(仮)</title>
+    <link type="text/css" rel="stylesheet"  href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
+    <link type="text/css" rel="stylesheet"  href="/css/mycss.css" th:href="@{/css/mycss.css}"/>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"
+				th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js}"></script>
+	<script type="text/javascript" src="/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+	<script src="/js/myjs.js" th:src="@{/js/myjs.js}"></script>
+  </head>
+  
+<body>
+<!-- navi -->
+<div th:include="header :: main_header"></div>
+
+
+<!-- ユーザー登録 -->
+<div class="container-fluid col-lg-offset-2 col-lg-8 text-center user-register">
+	<div class="row">
+	<h3>新規ユーザー登録</h3>
+	<form class="form-horizontal user-form">
+		<div class="form-group">
+			<label class="col-lg-3 col-lg-offset-1 text-right">名前</label>
+			<div class="col-lg-4">
+				<input type="name" name="name" class="form-control" placeholder="中嶋"></input>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-lg-3 col-lg-offset-1 text-right">メールアドレス</label>
+			<div class="col-lg-4">
+				<input type="email" name="email" class="form-control" placeholder="nakajima-kohei@tosyo.co.jp"></input>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-lg-3 col-lg-offset-1 text-right">パスワード</label>
+			<div class="col-lg-4">
+				<input type="password" name="pass" class="form-control"></input>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-lg-3 col-lg-offset-1 text-right">確認用パスワード</label>
+			<div class="col-lg-4">
+				<input type="password" name="pass" class="form-control"></input>
+			</div>
+		</div>
+				<div class="col-lg-12">
+			<div class="radio-inline">
+			<label>
+       			<input type="radio" name="member" value="normal" checked="checked"></input><b>一般</b>
+			</label>
+			</div>
+			<div class="radio-inline">
+			<label>
+       			<input type="radio" name="member" value="admin"></input><b>管理者</b>
+			</label>
+			</div>
+		</div>
+		<button type="button" class="btn btn-def" data-toggle="modal" data-target="#myModal">登録</button>
+	</form>
+	</div>
+</div>
+
+<!-- 登録モーダル -->
+<div class="modal fade" id="myModal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			</div>
+			<div class="modal-body">登録しました。</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-def" data-dismiss="modal">閉じる</button>
+			</div>
+  		</div>
+	</div>
+</div>
+<!-- ユーザー一覧 -->
+ <div class="col-lg-10 col-lg-offset-1 text-center">
+	<h3 class="user-title">ユーザー一覧</h3>
+	<table class="table user-table  table-bordered">
+	<tr>
+		<th class="col-lg-3">メールアドレス</th>
+		<th class="col-lg-2">名前</th>
+		<th class="col-lg-2">権限</th>
+		<th class="col-lg-1">削除</th>
+	</tr>
+	<tr>
+		<td>nakajima-kohei@tosyo.co.jp</td>
+		<td>中嶋</td>
+		<td>
+			<div class="radio-inline">
+			<label>
+				<input type="radio" name="member" value="normal"></input>一般
+			</label>
+			</div>
+			<div class="radio-inline">
+			<label>
+				<input type="radio" name="member" value="admin" checked="checked"></input>管理者
+			</label>
+			</div>
+		</td>
+		<td>
+			<button type="button" class="btn btn-default" data-toggle="modal" data-target="#delete">削除</button>
+		</td>
+	</tr>
+	</table>
+</div>
+
+<!-- 削除モーダル -->
+<div class="modal fade" id="delete">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			</div>
+			<div class="modal-body">本当に削除しますか？</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default pull-left" data-dismiss="modal">削除</button>
+				<button type="button" class="btn btn-def" data-dismiss="modal">閉じる</button>
+			</div>
+  		</div>
+	</div>
+</div>
+</body>
+</html>

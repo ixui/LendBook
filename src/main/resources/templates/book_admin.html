@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+	<meta charset="utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>書籍管理(仮)</title>
+    <link type="text/css" rel="stylesheet"  href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
+    <link type="text/css" rel="stylesheet"  href="/css/mycss.css" th:href="@{/css/mycss.css}"/>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"
+				th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js}"></script>
+	<script type="text/javascript" src="/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+	<script src="/js/myjs.js" th:src="@{/js/myjs.js}"></script>
+  </head>
+  
+<body>
+<!-- ヘッダー -->
+<div th:include="header :: main_header"></div>
+
+<!-- フォーム -->
+ <div class="col-xs-4 col-xs-offset-4 book-form">
+	<h1 class="text-center">本の登録</h1>
+	<hr class="style-one"></hr>
+    <form>
+        <div class="form-group">
+            <label for="book-name">書籍名</label>
+                <input type="text" name="book-name" class="form-control" placeholder="スッキリわかるJava入門 第2版 (スッキリシリーズ)"></input>
+        </div>
+        <div class="form-group">
+        	<label for="name">著者</label>
+        <input type="text" name="name" class="form-control" placeholder="中山 清喬,国本 大悟"></input>
+        </div>
+        <div class="form-group">
+            <label for="publisher">出版社</label>
+                <input type="text" name="publisher" class="form-control" placeholder="インプレス"></input>
+        </div>
+        <div class="form-group">
+        	<label for="date">出版日</label>
+        		<input type="text" name="date" class="form-control" placeholder="2014/8/7"></input>
+        </div>
+        <div class="form-group">
+        	<label for="isbn">ISBN</label>
+        <input type="text" name="isbn" class="form-control" placeholder="978-4844336389"></input>
+        </div>
+        <div class="form-group">
+        	<label for="content">内容</label>
+        		<textarea rows="5" class="form-control"></textarea>
+        </div>
+    <button type="button" class="btn btn-def" data-toggle="modal" data-target="#myModal">登録</button>
+    </form>
+</div>
+
+<!-- モーダル -->
+<div class="modal fade" id="myModal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			</div>
+			<div class="modal-body">返却しました。</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-def" data-dismiss="modal">閉じる</button>
+			</div>
+  		</div>
+	</div>
+</div>
+		
+  </body>
+</html>
