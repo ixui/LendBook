@@ -1,0 +1,302 @@
+/* 共通 */
+body{
+	padding-top: 50px;
+}
+
+.btn-def{
+	background-color: #009966;
+	color: white
+}
+
+.btn-def:hover{
+	color: white
+}
+
+/* index.html */
+.jumbotron-extend{
+	position: relative;
+	height: 60vh;
+	min-height: 300px;
+	background-image: url("../gyazo/green0005.png");
+	background-size: cover;
+	background-position: center; 
+	background-repeat: no-repeat;  
+}
+
+.jumbotron-container {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.main-header h1, .main-header h2{
+	letter-spacing: 25px;
+	font-family:Yu Gothic;
+}
+.login-btn{
+	padding: 10px 80px 10px 80px;
+	margin-top: 50px;
+	font-size: 16px;
+	font-family:Yu Gothic;
+	background-color: #009966;
+	color: white
+}
+
+.login-btn:hover{
+	background-color: #009966;
+	color: white
+}
+
+.container-site{
+	font-family:Yu Gothic;	
+	
+}
+
+.jumbotron-extend-two{
+	background-color: rgba(0,153,102,0.8);
+	color: white;
+	margin-top: 30px;
+	positon:relative;
+	height:500px;
+}
+
+.site-description{
+	margin-top: 50px;
+}
+
+.jubtron-extend-function{
+	height: 500px;
+}
+
+.index-recommend h3{
+	margin-top: 100px;
+}
+
+
+/* login.html */
+
+
+.login-form{
+	margin-top:100px;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	border: 1px solid #009966;
+}
+
+.login-form p{
+	font-size: 24px;
+	font-family:Yu Gothic;
+}
+
+.login-form label{
+	font-family: "メイリオ";
+}
+hr.style-one {
+    border: 0;
+    height: 1px;
+    background-image: -webkit-linear-gradient(left, rgba(0,153,102,0), rgba(0,153,102,0.75), rgba(0,153,102,0));
+    background-image:    -moz-linear-gradient(left, rgba(0,153,102,0), rgba(0,153,102,0.75), rgba(0,153,102,0));
+    background-image:     -ms-linear-gradient(left, rgba(0,153,102,0), rgba(0,153,102,0.75), rgba(0,153,102,0));
+    background-image:      -o-linear-gradient(left, rgba(0,153,102,0), rgba(0,153,102,0.75), rgba(0,153,102,0));
+}
+
+.login-btn-two{
+	background-color: #009966;
+	color: white;
+}
+
+/* navi.html */
+
+.navbar-brand {
+  background: url("../gyazo/ixui_logo_full_color.jpg") no-repeat;
+  background-size: contain;
+  height: 50px;
+  width: 145px;
+  box-shadow: 0px 1px;
+}
+
+/* main.html */
+.information p{
+	font-family: "メイリオ";
+}
+
+.container-search {
+	margin-top: 100px;
+}
+
+.main-information {
+	margin-top: 100px;
+}
+
+.main-btn{
+	background-color:#009966;
+}
+
+
+.main-information button{
+	padding : 10px 30px 10px 30px;
+	margin-bottom: 20px;
+	color: white;
+}
+
+.main-information p{
+	font-family: "メイリオ";
+}
+
+.header-tag{
+	color:white;
+	margin-top:15px;
+	margin-right:30px;
+}
+
+.header-search{
+	margin-top: 10px;
+}
+
+/* search.html */
+.search-one{
+	padding-bottom: 56px;
+}
+
+
+/* book.html */
+.book-introduce{
+	margin-top: 50px;
+}
+
+.book-introduce li{
+	font-size: 20px;
+	font-family: "メイリオ";
+	list-style: none;
+}
+
+.book-img{
+	float: left;
+	height:300px;
+}
+
+
+.book-list ul{
+	margin-top:100px;
+	font-size:24px;
+}
+
+.reserve-btn{
+	margin-top: 30px;
+	background-color:#009966;
+	color: white;
+}
+
+.reserve-btn:hover{
+	color:white;
+}
+
+.lendbtn-stop{
+	margin-top: 30px;
+}
+
+.tag{
+	margin-top:10px;
+}
+
+.tag a{
+	padding-left:10px;
+}
+
+.tag-btn{
+	margin-top:30px;
+}
+
+
+.book-content{
+	font-family: "メイリオ";
+}
+
+.book-content p{
+	margin-bottom: 50px;
+}
+
+.review-post {
+	font-family: "メイリオ";
+}
+
+.review-name, .review-date{
+	font-size: 18px;
+	font-weight: bold;
+	margin-top: 30px;
+}
+
+.review-list{
+	padding-bottom:100px;
+}
+
+/* reserve.html */
+.confirm{
+	margin-top: 100px;
+}
+
+.confirm-list{
+	font-family: "メイリオ";
+	font-size: 20px;
+	margin-bottom:80px;
+}
+
+/* book_admin.html */
+
+.book-form{
+	margin-top: 50px;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	padding-right: 50px;
+	padding-left: 50px;
+	border: 1px solid #555;
+}
+
+.book-form h1{
+	font-family: Yu Gothic;
+}
+
+.book-form form{
+	font-size: 18px;
+	font-family: "メイリオ";
+}
+
+
+/* user.html */
+.user-table{
+	font-family: "メイリオ";
+	margin-top: 50px;
+}
+
+.user-table th{
+	color: #fff;
+	background: #009966;
+	font-weight: bold;
+	text-align: center;
+}
+
+.user-title{
+	font-family: Yu Gothic;
+	font-weight: bold;
+}
+.lend-history{
+	margin-top: 100px;
+	font-family: Yu Gothic;
+	font-weight: bold;
+
+
+/* user_admin.html */
+.user-register h3{
+	font-family: Yu Gothic;
+	margin-top: 50px;
+}
+
+.user-form{
+	font-family: "メイリオ";
+}
+
+.alluser{
+	clear:float;
+}
+
+/* book_admin*/

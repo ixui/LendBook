@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+	<meta charset="utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>書籍管理(仮)</title>
+    <link type="text/css" rel="stylesheet"  href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
+    <link type="text/css" rel="stylesheet"  href="/css/mycss.css" th:href="@{/css/mycss.css}"/>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"
+				th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js}"></script>
+	<script type="text/javascript" src="/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+	<script src="/js/index_header.js" th:src="@{/js/index_header.js}"></script>
+  </head>
+  
+<body>
+<!-- navi -->
+<div th:include="index_header :: index_header"></div>
+
+<!-- ヘッダー -->
+<div class="jumbotron jumbotron-extend clearfix">
+	<div class="container-fluid jumbotron-container text-center main-header">
+		<h1>Read to book</h1>
+		<h2>That will make you grow.</h2>
+		<button type="button" class="btn login-btn" onClick="location.href='login.html'">Log in</button>
+	</div>
+</div>
+
+
+<!-- 特徴 -->
+<div class="container-fluid container-site ">
+	<div class="row">
+		<div class="col-lg-4 text-center">
+		<img src="gyazo/top-icon1.jpeg"></img>
+		<h3>コンセプト</h3>
+		<p>円滑に本の共有を行う。</p>
+		</div>
+		<div class="col-lg-4 text-center">
+		<img src="gyazo/top-icon2.jpeg"></img>
+		<h3>使用方法</h3>
+		<p>必要な書籍を見つけ、予約してください。</p>
+		</div>
+		<div class="col-lg-4 text-center">
+		<img src="gyazo/top-icon3.jpeg"></img>
+		<h3>特徴</h3>
+		<p>各書籍の情報共有ができます。</p>
+		</div>
+	</div>
+</div>
+
+<!-- サイト説明 -->
+<div class="jumbotron jumbotron-extend-two text-center" id="index_one">
+<h1>図書管理(仮)とは</h1>
+<h2>社内との情報共有で読書・勉強をよりよいものに</h2>
+<div class="site-description">
+<p>社内にある書籍を管理し、貸出可能な書籍に関しては貸出を行うことができます。</p>
+<p>また、書籍情報の共有としてレビュー機能を実装し、自身が求めている情報を持つ本、読んだ人の感想を見てから読みたい</p>
+<p>そういった方々に円滑に書籍を選んでいただけるようになっています。</p>
+</div>
+</div>
+
+<!-- 機能説明 -->
+<div class="container-fluid jubtron-extend-function text-center">
+<h1>機能説明</h1>
+<div class="row">
+	<img src="gyazo/search.png" class="col-lg-7"></img>
+	<h3>検索機能</h3>
+	<p>書籍名での検索だけではなく、タグ名での検索機能によって、特定のジャンルでの検索が可能に</p>
+	<p>欲しい情報を持っている書籍を素早く検索することができる</p>
+</div>
+<hr class="style-one"></hr>
+<div class="row index-recommend">
+	<div class="col-lg-4">
+	<h3>オススメ書籍・新着書籍</h3>
+	<p>よく貸し出しが行われている本や新着の本をメイン画面に表示しています。</p>
+	<p>普段手に取らないような本にも出合うことが</p>
+	</div>
+	<img src="gyazo/index_book.png" class="col-lg-8"></img>
+</div>
+<hr class="style-one"></hr>
+<div class="row index-recommend">
+	<img src="gyazo/index_main.png" class="col-lg-6 index_main"></img>
+	<h3>各書籍ページ</h3>
+	<p>書籍名・著者などの書籍情報、関連タグや内容紹介で書籍の情報が一目でわかりやすく</p>
+	<p>社内の人間同士によるレビューもあるため、読む前に参考にしていただき、読んだ後はこれから学ぶ人間のために情報共有をすることで社内全体のスキル向上に役立ちます</p>
+	
+</div>
+</div>
+</body>
+</html>

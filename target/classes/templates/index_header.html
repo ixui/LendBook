@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+	<meta charset="utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>書籍管理(仮)</title>
+    <link type="text/css" rel="stylesheet"  href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
+    <link type="text/css" rel="stylesheet"  href="/css/mycss.css" th:href="@{/css/mycss.css}"/>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"
+				th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js}"></script>
+	<script type="text/javascript" src="/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+	<script src="/js/index_header.js" th:src="@{/js/index_header.js}"></script>
+  </head>
+  <body>
+<!-- ナビ -->
+<div th:fragment="index_header">
+<nav class="navbar navbar-inverse navbar-fixed-top">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="index.html"></a>
+		<ul class="nav navbar-nav">
+			<li><a href="index.html#index_one">サイト説明</a></li>
+			<li><a href="index.html#index_two">機能説明</a></li>
+		</ul>
+		</div>		
+		<ul class="nav navbar-nav navbar-right">
+		<li><a href="login.html">ログイン</a></li>
+		</ul>
+	</div>
+</nav>
+</div>
+</body>
+</html>
