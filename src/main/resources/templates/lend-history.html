@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+	<meta charset="utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>書籍管理(仮)</title>
+    <link type="text/css" rel="stylesheet"  href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
+    <link type="text/css" rel="stylesheet"  href="/css/mycss.css" th:href="@{/css/mycss.css}"/>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"
+				th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js}"></script>
+	<script type="text/javascript" src="/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+	<script type="text/javascript" src="/js/myjs.js" th:src="@{/js/myjs.js}"></script>
+  </head>
+  <body>
+ <div class="col-lg-8 col-lg-offset-2" id="lend-main">
+	<h3 class="lend-history">貸出履歴 11月</h3>
+	<table class="table table-hover user-table">
+	<tr>
+		<th>書籍名</th>
+		<th>貸出日</th>
+	</tr>
+	<tr>
+		<td><a href="sukkirinyumon.html">Effective Java</a></td>
+		<td>11月9日</td>
+	</tr>
+	<tr>
+		<td><a href="javase8silver.html">徹底攻略 Java SE 8 Silver 問題集[1Z0-808]対応</a></td>
+		<td>11月10日</td>
+	</tr>
+	</table>
+	<div class="form-inline">
+	<div class="form-inline">
+	<button type="button" class="btn btn-default pull-left form-control" id="former-lend-history">←先月</button>
+	<button type="button" class="btn btn-default pull-right form-control" id="next-lemd-history">次月→</button>
+	</div>
+</div>
+</div>
+
+</body>
+</html>
