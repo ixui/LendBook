@@ -1,4 +1,4 @@
-package com.kohei.nakajima;
+package jp.co.ixui;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
