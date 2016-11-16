@@ -3,14 +3,6 @@ $(function(){
 	$('input:visible').first().focus();
 });
 
-$(function() {
-	$('#index_header').load('index_header.html');
-});
-
-$(function() {
- $('#header').load('header.html');
-});
-
 //スクローる
 $(function(){
 	$('a[href^=#]').click(function(){
@@ -66,7 +58,7 @@ $(function(){
 $(function() {
     $('#ajax-btn').click(function() {
         $.ajax({
-               type: 'POST',
+               type: 'GET',
                url: 'search.html',
                dataType: 'html',
                success: function(data) {

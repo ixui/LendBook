@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+	<meta charset="utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>書籍管理(仮)</title>
+    <link type="text/css" rel="stylesheet"  href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
+    <link type="text/css" rel="stylesheet"  href="/css/mycss.css" th:href="@{/css/mycss.css}"/>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"
+				th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js}"></script>
+	<script type="text/javascript" src="/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+	<script src="/js/myjs.js" th:src="@{/js/myjs.js}"></script>
+  </head>
+  <body>
+<!-- navi -->
+
+<!-- main -->
+<div id="search-result">
+	<div class="row">
+	<h3 class="pull-left">検索結果: Java</h3>
+	</div>
+<div id="search-list">
+	<div class="row search-one">
+		<div class="col-md-2 col-md-offset-1">
+		<a href="sukkirinyumon.html" target="_blank"><img src="http://ecx.images-amazon.com/images/I/51p6dqvB3lL._SL160_.jpg" alt="スッキリわかるJava入門 第2版 (スッキリシリーズ)" style="border: none;" /></a>
+		<p>スッキリわかるJava入門</p>
+		<p class="text-danger">貸出中 2016/11/20まで</p>
+		</div>
+		<div class="col-md-2 col-md-offset-1">
+		<a href="effective_java.html" target="_blank"><img src="http://ecx.images-amazon.com/images/I/51E1m-weAXL._SL160_.jpg" alt="Effective Java 第2版 (The Java Series)" style="border: none;" /></a>
+		<p>Effective Java</p>
+		<button type="button" class="btn  btn-def col-md-offset-2" onClick="location.href='reserve.html'">貸出</button>
+		</div>
+		<div class="col-md-2 col-md-offset-1">
+		<a href="sukkirijissen.html" target="_blank"><img src="http://ecx.images-amazon.com/images/I/512YksTnm1L._SL160_.jpg" alt="スッキリわかるJava入門 実践編 第2版 スッキリわかるシリーズ" style="border: none;" /></a>
+		<p>スッキリわかるJava入門 実践編</p>
+		<p class="text-danger">貸出中 2016/11/30まで</p>
+		</div>
+		<div class="col-md-2 col-md-offset-1">
+		<a href="javase8silver.html" target="_blank"><img src="http://ecx.images-amazon.com/images/I/51c8D0EinNL._SL160_.jpg" alt="徹底攻略Java SE 8 Silver問題集［1Z0-808］対応 徹底攻略シリーズ" style="border: none;" /></a>
+		<p>Java SE8 Silver</p>
+		<p class="text-danger">貸出中 2016/12/1まで</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-2 col-md-offset-1">
+		<a href="sukkirinyumon.html" target="_blank"><img src="http://ecx.images-amazon.com/images/I/51p6dqvB3lL._SL160_.jpg" alt="スッキリわかるJava入門 第2版 (スッキリシリーズ)" style="border: none;" /></a>
+		<p>スッキリわかるJava入門</p>
+		<p class="text-danger">貸出中 2016/11/20まで</p>
+		</div>
+		<div class="col-md-2 col-md-offset-1">
+		<a href="effective_java.html" target="_blank"><img src="http://ecx.images-amazon.com/images/I/51E1m-weAXL._SL160_.jpg" alt="Effective Java 第2版 (The Java Series)" style="border: none;" /></a>
+		<p>Effective Java</p>
+		<button type="button" class="btn  btn-def col-md-offset-2" onClick="location.href='reserve.html'">貸出</button>
+		</div>
+		<div class="col-md-2 col-md-offset-1">
+		<a href="sukkirijissen.html" target="_blank"><img src="http://ecx.images-amazon.com/images/I/512YksTnm1L._SL160_.jpg" alt="スッキリわかるJava入門 実践編 第2版 スッキリわかるシリーズ" style="border: none;" /></a>
+		<p>スッキリわかるJava入門 実践編</p>
+		<p class="text-danger">貸出中 2016/11/30まで</p>
+		</div>
+		<div class="col-md-2 col-md-offset-1">
+		<a href="javase8silver.html" target="_blank"><img src="http://ecx.images-amazon.com/images/I/51c8D0EinNL._SL160_.jpg" alt="徹底攻略Java SE 8 Silver問題集［1Z0-808］対応 徹底攻略シリーズ" style="border: none;" /></a>
+		<p>Java SE8 Silver</p>
+		<p class="text-danger">貸出中 2016/12/1まで</p>
+		</div>
+	</div>
+	<div class="form-inline">
+	<button type="button" class="btn btn-default pull-left form-control" id="former-list">←前の8件</button>
+	<button type="button" class="btn btn-default pull-right form-control" id="next-list">次の8件→</button>
+	</div>
+</div>
+</div>
+</body>
+</html>

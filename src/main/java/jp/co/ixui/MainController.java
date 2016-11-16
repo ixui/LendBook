@@ -30,4 +30,34 @@ public class MainController {
 	public String user(){
 		return "user";
 	}
+	
+	@RequestMapping("/user_change")
+	public String user_change(){
+		return "user_change";
+	}
+	
+	@RequestMapping("/book_admin")
+	public String book_admin(){
+		return "book_admin";
+	}
+	
+	@RequestMapping("/user_admin")
+	public String user_admin(){
+		return "user_admin";
+	}
+	
+	@RequestMapping("/search")
+	public String search(){
+		return "search";
+	}
+	
+	@RequestMapping("/search-two")
+	public String search_two(){
+		return "search-two";
+	}
+	
+	@RequestMapping("/effective_java")
+	public String effective_java(){
+		return "effective_java";
+	}
 }

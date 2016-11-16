@@ -1,23 +1,20 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html xmlns:th="http://www.thymeleaf.org">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>書籍管理(仮)</title>
-    <!-- BootstrapのCSS読み込み -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/mycss.css">
-    <!-- jQuery読み込み -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <!-- BootstrapのJS読み込み -->
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/myjs.js"></script>
+    <link type="text/css" rel="stylesheet"  href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
+    <link type="text/css" rel="stylesheet"  href="/css/mycss.css" th:href="@{/css/mycss.css}"/>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"
+				th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js}"></script>
+	<script type="text/javascript" src="/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
   </head>
   
 <body>
 <!-- ヘッダー -->
-<div id="header"></div>
+<div th:include="header :: main_header"></div>
 
 
 <!-- ユーザー登録 -->
@@ -28,31 +25,30 @@
 		<div class="form-group">
 			<label class="col-lg-3 col-lg-offset-1 text-right" >名前</label>
 			<div class="col-lg-4">
-				<input type="name" name="name" class="form-control" placeholder="中嶋">
+				<input type="name" name="name" class="form-control" placeholder="中嶋"></input>
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="col-lg-3 col-lg-offset-1 text-right" >メールアドレス</label>
 			<div class="col-lg-4">
-				<input type="email" name="email" class="form-control" placeholder="nakajima-kohei@ixui.co.jp">
+				<input type="email" name="email" class="form-control" placeholder="nakajima-kohei@tosyo.co.jp"></input>
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="col-lg-3 col-lg-offset-1 text-right">パスワード</label>
 			<div class="col-lg-4">
-				<input type="password" name="pass" class="form-control">
+				<input type="password" name="pass" class="form-control"></input>
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="col-lg-3 col-lg-offset-1 text-right">確認用パスワード</label>
 			<div class="col-lg-4">
-				<input type="password" name="pass" class="form-control">
+				<input type="password" name="pass" class="form-control"></input>
 			</div>
 		</div>
-		<type="button" class="btn btn-def" data-toggle="modal" data-target="#myModal">変更</button>
+		<button type="button" class="btn btn-def" data-toggle="modal" data-target="#myModal">変更</button>
 	</form>
 	</div>
-</div>
 </div>
 
 <!-- モーダル -->
