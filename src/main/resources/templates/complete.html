@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+	<meta charset="utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>書籍管理(仮)</title>
+    <link type="text/css" rel="stylesheet"  href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
+    <link type="text/css" rel="stylesheet"  href="/css/mycss.css" th:href="@{/css/mycss.css}"/>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"
+				th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js}"></script>
+	<script type="text/javascript" src="/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+  	<script src="/js/myjs.js" th:src="@{/js/myjs.js}"></script>
+  </head>
+  
+<body>
+<!-- ヘッダー -->
+<div th:include="header :: main_header"></div>
+
+<!-- メイン -->
+<div class="text-center">
+	<h1 style="margin: 100px 0px 50px 0px;">貸し出しました</h1> 
+	<a href="main.html" class="mainview">メイン画面へ</a>
+</div>
+</body>
+</html>
