@@ -31,6 +31,16 @@ public class MainController {
 		return "user";
 	}
 	
+	@RequestMapping("/lend-history-two")
+	public String lend_history_two(){
+		return "lend-history-two";
+	}
+	
+	@RequestMapping("/lend-history")
+	public String lend_history(){
+		return "lend-history";
+	}
+	
 	@RequestMapping("/user_change")
 	public String user_change(){
 		return "user_change";
@@ -59,5 +69,30 @@ public class MainController {
 	@RequestMapping("/effective_java")
 	public String effective_java(){
 		return "effective_java";
+	}
+	
+	@RequestMapping("/javase8silver")
+	public String javase8silver(){
+		return "javase8silver";
+	}
+	
+	@RequestMapping("/sukkirijissen")
+	public String sukkirijissen(){
+		return "sukkirijissen";
+	}
+	
+	@RequestMapping("/sukkirinyumon")
+	public String sukkirinyumon(){
+		return "sukkirinyumon";
+	}
+	
+	@RequestMapping("/reserve")
+	public String reserve(){
+		return "reserve";
+	}
+	
+	@RequestMapping("/complete")
+	public String complete(){
+		return "complete";
 	}
 }
