@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+	<meta charset="utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>書籍管理(仮)</title>
+    <link type="text/css" rel="stylesheet"  href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
+    <link type="text/css" rel="stylesheet"  href="/css/mycss.css" th:href="@{/css/mycss.css}"/>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"
+				th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js}"></script>
+	<script type="text/javascript" src="/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+	<script src="/js/index_header.js" th:src="@{/js/index_header.js}"></script>
+	<script src="/js/myjs.js" th:src="@{/js/myjs.js}"></script>
+  </head>
+  
+<body>
+<!-- navi -->
+<div th:include="index_header :: index_header"></div>
+
+
+<!-- ログインフォーム -->
+<div class="container-fluid col-lg-offset-2 col-lg-8 text-center login-form">
+	<p>Log in</p>
+	<hr class="style-one"></hr>
+	<form class="form-horizontal" th:action="@{login}" method="post" name="login">
+		<div class="form-group">
+			<label class="col-lg-3 col-lg-offset-1 text-right">メールアドレス</label>
+			<div class="col-lg-4">
+				<input type="email" name="mail_address" class="form-control"></input>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-lg-3 col-lg-offset-1 text-right">パスワード</label>
+			<div class="col-lg-4">
+				<input type="password" name="password" class="form-control"></input>
+			</div>
+		</div>
+		<button type="submit" class="btn btn-def">Login</button>
+	</form>
+</div>
+</body>
+</html>
