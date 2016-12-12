@@ -1,4 +1,4 @@
-package jp.co.ixui;
+package com.kohei.nakajima;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
