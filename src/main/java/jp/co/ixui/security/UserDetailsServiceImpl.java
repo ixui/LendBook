@@ -16,15 +16,16 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 	@Autowired
 	MstEmpMapper mstEmpMapper;
 
-	
+
 	@Override
 	public UserDetails loadUserByUsername(String mail_address) throws UsernameNotFoundException {
 
-		//ログインフォームで入力された値を
+		//ログインフォームの値を
 		if(mail_address == null || "".equals(mail_address)){
 			throw new UsernameNotFoundException("MailAddress is empty");
 		}
 
+		//社員1名の情報をmstEmpに格納
 		MstEmp mstEmp = mstEmpMapper.selectUser(mail_address);
 		if(mstEmp == null){
 			throw new UsernameNotFoundException("User not found for name: " + mail_address);

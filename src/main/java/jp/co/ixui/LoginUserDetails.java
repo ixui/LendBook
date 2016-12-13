@@ -10,6 +10,7 @@ public class LoginUserDetails extends User{
 	private final MstEmp mstEmp;
 
 	public LoginUserDetails(MstEmp mstEmp){
+
 		super(
 				mstEmp.getMailAddress(),
 				mstEmp.getPassword(),

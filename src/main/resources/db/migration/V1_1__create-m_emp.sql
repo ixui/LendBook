@@ -1,5 +1,5 @@
 create table m_emp(
-	emp_num integer(200) not null primary key,
+	emp_num integer(5) not null primary key,
 	mail_address varchar(255) not null,
     emp_name varchar(50) not null,
     password varchar(80) not null,

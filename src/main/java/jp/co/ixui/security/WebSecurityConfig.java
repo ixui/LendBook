@@ -23,14 +23,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	//静的コンテンツに対して除外設定
 	@Override
 	public void configure(WebSecurity web) throws Exception {
-		web.ignoring().antMatchers("/css/**", "/js/**", "/gyazo/**");
+		web.ignoring().antMatchers("/css/**", "/js/**", "/images/**");
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception{
 		http.authorizeRequests()
 				// indexは全ユーザーアクセス許可
-				.antMatchers("/", "/index", "/test").permitAll()
+				.antMatchers("/", "/index").permitAll()
 				.antMatchers("/admin/**").hasRole("1")
 				.anyRequest().authenticated();
 

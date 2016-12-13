@@ -1,12 +1,18 @@
 package jp.co.ixui.domain;
 
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * 社員マスタードメインオブジェクト
+ * @author NAKAJIMA
+ *
+ */
 @Getter
 @Setter
 public class MstEmp {
@@ -15,13 +21,13 @@ public class MstEmp {
 	private int empNum;
 
 	//メールアドレス
-	@NotNull
-	@NotEmpty(message="メールアドレスを入力してください")
+    @NotEmpty(message="{lastName}{NotEmpty}")
+    @Size(max=50, message="{lastName}{Max}")
 	private String mailAddress;
 
 	//パスワード
 	@NotNull
-	@NotEmpty(message="パスワードを入力してください。")
+
 	private String password;
 
 	//社員名
