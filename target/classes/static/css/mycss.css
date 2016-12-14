@@ -1,4 +1,4 @@
-/* ‹¤’Ê */
+/* ï¿½ï¿½ï¿½ï¿½ */
 body{
 	padding-top: 50px;
 }
@@ -17,10 +17,10 @@ body{
 	position: relative;
 	height: 60vh;
 	min-height: 300px;
-	background-image: url("../gyazo/green0005.png");
+	background-image: url("../images/green0005.png");
 	background-size: cover;
-	background-position: center; 
-	background-repeat: no-repeat;  
+	background-position: center;
+	background-repeat: no-repeat;
 }
 
 .jumbotron-container {
@@ -48,8 +48,8 @@ body{
 }
 
 .container-site{
-	font-family:Yu Gothic;	
-	
+	font-family:Yu Gothic;
+
 }
 
 .jumbotron-extend-two{
@@ -89,7 +89,7 @@ body{
 }
 
 .login-form label{
-	font-family: "ƒƒCƒŠƒI";
+	font-family: "ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½I";
 }
 hr.style-one {
     border: 0;
@@ -108,7 +108,7 @@ hr.style-one {
 /* navi.html */
 
 .navbar-brand {
-  background: url("../gyazo/ixui_logo_full_color.jpg") no-repeat;
+  background: url("../images/ixui_logo_full_color.jpg") no-repeat;
   background-size: contain;
   height: 50px;
   width: 145px;
@@ -117,7 +117,7 @@ hr.style-one {
 
 /* main.html */
 .information p{
-	font-family: "ƒƒCƒŠƒI";
+	font-family: "ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½I";
 }
 
 .container-search {
@@ -140,7 +140,7 @@ hr.style-one {
 }
 
 .main-information p{
-	font-family: "ƒƒCƒŠƒI";
+	font-family: "ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½I";
 }
 
 .header-tag{
@@ -166,7 +166,7 @@ hr.style-one {
 
 .book-introduce li{
 	font-size: 20px;
-	font-family: "ƒƒCƒŠƒI";
+	font-family: "ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½I";
 	list-style: none;
 }
 
@@ -209,7 +209,7 @@ hr.style-one {
 
 
 .book-content{
-	font-family: "ƒƒCƒŠƒI";
+	font-family: "ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½I";
 }
 
 .book-content p{
@@ -217,7 +217,7 @@ hr.style-one {
 }
 
 .review-post {
-	font-family: "ƒƒCƒŠƒI";
+	font-family: "ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½I";
 }
 
 .review-name, .review-date{
@@ -236,7 +236,7 @@ hr.style-one {
 }
 
 .confirm-list{
-	font-family: "ƒƒCƒŠƒI";
+	font-family: "ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½I";
 	font-size: 20px;
 	margin-bottom:80px;
 }
@@ -258,13 +258,13 @@ hr.style-one {
 
 .book-form form{
 	font-size: 18px;
-	font-family: "ƒƒCƒŠƒI";
+	font-family: "ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½I";
 }
 
 
 /* user.html */
 .user-table{
-	font-family: "ƒƒCƒŠƒI";
+	font-family: "ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½I";
 	margin-top: 50px;
 }
 
@@ -292,7 +292,7 @@ hr.style-one {
 }
 
 .user-form{
-	font-family: "ƒƒCƒŠƒI";
+	font-family: "ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½I";
 }
 
 .alluser{
