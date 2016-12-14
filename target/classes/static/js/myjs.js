@@ -1,8 +1,3 @@
-//focus
-$(function(){
-	$('input:visible').first().focus();
-});
-
 //スクローる
 $(function(){
 	$('a[href^=#]').click(function(){
@@ -20,13 +15,13 @@ $(function(){
 //14日後の取得
 $(function(){
 	var now = new Date(); //現在の日付
-	
+
 	//現在
 	var month = now.getMonth()+1;
 	var date = now.getDate();
-	
-	
-	var nowms = now.getTime(); //現在の日付をミリ秒単位に変換 
+
+
+	var nowms = now.getTime(); //現在の日付をミリ秒単位に変換
 	var after = 14; //何日後かを入れる
 	after = after*24*60*60*1000; //ミリ秒に変換
 	ans = new Date(nowms+after); //現在＋何日後 のミリ秒で日付オブジェクト生成
@@ -42,7 +37,7 @@ $(function(){
 	var now = new Date();
 	var month = now.getMonth()+1;
 	var date = now.getDate();
-	var nowms = now.getTime(); //現在の日付をミリ秒単位に変換 
+	var nowms = now.getTime(); //現在の日付をミリ秒単位に変換
 	var after = -1; //何日後かを入れる
 	after = after*24*60*60*1000; //ミリ秒に変換
 	ans = new Date(nowms+after); //現在＋何日後 のミリ秒で日付オブジェクト生成
@@ -141,7 +136,7 @@ $(function() {
 
 //スクロール
 $(function() {
- 
+
     //ページ内スクロール
     $("#ajax-btn").click(function () {
         var i = $("#ajax.btn").index(this)
@@ -149,5 +144,5 @@ $(function() {
         $('html,body').animate({ scrollTop: p }, 'fast');
         return false;
     });
-  
+
 });
