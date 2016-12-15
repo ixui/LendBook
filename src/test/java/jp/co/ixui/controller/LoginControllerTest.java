@@ -38,7 +38,8 @@ public class LoginControllerTest {
 	@Test
 	public void ログインせずにメイン画面へアクセス() throws Exception{
 		mockMvc.perform(get("/main"))
-				.andExpect(status().isOk());
+				.andExpect(status().isOk())
+				.andExpect(model().hasErrors());
 	}
 
 	@Test
