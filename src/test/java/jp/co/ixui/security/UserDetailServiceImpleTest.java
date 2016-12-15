@@ -15,7 +15,5 @@ public class UserDetailServiceImpleTest {
 
 	@Test
 	public void テスト() throws Exception{
-		userDetails.test();
-
 	}
 }
