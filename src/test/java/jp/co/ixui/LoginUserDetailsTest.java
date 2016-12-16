@@ -11,6 +11,7 @@ import jp.co.ixui.domain.MstEmp;
 @SpringBootTest
 public class LoginUserDetailsTest {
 
+	//正常
 	@Test
 	public void ユーザー情報が格納されているか確認(){
 
@@ -24,13 +25,14 @@ public class LoginUserDetailsTest {
 		System.out.println(loginUserDetails.getUser());
 	}
 
+	//異常
 	@Test
-	public void MstEmpが空の場合(){
+	public void MstEmpが空の場合にLoginUserDetailsを処理(){
 
-		MstEmp mstEmp = new MstEmp();
+		MstEmp mstEmp2 = new MstEmp();
 
 		try{
-		LoginUserDetails loginUserDetails = new LoginUserDetails(mstEmp);
+		LoginUserDetails loginUserDetails = new LoginUserDetails(mstEmp2);
 		System.out.println(loginUserDetails.getUser());
 		}catch(Exception e){
 			e.printStackTrace();
