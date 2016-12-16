@@ -104,7 +104,7 @@ $(function() {
 $(function() {
     $('#former-lend-history').click(function() {
         $.ajax({
-               type: 'POST',
+               type: 'GET',
                url: 'lend-history-two.html',
                dataType: 'html',
                success: function(data) {

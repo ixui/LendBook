@@ -1,4 +1,4 @@
-package jp.co.ixui;
+package jp.co.ixui.security;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,11 +7,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import jp.co.ixui.mapper.MstEmpMapper;
-import jp.co.ixui.security.UserDetailsServiceImpl;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class LendBookApplicationTests {
+public class UserDetailsServiceImplTest {
 
 	@Autowired
 	private UserDetailsServiceImpl userDetailsServiceImpl;
@@ -20,7 +19,7 @@ public class LendBookApplicationTests {
 	MstEmpMapper mstEmpMapper;
 
 	@Test
-	public void 判定が正しいかのテスト(){
+	public void 存在するユーザーの認証(){
 		String mail_address = "admin@tosyo.co.jp";
 		try{
 		userDetailsServiceImpl.loadUserByUsername(mail_address);
@@ -30,7 +29,7 @@ public class LendBookApplicationTests {
 	}
 
 	@Test
-	public void 判定が正しくない場合のテスト(){
+	public void 存在しないユーザーの認証(){
 		try{
 		userDetailsServiceImpl.loadUserByUsername("null@tosyo.co.jp");
 		}catch(Exception e){
@@ -38,4 +37,12 @@ public class LendBookApplicationTests {
 		}
 	}
 
+	@Test
+	public void 空文字の認証(){
+		try{
+			userDetailsServiceImpl.loadUserByUsername("");
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
 }
