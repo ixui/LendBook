@@ -25,6 +25,7 @@ public class LoginControllerTest {
 
 	private MockMvc mockMvc; //リクエストとレスポンスとそれに付属する情報のオブジェクト
 
+
 	//事前処理
 	@Before
 	public void 事前処理() throws Exception{
@@ -53,8 +54,10 @@ public class LoginControllerTest {
 	public void ログインページのテスト() throws Exception{
 		mockMvc.perform(
 				formLogin()
-					.user("username", "admin@tosyo.co.jp")
+					.user("mail_address", "admin@tosyo.co.jp")
 					.password("password", "aaaa")
-					.loginProcessingUrl("/main"));
+					.loginProcessingUrl("/main"))
+
+					.andExpect(status().isOk());
 	}
 }

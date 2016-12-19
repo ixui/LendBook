@@ -55,7 +55,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 
 
 	@Configuration
-    protected static class AuthenticationConfiguration
+    static class AuthenticationConfiguration
     extends GlobalAuthenticationConfigurerAdapter {
 
 		@Autowired
@@ -74,7 +74,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 
            // 入力値をbcryptでハッシュ化した値でパスワード認証を行う
             	.passwordEncoder(passwordEncoder());
-
         }
     }
 }
