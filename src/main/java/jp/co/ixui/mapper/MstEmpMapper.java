@@ -4,6 +4,12 @@ import org.apache.ibatis.annotations.Mapper;
 
 import jp.co.ixui.domain.MstEmp;
 
+/**
+ * 社員mapper
+ * @author NAKAJIMA
+ *
+ */
+
 @Mapper
 public interface MstEmpMapper {
 

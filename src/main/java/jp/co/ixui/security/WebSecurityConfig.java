@@ -19,18 +19,20 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 
-
-	//静的コンテンツに対して除外設定
+	//静的コンテンツに対して除外設定 css/js/imagesを読み込めるようにする
 	@Override
 	public void configure(WebSecurity web) throws Exception {
 		web.ignoring().antMatchers("/css/**", "/js/**", "/images/**");
 	}
 
+	//アクセス管理
 	@Override
 	protected void configure(HttpSecurity http) throws Exception{
+
 		http.authorizeRequests()
-				// indexは全ユーザーアクセス許可
+				//indexは全ユーザーアクセス許可
 				.antMatchers("/", "/index").permitAll()
+				//管理者は管理者用ページに遷移できる
 				.antMatchers("/admin/**").hasRole("1")
 				.anyRequest().authenticated();
 
@@ -39,7 +41,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		http.formLogin()
 				.loginPage("/login")
 				.loginProcessingUrl("/login")
-				.failureUrl("/login?error")
 				.defaultSuccessUrl("/main" ,true)
 				.usernameParameter("mail_address")
 				.passwordParameter("password")
@@ -50,9 +51,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		http.logout()
 			.logoutRequestMatcher(new AntPathRequestMatcher("/logout**"))
 			.logoutSuccessUrl("/index");
-
 	}
-
 
 	@Configuration
     static class AuthenticationConfiguration

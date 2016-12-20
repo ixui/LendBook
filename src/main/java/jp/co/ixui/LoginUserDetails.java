@@ -9,8 +9,8 @@ public class LoginUserDetails extends User{
 
 	private final MstEmp mstEmp;
 
+	//LoginUserDetailsで取得した情報を格納する
 	public LoginUserDetails(MstEmp mstEmp){
-
 		super(
 				mstEmp.getMailAddress(),
 				mstEmp.getPassword(),
