@@ -1,5 +1,6 @@
 package jp.co.ixui.security;
 
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestBuilders.*;
 import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -45,11 +46,14 @@ public class WebSecurityConfigTest {
 	@Autowired
 	AuthenticationConfiguration authenticationConfiguration;
 
+	@Autowired
+	UserDetailsServiceImpl userDetailsService;
+
 
 	//事前処理
 	@Before
 	public void 事前処理() throws Exception{
-        this.mockMvc = MockMvcBuilders.webAppContextSetup(this.context) //モックの初期化
+        this.mockMvc = MockMvcBuilders.webAppContextSetup(context) //モックの初期化
         		.apply(springSecurity())
         		.build();
 		}
@@ -79,16 +83,19 @@ public class WebSecurityConfigTest {
 	}
 
 
-	//パスワードエンコーダーを使った認証テストができていない。
-/*	@Test
-	//@WithMockUser(username="admin@tosyo.co.jp",password="bbbb")
-	public void 認証テスト() throws Exception{
+	@Test
+	public void 起動テスト() throws Exception{
 		AuthenticationManagerBuilder auth = new AuthenticationManagerBuilder(objectPostProcessor);
 		authenticationConfiguration.init(auth);
-		auth.
 
-		mockMvc.perform(get("/main"))
-		.andExpect(status().isOk());
-	}*/
+		mockMvc.perform(
+				formLogin()
+					.user("mail_address", "admin@tosyo.co.jp")
+					.password("password", "aaaa"))
+				.andExpect(status().isFound())
+				.andExpect(redirectedUrl("/main"));
+	}
+
 }
+
 
