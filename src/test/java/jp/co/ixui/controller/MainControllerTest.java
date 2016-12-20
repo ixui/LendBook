@@ -17,7 +17,6 @@ import org.springframework.web.context.WebApplicationContext;
 @WebMvcTest
 public class MainControllerTest {
 
-
 	@Autowired
 	private WebApplicationContext context; //アプリケーションの設定等を管理するコンテキスト
 
@@ -30,12 +29,14 @@ public class MainControllerTest {
         		.build();
 		}
 
+	//正常
 	@Test
 	public void メイン画面へアクセス() throws Exception{
 			mockMvc.perform(get("/"))
 			.andExpect(status().isOk());
 	}
 
+	//正常
 	@Test
 	public void ログイン画面へアクセス() throws Exception{
 			mockMvc.perform(get("/login"))

@@ -25,7 +25,6 @@ public class LoginControllerTest {
 
 	private MockMvc mockMvc; //リクエストとレスポンスとそれに付属する情報のオブジェクト
 
-
 	//事前処理
 	@Before
 	public void 事前処理() throws Exception{
