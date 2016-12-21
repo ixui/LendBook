@@ -32,6 +32,7 @@ public class LoginUserDetailsTest {
 		//値が正しいか判定
 		assertEquals("test@tosyo.co.jp", loginUserDetails.getUsername());
 		assertEquals("test", loginUserDetails.getPassword());
+		//adminFragはリストで格納されているため比較方法は再度考える。
 	}
 
 	//異常
