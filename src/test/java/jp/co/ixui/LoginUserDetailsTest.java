@@ -1,5 +1,7 @@
 package jp.co.ixui;
 
+import static org.junit.Assert.*;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -21,19 +23,25 @@ public class LoginUserDetailsTest {
 		mstEmp.setPassword("test");
 		mstEmp.setAdminFrag("0");
 
-		LoginUserDetails loginUserDetails = new LoginUserDetails(mstEmp);
-		System.out.println(loginUserDetails.getUser());
+		//MstEmpに値が入っているか確認
+		assertEquals("test@tosyo.co.jp", mstEmp .getMailAddress());
+		assertEquals("test", mstEmp .getPassword());
+		assertEquals("0", mstEmp .getAdminFrag());
+
+		LoginUserDetails loginUserDetails = new LoginUserDetails(mstEmp); //MstEmpの値をLoginUserDetailsに渡す
+		//値が正しいか判定
+		assertEquals("test@tosyo.co.jp", loginUserDetails.getUsername());
+		assertEquals("test", loginUserDetails.getPassword());
 	}
 
 	//異常
 	@Test
-	public void MstEmpが空の場合にLoginUserDetailsを処理(){
+	public void MstEmpが空の場合にLoginUserDetailsを処理(){ //テスト名がおかしい 「MstEmpが空の場合エラーがでるか確認」の方がよかったかもしれないです
 
-		MstEmp mstEmp2 = new MstEmp();
+		MstEmp mstEmp2 = new MstEmp(); //値を入れていないMstEmpオブジェクト
 
 		try{
-		LoginUserDetails loginUserDetails = new LoginUserDetails(mstEmp2);
-		System.out.println(loginUserDetails.getUser());
+		LoginUserDetails loginUserDetails = new LoginUserDetails(mstEmp2); //MstEmpの値をLoginuserDetailsに渡す
 		}catch(Exception e){
 			e.printStackTrace();
 		}
