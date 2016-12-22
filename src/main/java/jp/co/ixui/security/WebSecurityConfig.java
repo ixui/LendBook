@@ -33,7 +33,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 				//indexは全ユーザーアクセス許可
 				.antMatchers("/", "/index").permitAll()
 				//管理者は管理者用ページに遷移できる
-				.antMatchers("/admin/**").hasRole("1")
+				.antMatchers("/admin/**").hasAuthority("1")
 				.anyRequest().authenticated();
 
 		//フォーム認証
@@ -42,7 +42,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 				.loginPage("/login")
 				.loginProcessingUrl("/login")
 				.defaultSuccessUrl("/main" ,true)
-				.usernameParameter("mail_address")
+				.usernameParameter("mailAddress")
 				.passwordParameter("password")
 				.permitAll()
 				.and();
