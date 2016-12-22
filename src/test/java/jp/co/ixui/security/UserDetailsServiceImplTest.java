@@ -18,6 +18,7 @@ public class UserDetailsServiceImplTest {
 	@Autowired
 	MstEmpMapper mstEmpMapper;
 
+	//正常
 	@Test
 	public void 存在するユーザーの認証(){
 		String mail_address = "admin@tosyo.co.jp";
@@ -28,6 +29,8 @@ public class UserDetailsServiceImplTest {
 		}
 	}
 
+	//異常
+	//Error:"User not found for name: " + null@tosyo.co.jp)
 	@Test
 	public void 存在しないユーザーの認証(){
 		try{
@@ -37,6 +40,8 @@ public class UserDetailsServiceImplTest {
 		}
 	}
 
+	//異常
+	//Error:MailAddress is empty
 	@Test
 	public void 空文字の認証(){
 		try{

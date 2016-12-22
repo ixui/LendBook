@@ -58,6 +58,7 @@ public class WebSecurityConfigTest {
         		.build();
 		}
 
+	//正常
 	@Test
 	public void 許可されているページへアクセス() throws Exception{
 		HttpSecurity http = new HttpSecurity(objectPostProcessor, authenticationBuilder, sharedObjects);
@@ -66,6 +67,7 @@ public class WebSecurityConfigTest {
 			.andExpect(status().isOk());
 		}
 
+	//異常
 	@Test
 	public void 許可されていないページへアクセス() throws Exception{
 		HttpSecurity http = new HttpSecurity(objectPostProcessor, authenticationBuilder, sharedObjects);
@@ -74,7 +76,6 @@ public class WebSecurityConfigTest {
 			.andExpect(status().is3xxRedirection());
 		}
 
-
 	@Test
 	public void パスワードエンコーダー(){
 		PasswordEncoder s = authenticationConfiguration.passwordEncoder();
@@ -82,7 +83,7 @@ public class WebSecurityConfigTest {
 		System.out.println(s.matches("1234", "$2a$10$dOVXGCLiErzFZ.8usPKJ/urZRHOVDrhvuPFmQ.dXPoulu10Ejolna"));
 	}
 
-
+	//正常
 	@Test
 	public void 起動テスト() throws Exception{
 		AuthenticationManagerBuilder auth = new AuthenticationManagerBuilder(objectPostProcessor);
