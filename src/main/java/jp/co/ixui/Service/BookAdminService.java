@@ -1,4 +1,4 @@
-package jp.co.ixui.Service;
+package jp.co.ixui.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
