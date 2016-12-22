@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import jp.co.ixui.Service.BookAdminService;
+import jp.co.ixui.service.BookAdminService;
 
 @Controller
 public class BookController {
