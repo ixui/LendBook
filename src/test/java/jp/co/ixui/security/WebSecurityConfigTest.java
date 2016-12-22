@@ -91,12 +91,10 @@ public class WebSecurityConfigTest {
 
 		mockMvc.perform(
 				formLogin()
-					.user("mail_address", "admin@tosyo.co.jp")
+					.user("mailAddress", "admin@tosyo.co.jp")
 					.password("password", "aaaa"))
 				.andExpect(status().isFound())
 				.andExpect(redirectedUrl("/main"));
 	}
 
 }
-
-
