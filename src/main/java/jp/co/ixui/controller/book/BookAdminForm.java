@@ -1,6 +1,7 @@
 package jp.co.ixui.controller.book;
 
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -12,7 +13,7 @@ import lombok.Setter;
 public class BookAdminForm {
 		//ISBN
 		@NotNull
-		@NotEmpty(message = "ISBNを入力してください。")
+		@Pattern(regexp="[0-9]{3}-[0-9]{10}", message="ISBNは「3桁の数字-(ハイフン)10桁の数字」を入力してください。(例):978-4844330868")
 		private String isbn;
 
 		//書籍名
@@ -27,7 +28,7 @@ public class BookAdminForm {
 
 		//出版日
 		@NotNull
-		@NotEmpty(message = "出版日を入力してください。")
+		@Pattern(regexp="[0-9]{4}/[0-9]{1,2}/[0-9]{1,2}", message="出版日はyyyy/mm/ddの形式で入力してください (例):2016/7/25")
 		private String publishDate;
 
 		//出版社
