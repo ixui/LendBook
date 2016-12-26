@@ -8,4 +8,10 @@
 	values
 	(#{bookName}, #{author}, #{publisher}, #{publishDate}, #{isbn}, #{content}, CURRENT_DATE())
 </select>
+
+<select id="selectBook" resultType="MstBook">
+	select *
+	from m_book
+	where isbn = #{isbn}
+</select>
 </mapper>
