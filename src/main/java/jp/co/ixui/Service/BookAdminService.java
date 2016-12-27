@@ -13,6 +13,7 @@ public class BookAdminService {
 	MstBookMapper mstBookMapper;
 
 	public void insertBook(MstBook mstBook){
-		mstBookMapper.insertBook(mstBook);	//オブジェクトに入れたものをmapperを使ってINSERT
+		//オブジェクトに入れたものをmapperを使ってINSERT
+		mstBookMapper.insertBook(mstBook);
 	}
 }

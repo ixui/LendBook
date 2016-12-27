@@ -23,6 +23,7 @@ public class BookExistsValidator implements ConstraintValidator<BookExists, Book
 	@Override
 	public boolean isValid(BookAdminForm value, ConstraintValidatorContext context) {
 
+		//フォームのISBNを取得
 		String isbn = value.getIsbn();
 
 		//既にISBNが登録されていればエラー
@@ -30,6 +31,8 @@ public class BookExistsValidator implements ConstraintValidator<BookExists, Book
 		if(mstBook != null){
 			return false;
 		}
+
+		//登録されていなければTrueを返す
 		return true;
 	}
 
