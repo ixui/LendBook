@@ -31,7 +31,6 @@ public class BookControllerTest {
         		.build();
 	}
 
-
 	//正常
 	@Test
 	public void 書籍登録フォーム送信テスト() throws Exception{
@@ -52,6 +51,7 @@ public class BookControllerTest {
 	@Test
 	public void 書籍登録フォーム未入力送信テスト() throws Exception{
 
+		//ISBNを表記していない
         ResultActions resultActions = mockMvc.perform(post("/admin/book")
         		.contentType(MediaType.APPLICATION_FORM_URLENCODED)
         		.param("bookName", "TEST")
@@ -60,6 +60,7 @@ public class BookControllerTest {
         		.param("publishDate", "2015/8/25")
         		.param("content", "Test"));
 
+        //エラー
         resultActions.andExpect(model().hasErrors());
 	}
 }

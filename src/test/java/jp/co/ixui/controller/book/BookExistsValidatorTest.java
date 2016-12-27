@@ -27,6 +27,7 @@ public class BookExistsValidatorTest {
 	@Test
 	public void 本が存在しているかテスト() throws Exception{
 
+		//本の値をセット
 		BookAdminForm bookAdminForm = new BookAdminForm();
 		bookAdminForm.setAuthor("author");
 		bookAdminForm.setBookName("TEST");
@@ -35,6 +36,7 @@ public class BookExistsValidatorTest {
 		bookAdminForm.setPublishDate("1995/8/10");
 		bookAdminForm.setPublisher("publish");
 
+		//ISBN認証
 		bookExistsValidator.isValid(bookAdminForm, context);
 	}
 }

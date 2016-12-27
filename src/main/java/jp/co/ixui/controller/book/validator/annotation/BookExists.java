@@ -16,6 +16,7 @@ import jp.co.ixui.controller.book.validator.BookExistsValidator;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface BookExists {
 
+	//表示するメッセージ
 	String message() default "既に同じ書籍は登録されています。";
 	Class<?>[] groups() default {};
 	Class<? extends Payload>[] payload() default {};
