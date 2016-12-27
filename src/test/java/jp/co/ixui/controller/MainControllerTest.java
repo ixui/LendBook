@@ -18,7 +18,7 @@ import org.springframework.web.context.WebApplicationContext;
 public class MainControllerTest {
 
     @Autowired
-    protected WebApplicationContext context;
+    private WebApplicationContext context;
 
 	private MockMvc mockMvc; //リクエストとレスポンスとそれに付属する情報のオブジェクト
 
