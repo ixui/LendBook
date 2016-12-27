@@ -12,7 +12,7 @@
 	<script type="text/javascript" src="/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
   	<script src="/js/myjs.js" th:src="@{/js/myjs.js}"></script>
   </head>
-  
+
 <body>
 <!-- ヘッダー -->
 <div th:include="header :: main_header"></div>
@@ -87,25 +87,8 @@
 	</div>
 	<div class="row">
 	<h3>新着</h3>
-		<div class="col-md-2 col-md-offset-1">
-		<a href="sukkirinyumon.html" name="amazletlink" target="_blank"><img src="http://ecx.images-amazon.com/images/I/51p6dqvB3lL._SL160_.jpg" alt="スッキリわかるJava入門 第2版 (スッキリシリーズ)" style="border: none;" /></a>
-		<p>スッキリわかるJava入門</p>
-		<p class="text-danger">貸出中 2016/11/20まで</p>
-		</div>
-		<div class="col-md-2 col-md-offset-1">
-		<a href="effective_java.html" name="amazletlink" target="_blank"><img src="http://ecx.images-amazon.com/images/I/51E1m-weAXL._SL160_.jpg" alt="Effective Java 第2版 (The Java Series)" style="border: none;" /></a>
-		<p>Effective Java</p>
-		<button type="button" class="btn  btn-def col-md-offset-2" onClick="location.href='reserve.html'">貸出</button>
-		</div>
-		<div class="col-md-2 col-md-offset-1">
-		<a href="sukkirijissen.html" name="amazletlink" target="_blank"><img src="http://ecx.images-amazon.com/images/I/512YksTnm1L._SL160_.jpg" alt="スッキリわかるJava入門 実践編 第2版 スッキリわかるシリーズ" style="border: none;" /></a>
-		<p>スッキリわかるJava入門 実践編</p>
-		<p class="text-danger">貸出中 2016/11/30まで</p>
-		</div>
-		<div class="col-md-2 col-md-offset-1">
-		<a href="javase8silver.html" name="amazletlink" target="_blank"><img src="http://ecx.images-amazon.com/images/I/51c8D0EinNL._SL160_.jpg" alt="徹底攻略Java SE 8 Silver問題集［1Z0-808］対応 徹底攻略シリーズ" style="border: none;" /></a>
-		<p>Java SE8 Silver</p>
-		<p class="text-danger">貸出中 2016/12/1まで</p>
+		<div class="col-md-2 col-md-offset-1" th:each="newbook : ${newbook}">
+		<p th:text="*{newbook.bookName}">Test</p>
 		</div>
 	</div>
 </div>
