@@ -88,6 +88,8 @@
 	<div class="row">
 	<h3>新着</h3>
 		<div class="col-md-2 col-md-offset-1">
+		<div th:each="newbook : ${newbooks}">
+		<p th:text="*{newbook.bookName}">Test</p>
 		</div>
 		</div>
 	</div>
