@@ -87,10 +87,8 @@
 	</div>
 	<div class="row">
 	<h3>新着</h3>
-		<div class="col-md-2 col-md-offset-1">
-		<div th:each="newbook : ${newbook}">
+		<div class="col-md-2 col-md-offset-1" th:each="newbook : ${newbook}">
 		<p th:text="*{newbook.bookName}">Test</p>
-		</div>
 		</div>
 	</div>
 </div>
