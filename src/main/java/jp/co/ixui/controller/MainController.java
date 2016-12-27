@@ -1,15 +1,9 @@
 package jp.co.ixui.controller;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-
-import jp.co.ixui.domain.MstBook;
-import jp.co.ixui.service.BookDisplayService;
 
 /**
  * メインコントローラ
@@ -18,9 +12,6 @@ import jp.co.ixui.service.BookDisplayService;
  */
 @Controller
 public class MainController {
-
-	@Autowired
-	BookDisplayService bookDisplayService;
 
 	//トップページ
 	@RequestMapping(value = "/", method=RequestMethod.GET)
@@ -42,11 +33,6 @@ public class MainController {
 	@RequestMapping(value = "/main", method=RequestMethod.GET)
 	public ModelAndView main(
 			ModelAndView mav){
-
-		//新着書籍を取得する
-		List<MstBook> newbook = bookDisplayService.selectFourNewBook();
-
-		mav.addObject("newbook", newbook);
 		mav.setViewName("main");
 		return mav;
 	}
