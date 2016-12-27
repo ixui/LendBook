@@ -42,9 +42,11 @@ public class MainController {
 	@RequestMapping(value = "/main", method=RequestMethod.GET)
 	public ModelAndView main(
 			ModelAndView mav){
+		//新着書籍表示数
+		int newbooks = 4;
 
 		//新着書籍を取得する
-		List<MstBook> newbook = bookDisplayService.selectFourNewBook();
+		List<MstBook> newbook = bookDisplayService.selectNewBook(newbooks);
 
 		mav.addObject("newbook", newbook);
 		mav.setViewName("main");

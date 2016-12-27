@@ -15,9 +15,9 @@
 	where isbn = #{isbn}
 </select>
 
-<select id="selectFourNewBook" resultType="MstBook">
+<select id="selectNewBook" resultType="MstBook">
 	select *
 	from m_book
-	order by regist_time desc limit 4
+	order by regist_time desc limit #{newbook}
 </select>
 </mapper>

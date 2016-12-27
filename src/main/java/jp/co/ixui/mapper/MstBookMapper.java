@@ -15,7 +15,7 @@ public interface MstBookMapper {
 	//ISBNから書籍の検索
 	MstBook selectBook(String isbn);
 
-	//新着書籍4件取得
-	List<MstBook> selectFourNewBook();
+	//新着書籍取得
+	List<MstBook> selectNewBook(int newbook);
 
 }
