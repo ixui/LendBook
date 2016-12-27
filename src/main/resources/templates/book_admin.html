@@ -21,30 +21,40 @@
  <div class="col-xs-4 col-xs-offset-4 book-form">
 	<h1 class="text-center">本の登録</h1>
 	<hr class="style-one"></hr>
-    <form th:action="@{/admin/book}" method="post">
+    <form th:action="@{/admin/book}" th:object="${form}" method="post">
+    <ul th:if="${#fields.hasGlobalErrors()}">
+  		<li th:each="err : ${#fields.globalErrors()}" th:text="${err}" style="color: red"></li>
+	</ul>
         <div class="form-group">
             <label for="book-name">書籍名</label>
-                <input type="text" name="bookName" class="form-control" placeholder="スッキリわかるJava入門 第2版 (スッキリシリーズ)"></input>
+            <span th:if="${#fields.hasErrors('bookName')}" th:errors="*{bookName}" style="color: red" ></span>
+                <input type="text" name="bookName"  th:field="*{bookName}" th:errorclass="fieldError"
+                class="form-control" placeholder="スッキリわかるJava入門 第2版 (スッキリシリーズ)" />
         </div>
         <div class="form-group">
         	<label for="name">著者</label>
-        <input type="text" name="author" class="form-control" placeholder="中山 清喬,国本 大悟"></input>
+        	<span th:if="${#fields.hasErrors('author')}" th:errors="*{author}" style="color: red" ></span>
+        <input type="text" name="author" th:field="*{author}" th:errorclass="fieldError" class="form-control" placeholder="中山 清喬,国本 大悟"></input>
         </div>
         <div class="form-group">
             <label for="publisher">出版社</label>
-                <input type="text" name="publisher" class="form-control" placeholder="インプレス"></input>
+            <span th:if="${#fields.hasErrors('publisher')}" th:errors="*{publisher}" style="color: red" ></span>
+                <input type="text" name="publisher"  th:field="*{publisher}" th:errorclass="fieldError" class="form-control" placeholder="インプレス"></input>
         </div>
         <div class="form-group">
         	<label for="date">出版日</label>
-        		<input type="text" name="publishDate" class="form-control" placeholder="2014/8/7"></input>
+        	<span th:if="${#fields.hasErrors('publishDate')}" th:errors="*{publishDate}" style="color: red" ></span>
+        		<input type="text" name="publishDate" th:field="*{publishDate}" th:errorclass="fieldError" class="form-control" placeholder="2014/8/7"></input>
         </div>
         <div class="form-group">
         	<label for="isbn">ISBN</label>
-        <input type="text" name="isbn" class="form-control" placeholder="978-4844336389"></input>
+        	<span th:if="${#fields.hasErrors('isbn')}" th:errors="*{isbn}" style="color: red" ></span>
+        <input type="text" name="isbn" th:field="*{isbn}" th:errorclass="fieldError" class="form-control" placeholder="978-4844336389"></input>
         </div>
         <div class="form-group">
         	<label for="content">内容</label>
-        		<textarea rows="5" class="form-control" name="content"></textarea>
+        	<span th:if="${#fields.hasErrors('content')}" th:errors="*{content}" style="color: red" ></span>
+        		<textarea rows="5" class="form-control" th:field="*{content}" th:errorclass="fieldError" name="content"></textarea>
         </div>
     <button type="submit" class="btn btn-def">登録</button>
     </form>

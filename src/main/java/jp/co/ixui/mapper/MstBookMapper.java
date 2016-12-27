@@ -9,4 +9,7 @@ public interface MstBookMapper {
 
 	//書籍の登録
 	void insertBook(MstBook mstBook);
+
+	//ISBNから書籍の検索
+	MstBook selectBook(String isbn);
 }
