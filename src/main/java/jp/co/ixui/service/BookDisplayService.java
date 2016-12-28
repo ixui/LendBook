@@ -16,7 +16,6 @@ public class BookDisplayService {
 
 	//新着書籍4件取得
 	public List<MstBook> selectNewBook(int newbook){
-
 		return mstBookMapper.selectNewBook(newbook);
 	}
 }
