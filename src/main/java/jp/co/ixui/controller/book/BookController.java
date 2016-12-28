@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -49,6 +50,14 @@ public class BookController {
 
 		//リダイレクト
 		mav.setViewName("redirect:/admin/book");
+		return mav;
+	}
+
+	//書籍ページ
+	@RequestMapping(value = "/book/{isbn}", method=RequestMethod.GET)
+	public ModelAndView book(ModelAndView mav,
+			@PathVariable String isbn){
+		mav.setViewName("book");
 		return mav;
 	}
 }
