@@ -17,5 +17,4 @@ public interface MstBookMapper {
 
 	//新着書籍取得
 	List<MstBook> selectNewBook(int newbook);
-
 }
