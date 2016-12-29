@@ -13,12 +13,16 @@ import org.springframework.web.servlet.ModelAndView;
 
 import jp.co.ixui.domain.MstBook;
 import jp.co.ixui.service.BookAdminService;
+import jp.co.ixui.service.BookDisplayService;
 
 @Controller
 public class BookController {
 
 	@Autowired
 	BookAdminService bookAdminService;
+
+	@Autowired
+	BookDisplayService bookDisplayService;
 
 	//書籍登録ページ
 	@RequestMapping(value = "/admin/book", method=RequestMethod.GET)
@@ -57,6 +61,18 @@ public class BookController {
 	@RequestMapping(value = "/book/{isbn}", method=RequestMethod.GET)
 	public ModelAndView book(ModelAndView mav,
 			@PathVariable String isbn){
+
+		//ISBNから書籍の情報を取得
+		MstBook bookDetail = bookDisplayService.selectBook(isbn);
+
+		//書籍情報
+		mav.addObject("bookname", bookDetail.getBookName());
+		mav.addObject("author", bookDetail.getAuthor());
+		mav.addObject("publisher", bookDetail.getPublisher());
+		mav.addObject("publishdate", bookDetail.getPublishDate());
+		mav.addObject("isbn", bookDetail.getIsbn());
+		mav.addObject("content", bookDetail.getContent());
+
 		mav.setViewName("book");
 		return mav;
 	}

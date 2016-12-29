@@ -18,4 +18,9 @@ public class BookDisplayService {
 	public List<MstBook> selectNewBook(int newbook){
 		return mstBookMapper.selectNewBook(newbook);
 	}
+
+	//各書籍画面表示
+	public MstBook selectBook(String isbn){
+		return mstBookMapper.selectBook(isbn);
+	}
 }
