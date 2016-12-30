@@ -39,7 +39,7 @@ public class BookDisplayServiceTest {
     }
 
 	@Test
-	public void 新規書籍取得(){
+	public void 書籍取得(){
 
 		//取得書籍数
 		int newbook = 1;
