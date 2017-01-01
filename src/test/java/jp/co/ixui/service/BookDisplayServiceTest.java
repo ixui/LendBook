@@ -39,7 +39,7 @@ public class BookDisplayServiceTest {
     }
 
 	@Test
-	public void 新規書籍取得(){
+	public void 書籍取得(){
 
 		//取得書籍数
 		int newbook = 1;
@@ -53,13 +53,4 @@ public class BookDisplayServiceTest {
 		assertEquals(newbook,service.selectNewBook(newbook).size());
 	}
 
-	@Test
-	public void 書籍情報取得(){
-
-		//取得ISBN
-		String isbn = "123-1234567890";
-		when(service.selectBook(isbn)).thenReturn(mstBook);
-
-		assertEquals(isbn, mstBook.getIsbn());
-	}
 }
