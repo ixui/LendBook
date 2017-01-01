@@ -81,4 +81,26 @@ public class BookController {
 		mav.setViewName("book");
 		return mav;
 	}
+
+	//貸出ページ
+	@RequestMapping(value = "/reserve/{isbn}", method=RequestMethod.GET)
+	public ModelAndView reserve(ModelAndView mav,
+			@PathVariable String isbn){
+
+		//ISBNから書籍の情報を取得
+		MstBook bookDetail = bookDisplayService.selectBook(isbn);
+
+		//貸出可能かどうかチェック
+
+		//書籍情報
+		mav.addObject("bookname", bookDetail.getBookName());
+		mav.addObject("author", bookDetail.getAuthor());
+		mav.addObject("publisher", bookDetail.getPublisher());
+		mav.addObject("publishdate", bookDetail.getPublishDate());
+		mav.addObject("isbn", bookDetail.getIsbn());
+
+		mav.setViewName("reserve");
+
+		return mav;
+	}
 }
