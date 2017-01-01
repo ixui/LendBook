@@ -1,12 +1,13 @@
 package jp.co.ixui.controller.book;
 
-import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
@@ -16,7 +17,6 @@ import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import jp.co.ixui.domain.MstBook;
 import jp.co.ixui.service.BookDisplayService;
 
 @RunWith(SpringRunner.class)
@@ -27,6 +27,12 @@ public class BookControllerTest {
 	private WebApplicationContext context; //アプリケーションの設定等を管理するコンテキスト
 
 	private MockMvc mockMvc; //リクエストとレスポンスとそれに付属する情報のオブジェクト
+
+	@Mock
+	BookDisplayService service;
+
+	@InjectMocks
+	BookControllerTest controller;
 
 	//事前処理
 	@Before
@@ -65,18 +71,5 @@ public class BookControllerTest {
 
         //エラー
         resultActions.andExpect(model().hasErrors());
-	}
-
-	@Test
-	public void 書籍ページアクセステスト() throws Exception{
-
-		MstBook mstBook = new MstBook();
-		mstBook.setIsbn("123-1234567890");
-
-		BookDisplayService service = mock(BookDisplayService.class);
-		when(service.selectBook(mstBook.getIsbn())).thenReturn(mstBook);
-
-		mockMvc.perform(get("/book/123-1234567890"))
-			.andExpect(status().isOk());
 	}
 }
