@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import jp.co.ixui.domain.MstBook;
+import jp.co.ixui.domain.MstBookStock;
 import jp.co.ixui.service.BookAdminService;
 import jp.co.ixui.service.BookDisplayService;
 
@@ -46,11 +47,15 @@ public class BookController {
 		}
 
 		MstBook mstBook = new MstBook();
+		MstBookStock mstBookStock = new MstBookStock();
+
 		//フォームで取得した値をmstBookへコピー
 		BeanUtils.copyProperties(form, mstBook);
+		BeanUtils.copyProperties(form, mstBookStock);
 
 		//サービスクラスで処理
 		bookAdminService.insertBook(mstBook);
+		bookAdminService.insertBookStock(mstBookStock);
 
 		//リダイレクト
 		mav.setViewName("redirect:/admin/book");
