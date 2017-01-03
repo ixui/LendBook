@@ -17,13 +17,8 @@ public class BookAdminService {
 	@Autowired
 	MstBookStockMapper mstBookStockMapper;
 
-	public void insertBook(MstBook mstBook){
-		//オブジェクトに入れたものをmapperを使ってINSERT
+	public void insertBook(MstBook mstBook, MstBookStock mstBookStock){
 		mstBookMapper.insertBook(mstBook);
-	}
-
-	//蔵書マスターに登録
-	public void insertBookStock(MstBookStock mstBookStock){
 		mstBookStockMapper.insertBookStock(mstBookStock);
 	}
 }

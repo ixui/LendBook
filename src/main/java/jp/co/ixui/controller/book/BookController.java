@@ -54,8 +54,7 @@ public class BookController {
 		BeanUtils.copyProperties(form, mstBookStock);
 
 		//サービスクラスで処理
-		bookAdminService.insertBook(mstBook);
-		bookAdminService.insertBookStock(mstBookStock);
+		bookAdminService.insertBook(mstBook, mstBookStock);
 
 		//リダイレクト
 		mav.setViewName("redirect:/admin/book");
