@@ -23,7 +23,7 @@ public class BookDisplayServiceTest {
     private MstBookMapper mapper;
 
     @InjectMocks
-    private BookService service;
+    private BookDisplayService service;
 
     MstBook mstBook = new MstBook();
 
