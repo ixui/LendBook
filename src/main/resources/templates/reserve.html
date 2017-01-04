@@ -11,6 +11,9 @@
 				th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js}"></script>
 	<script type="text/javascript" src="/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
   	<script src="/js/myjs.js" th:src="@{/js/myjs.js}"></script>
+  	<link rel="stylesheet" type="text/css" href="/css/bootstrap-datepicker.min.css" th:src="@{/css/bootstrap-datepicker.min.css}" />
+  	<script type="text/javascript" src="/js/bootstrap-datepicker.min.js" th:src="@{/js/bootstrap-datepicker.min.js}" ></script>
+  	<script type="text/javascript" src="js/bootstrap-datepicker.ja.js" th:src="@{/js/bootstrap-datepicker.ja.js}"></script>
   </head>
 
 <body>
@@ -26,8 +29,8 @@
 			<li>出版社:<span th:text="*{publisher}"></span></li>
 			<li>出版日:<span th:text="*{publishdate}"></span></li>
 			<li>ISBN:<span th:text="*{isbn}"></span></li>
-			<p class="day"></p>
 		</ul>
+		<p>返却予定日<input type="text" class="form-control col-lg-1" id="date" /></p>
 	</div>
 	<div class="col-lg-1 col-lg-offset-4 col-xs-6">
 	<button class="btn btn-def" type="submit" onClick="location.href='complete.html'">貸出</button>
@@ -36,6 +39,15 @@
 	<button class="btn btn-default" type="submit" onClick="location.href='main.html'">キャンセル</button>
 	</div>
 </div>
-
+<script>
+$('#date').datepicker({
+	format: "yyyy/mm/dd",
+	language: "ja",
+	autoclose: true,
+	orientation: "bottom auto",
+	todayBtn: "linked",
+	todayHighlight: true
+});
+</script>
 </body>
 </html>
