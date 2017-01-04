@@ -52,4 +52,5 @@ public class BookDisplayServiceTest {
 		//取得した書籍数が正しいか確認
 		assertEquals(newbook,service.selectNewBook(newbook).size());
 	}
+
 }
