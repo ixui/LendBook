@@ -4,8 +4,8 @@
 
 <select id="insertLend" resultType="Lend">
 	insert into lend
-	(emp_num,lend_date,return_due_date)
+	(book_stock_id,emp_num,owner_emp_num,lend_date,return_due_date)
 	values
-	(#{empNum},CURRENT_DATE(),#{returnDueDate})
+	(#{bookStockId},#{empNum},#{ownerEmpNum},CURRENT_DATE(),#{returnDueDate})
 </select>
 </mapper>

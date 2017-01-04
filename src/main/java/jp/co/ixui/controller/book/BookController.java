@@ -114,7 +114,7 @@ public class BookController {
 		MstEmp mstEmp = new MstEmp();
 		BeanUtils.copyProperties(user.getUser(), mstEmp);
 
-		bookService.insertLend(lend, mstEmp);
+		bookService.insertLend(lend, mstEmp,isbn);
 
 		mav.setViewName("complete");
 

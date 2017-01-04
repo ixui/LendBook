@@ -35,6 +35,11 @@ public class BookService {
 		mstBookStockMapper.insertBookStock(mstBookStock);
 	}
 
+	//蔵書検索
+	public MstBookStock selectBookStock(String isbn){
+		return mstBookStockMapper.selectBookStock(isbn);
+	}
+
 	//新着書籍4件取得
 	public List<MstBook> selectNewBook(int newbook){
 		return mstBookMapper.selectNewBook(newbook);
@@ -46,8 +51,11 @@ public class BookService {
 	}
 
 	//貸出処理
-	public void insertLend(Lend lend, MstEmp mstEmp){
+	public void insertLend(Lend lend, MstEmp mstEmp,String isbn){
 		lend.setEmpNum(mstEmp.getEmpNum());
+		MstBookStock mstBookStcok = selectBookStock(isbn);
+		lend.setBookStockId(mstBookStcok.getBookStockId());
+		lend.setOwnerEmpNum(mstBookStcok.getOwnerEmpNum());
 		lendMapper.insertLend(lend);
 	}
 }
