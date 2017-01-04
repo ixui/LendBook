@@ -17,13 +17,13 @@ import jp.co.ixui.domain.MstBook;
 import jp.co.ixui.mapper.MstBookMapper;
 
 @RunWith(SpringRunner.class)
-public class BookDisplayServiceTest {
+public class BookServiceTest {
 
     @Mock
     private MstBookMapper mapper;
 
     @InjectMocks
-    private BookDisplayService service;
+    private BookService service;
 
     MstBook mstBook = new MstBook();
 

@@ -17,7 +17,7 @@ import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import jp.co.ixui.service.BookDisplayService;
+import jp.co.ixui.service.BookService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -29,7 +29,7 @@ public class BookControllerTest {
 	private MockMvc mockMvc; //リクエストとレスポンスとそれに付属する情報のオブジェクト
 
 	@Mock
-	BookDisplayService service;
+	BookService service;
 
 	@InjectMocks
 	BookControllerTest controller;
