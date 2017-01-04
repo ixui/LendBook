@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import jp.co.ixui.domain.Lend;
 import jp.co.ixui.domain.MstBook;
 import jp.co.ixui.domain.MstBookStock;
 import jp.co.ixui.service.BookService;
@@ -103,7 +104,10 @@ public class BookController {
 	//貸出完了
 	@RequestMapping(value = "/reserve/{isbn}", method=RequestMethod.POST)
 	public ModelAndView lendComplete(ModelAndView mav,
-			@PathVariable String isbn){
+			@PathVariable String isbn,
+			Lend lend){
+
+		bookService.insertLend(lend);
 
 		mav.setViewName("complete");
 

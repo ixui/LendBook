@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import jp.co.ixui.domain.Lend;
 import jp.co.ixui.domain.MstBook;
 import jp.co.ixui.domain.MstBookStock;
+import jp.co.ixui.mapper.LendMapper;
 import jp.co.ixui.mapper.MstBookMapper;
 import jp.co.ixui.mapper.MstBookStockMapper;
 
@@ -18,6 +20,9 @@ public class BookService {
 
 	@Autowired
 	MstBookStockMapper mstBookStockMapper;
+
+	@Autowired
+	LendMapper lendMapper;
 
 	public void insertBook(MstBook mstBook){
 		//オブジェクトに入れたものをmapperを使ってINSERT
@@ -37,5 +42,10 @@ public class BookService {
 	//各書籍画面表示
 	public MstBook selectBook(String isbn){
 		return mstBookMapper.selectBook(isbn);
+	}
+
+	//貸出処理
+	public void insertLend(Lend lend){
+		lendMapper.insertLend(lend);
 	}
 }
