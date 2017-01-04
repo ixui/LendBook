@@ -2,6 +2,7 @@ package jp.co.ixui.controller.book;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
@@ -11,9 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import jp.co.ixui.LoginUserDetails;
 import jp.co.ixui.domain.Lend;
 import jp.co.ixui.domain.MstBook;
 import jp.co.ixui.domain.MstBookStock;
+import jp.co.ixui.domain.MstEmp;
 import jp.co.ixui.service.BookService;
 
 @Controller
@@ -105,9 +108,13 @@ public class BookController {
 	@RequestMapping(value = "/reserve/{isbn}", method=RequestMethod.POST)
 	public ModelAndView lendComplete(ModelAndView mav,
 			@PathVariable String isbn,
-			Lend lend){
+			Lend lend,
+			@AuthenticationPrincipal LoginUserDetails user){
 
-		bookService.insertLend(lend);
+		MstEmp mstEmp = new MstEmp();
+		BeanUtils.copyProperties(user.getUser(), mstEmp);
+
+		bookService.insertLend(lend, mstEmp);
 
 		mav.setViewName("complete");
 

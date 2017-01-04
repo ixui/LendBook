@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import jp.co.ixui.domain.Lend;
 import jp.co.ixui.domain.MstBook;
 import jp.co.ixui.domain.MstBookStock;
+import jp.co.ixui.domain.MstEmp;
 import jp.co.ixui.mapper.LendMapper;
 import jp.co.ixui.mapper.MstBookMapper;
 import jp.co.ixui.mapper.MstBookStockMapper;
@@ -45,7 +46,8 @@ public class BookService {
 	}
 
 	//貸出処理
-	public void insertLend(Lend lend){
+	public void insertLend(Lend lend, MstEmp mstEmp){
+		lend.setEmpNum(mstEmp.getEmpNum());
 		lendMapper.insertLend(lend);
 	}
 }

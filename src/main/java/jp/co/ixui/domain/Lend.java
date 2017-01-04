@@ -8,16 +8,16 @@ import lombok.Setter;
 public class Lend {
 
 	//貸出id
-	private String lendId;
+	private int lendId;
 
 	//蔵書id
-	private String bookStockId;
+	private int bookStockId;
 
 	//社員番号
-	private String empNum;
+	private int empNum;
 
 	//所有者番号
-	private String ownerEmpNum;
+	private int ownerEmpNum;
 
 	//貸出日
 	private String lendDate;
@@ -29,10 +29,10 @@ public class Lend {
 	private String returnDate;
 
 	//登録者番号
-	private String registEmpNum;
+	private int registEmpNum;
 
 	//更新者番号
-	private String updateEmpNum;
+	private int updateEmpNum;
 
 	//登録日時
 	private String registTime;
