@@ -12,7 +12,7 @@
 	<script type="text/javascript" src="/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
 	<script src="/js/myjs.js" th:src="@{/js/myjs.js}"></script>
   </head>
-  
+
 <body>
 <!-- ヘッダー -->
 <div th:include="header :: main_header"></div>
@@ -21,15 +21,15 @@
 <div class="container-fluid book-introduce">
 	<div class="row">
 		<div class="col-lg-1 ol-xs-12">
-		<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4621066056/-22/ref=nosim/" rel="nofollow" ><img src="http://ecx.images-amazon.com/images/I/51lEBnUjJqL._SS300_.jpg" style="border: none;" alt="EFFECTIVE JAVA 第2版 (The Java Series)" /></a> 
+		<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4621066056/-22/ref=nosim/" rel="nofollow" ><img src="http://ecx.images-amazon.com/images/I/51lEBnUjJqL._SS300_.jpg" style="border: none;" alt="EFFECTIVE JAVA 第2版 (The Java Series)" /></a>
 		</div>
 		<div class="col-lg-offset-4">
 			<ul>
-			<li>書籍名:EFFECTIJAVE JAVA 第2版(The Java Series)</li>
-			<li>著者:Joshua Bloch</li>
-			<li>出版社:丸善出版</li>
-			<li>出版日:2014/3/11</li>
-			<li>ISBN:978-4621066058</li>
+			<li>書籍名:<span th:text="*{bookDetail.bookName}"></span></li>
+			<li>著者名:<span th:text="*{bookDetail.author}"></span></li>
+			<li>出版社:<span th:text="*{bookDetail.publisher}"></span></li>
+			<li>出版日:<span th:text="*{bookDetail.publishDate}"></span></li>
+			<li>ISBN:<span th:text="*{bookDetail.isbn}"></span></li>
 			</ul>
 			<h3>タグ一覧</h3>
 			<p class="tag"><a href="search.html"><img src="gyazo/tag.jpeg"></img>Java</a> <a href="#"><img src="gyazo/tag.jpeg"></img>入門書</a></p>
@@ -77,10 +77,8 @@
 
 <!-- 内容紹介 -->
 <div class="container-fluid book-content">
-<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4621066056/-22/ref=nosim/#productDescription" rel="nofollow" >
 <h3>内容紹介</h3>
-</a>
-<p>著書の概要 引用するか読んだ人に書いてもらう</p>
+<p th:text="*{content}"></p>
 </div>
 <hr class="style-one"></hr>
 

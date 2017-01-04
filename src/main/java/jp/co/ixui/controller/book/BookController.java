@@ -6,18 +6,23 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import jp.co.ixui.domain.MstBook;
 import jp.co.ixui.service.BookAdminService;
+import jp.co.ixui.service.BookDisplayService;
 
 @Controller
 public class BookController {
 
 	@Autowired
 	BookAdminService bookAdminService;
+
+	@Autowired
+	BookDisplayService bookDisplayService;
 
 	//書籍登録ページ
 	@RequestMapping(value = "/admin/book", method=RequestMethod.GET)
@@ -49,6 +54,21 @@ public class BookController {
 
 		//リダイレクト
 		mav.setViewName("redirect:/admin/book");
+		return mav;
+	}
+
+	//書籍ページ
+	@RequestMapping(value = "/book/{isbn}", method=RequestMethod.GET)
+	public ModelAndView book(ModelAndView mav,
+			@PathVariable String isbn){
+
+		//ISBNから書籍の情報を取得
+		MstBook bookDetail = bookDisplayService.selectBook(isbn);
+
+		//書籍情報
+		mav.addObject("bookDetail", bookDetail);
+		mav.setViewName("book");
+
 		return mav;
 	}
 }

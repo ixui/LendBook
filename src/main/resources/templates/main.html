@@ -88,7 +88,7 @@
 	<div class="row">
 	<h3>新着</h3>
 		<div class="col-md-2 col-md-offset-1" th:each="newbook : ${newbook}">
-		<p th:text="*{newbook.bookName}">Test</p>
+		<a th:text="*{newbook.bookName}" href="/book" th:href="@{'/book/' + ${newbook.isbn}}">Test</a>
 		</div>
 	</div>
 </div>
