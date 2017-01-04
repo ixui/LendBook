@@ -99,4 +99,14 @@ public class BookController {
 
 		return mav;
 	}
+
+	//貸出完了
+	@RequestMapping(value = "/reserve/{isbn}", method=RequestMethod.POST)
+	public ModelAndView lendComplete(ModelAndView mav,
+			@PathVariable String isbn){
+
+		mav.setViewName("complete");
+
+		return mav;
+	}
 }

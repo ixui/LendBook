@@ -32,12 +32,14 @@
 		</ul>
 		<p>返却予定日<input type="text" class="form-control col-lg-1" id="date" /></p>
 	</div>
+	<form th:action="@{'/reserve/' + ${isbn}}"  method="post">
 	<div class="col-lg-1 col-lg-offset-4 col-xs-6">
-	<button class="btn btn-def" type="submit" onClick="location.href='complete.html'">貸出</button>
+	<button class="btn btn-def" type="submit">貸出</button>
 	</div>
 	<div class="col-lg-1 col-lg-offset-1 col-xs-6">
 	<button class="btn btn-default" type="submit" onClick="location.href='main.html'">キャンセル</button>
 	</div>
+	</form>
 </div>
 <script>
 $('#date').datepicker({
