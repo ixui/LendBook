@@ -15,7 +15,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import jp.co.ixui.domain.MstBook;
-import jp.co.ixui.service.BookDisplayService;
+import jp.co.ixui.service.BookService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -25,7 +25,7 @@ public class InDividualBookTest {
 	BookController controller;
 
 	@Mock
-	BookDisplayService service;
+	BookService service;
 
 	private MockMvc mockMvc;
 
