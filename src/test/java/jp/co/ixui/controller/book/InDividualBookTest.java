@@ -14,6 +14,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+import jp.co.ixui.domain.MstBook;
 import jp.co.ixui.service.BookDisplayService;
 
 @RunWith(SpringRunner.class)
@@ -38,7 +39,7 @@ public class InDividualBookTest {
 	public void 書籍ページアクセステスト() throws Exception{
 		String isbn = "999-9876543210";
 
-		BookAdminForm bookDetail = new BookAdminForm();
+		MstBook bookDetail = new MstBook();
 		bookDetail.setAuthor("author");
 		bookDetail.setBookName("bookName");
 		bookDetail.setContent("content");

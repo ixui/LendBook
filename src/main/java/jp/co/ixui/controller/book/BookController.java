@@ -13,17 +13,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 import jp.co.ixui.domain.MstBook;
 import jp.co.ixui.domain.MstBookStock;
-import jp.co.ixui.service.BookAdminService;
-import jp.co.ixui.service.BookDisplayService;
+import jp.co.ixui.service.BookService;
 
 @Controller
 public class BookController {
 
 	@Autowired
-	BookAdminService bookAdminService;
-
-	@Autowired
-	BookDisplayService bookDisplayService;
+	BookService bookService;
 
 	//書籍登録ページ
 	@RequestMapping(value = "/admin/book", method=RequestMethod.GET)
@@ -54,7 +50,8 @@ public class BookController {
 		BeanUtils.copyProperties(form, mstBookStock);
 
 		//サービスクラスで処理
-		bookAdminService.insertBook(mstBook, mstBookStock);
+		bookService.insertBook(mstBook);
+		bookService.insertBookStock(mstBookStock);
 
 		//リダイレクト
 		mav.setViewName("redirect:/admin/book");
@@ -67,8 +64,24 @@ public class BookController {
 			@PathVariable String isbn){
 
 		//ISBNから書籍の情報を取得
+		MstBook bookDetail = bookService.selectBook(isbn);
 
-		BookAdminForm bookDetail = bookDisplayService.selectBook(isbn);
+		//書籍情報
+		mav.addObject("bookDetail", bookDetail);
+		mav.setViewName("book");
+
+		return mav;
+	}
+
+	//貸出ページ
+	@RequestMapping(value = "/reserve/{isbn}", method=RequestMethod.GET)
+	public ModelAndView reserve(ModelAndView mav,
+			@PathVariable String isbn){
+
+		//ISBNから書籍の情報を取得
+		MstBook bookDetail = bookService.selectBook(isbn);
+
+		//貸出可能かどうかチェック
 
 		//書籍情報
 		mav.addObject("bookname", bookDetail.getBookName());
@@ -76,9 +89,9 @@ public class BookController {
 		mav.addObject("publisher", bookDetail.getPublisher());
 		mav.addObject("publishdate", bookDetail.getPublishDate());
 		mav.addObject("isbn", bookDetail.getIsbn());
-		mav.addObject("content", bookDetail.getContent());
 
-		mav.setViewName("book");
+		mav.setViewName("reserve");
+
 		return mav;
 	}
 }
