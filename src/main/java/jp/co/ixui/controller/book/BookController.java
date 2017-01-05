@@ -72,14 +72,9 @@ public class BookController {
 		MstBook bookDetail = bookService.selectBook(isbn);
 
 		//書籍情報
-		mav.addObject("bookname", bookDetail.getBookName());
-		mav.addObject("author", bookDetail.getAuthor());
-		mav.addObject("publisher", bookDetail.getPublisher());
-		mav.addObject("publishdate", bookDetail.getPublishDate());
-		mav.addObject("isbn", bookDetail.getIsbn());
-		mav.addObject("content", bookDetail.getContent());
-
+		mav.addObject("bookDetail", bookDetail);
 		mav.setViewName("book");
+
 		return mav;
 	}
 
