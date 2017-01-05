@@ -63,6 +63,7 @@ public class BookController {
 	public ModelAndView book(ModelAndView mav,
 			@PathVariable String isbn){
 
+		//ISBNから書籍の情報を取得
 		MstBook bookDetail = bookService.selectBook(isbn);
 
 		//書籍情報
