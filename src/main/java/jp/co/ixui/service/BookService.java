@@ -19,8 +19,8 @@ public class BookService {
 	@Autowired
 	MstBookStockMapper mstBookStockMapper;
 
-	public void insertBook(MstBook mstBook){
-		//オブジェクトに入れたものをmapperを使ってINSERT
+	public void insertBook(MstBook mstBook, MstBookStock mstBookStock){
+		mstBookStockMapper.insertBookStock(mstBookStock);
 		mstBookMapper.insertBook(mstBook);
 	}
 
