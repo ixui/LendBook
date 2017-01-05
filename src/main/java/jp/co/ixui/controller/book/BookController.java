@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import jp.co.ixui.LoginUserDetails;
 import jp.co.ixui.domain.Lend;
@@ -85,7 +86,8 @@ public class BookController {
 	//貸出ページ
 	@RequestMapping(value = "/reserve/{isbn}", method=RequestMethod.GET)
 	public ModelAndView reserve(ModelAndView mav,
-			@PathVariable String isbn){
+			@PathVariable String isbn,
+			@ModelAttribute("lend") Lend lend){
 
 		//ISBNから書籍の情報を取得
 		MstBook bookDetail = bookService.selectBook(isbn);
@@ -107,9 +109,22 @@ public class BookController {
 	//貸出完了
 	@RequestMapping(value = "/reserve/{isbn}", method=RequestMethod.POST)
 	public ModelAndView lendComplete(ModelAndView mav,
-			@PathVariable String isbn,
-			Lend lend,
-			@AuthenticationPrincipal LoginUserDetails user){
+			@PathVariable("isbn") String isbn,
+			@ModelAttribute("lend") @Validated Lend lend,
+			BindingResult result,
+			@AuthenticationPrincipal LoginUserDetails user,
+			RedirectAttributes redirectAttributes){
+
+		/*
+		 * return時に、書籍情報が格納されていないので修正する必要がある
+		 *
+		 */
+		//エラー処理
+		if(result.hasErrors()){
+		mav.addObject(isbn);
+		mav.setViewName("/reserve");
+		return mav;
+		}
 
 		MstEmp mstEmp = new MstEmp();
 		BeanUtils.copyProperties(user.getUser(), mstEmp);

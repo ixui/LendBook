@@ -1,10 +1,16 @@
 package jp.co.ixui.domain;
 
+
+
+import org.hibernate.validator.constraints.NotEmpty;
+
+import jp.co.ixui.controller.book.validator.annotation.ReturnDueDateOver;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
+@ReturnDueDateOver
 public class Lend {
 
 	//貸出id
@@ -23,6 +29,7 @@ public class Lend {
 	private String lendDate;
 
 	//返却予定日
+	@NotEmpty(message = "返却予定日を入力してください。")
 	private String returnDueDate;
 
 	//返却日

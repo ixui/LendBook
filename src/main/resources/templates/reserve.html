@@ -13,7 +13,7 @@
   	<script src="/js/myjs.js" th:src="@{/js/myjs.js}"></script>
   	<link rel="stylesheet" type="text/css" href="/css/bootstrap-datepicker.min.css" th:src="@{/css/bootstrap-datepicker.min.css}" />
   	<script type="text/javascript" src="/js/bootstrap-datepicker.min.js" th:src="@{/js/bootstrap-datepicker.min.js}" ></script>
-  	<script type="text/javascript" src="js/bootstrap-datepicker.ja.js" th:src="@{/js/bootstrap-datepicker.ja.js}"></script>
+  	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/i18n/jquery-ui-i18n.min.js"></script>
   </head>
 
 <body>
@@ -32,8 +32,12 @@
 		</ul>
 	</div>
 	<form th:action="@{'/reserve/' + ${isbn}}"  method="post" th:object="${lend}">
+	<div class="col-lg-4 col-lg-offset-4">
+	<span th:if="${#fields.hasErrors('returnDueDate')}" th:errors="*{returnDueDate}" style="color: red" ></span>
+	<span th:each="err : ${#fields.globalErrors()}" th:text="${err}" style="color: red"></span>
+	<p>返却予定日<input type="text" class="form-control col-lg-1" id="date" name="returnDueDate" th:field="*{returnDueDate}" th:errorclass="fieldError"/></p>
+	</div>
 	<div class="col-lg-1 col-lg-offset-4 col-xs-6">
-	<p>返却予定日<input type="text" class="form-control col-lg-1" id="date" name="returnDueDate"/></p>
 	<button class="btn btn-def" type="submit">貸出</button>
 	</div>
 	<div class="col-lg-1 col-lg-offset-1 col-xs-6">
@@ -47,7 +51,6 @@ $('#date').datepicker({
 	language: "ja",
 	autoclose: true,
 	orientation: "bottom auto",
-	todayBtn: "linked",
 	todayHighlight: true
 });
 </script>
