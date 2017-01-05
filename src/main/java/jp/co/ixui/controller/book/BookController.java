@@ -67,7 +67,9 @@ public class BookController {
 			@PathVariable String isbn){
 
 		//ISBNから書籍の情報を取得
-		BookAdminForm bookDetail = bookDisplayService.selectBook(isbn);
+		MstBook bookDetails = bookDisplayService.selectBook(isbn);
+		BookAdminForm bookDetail = new BookAdminForm(bookDetails);
+		BeanUtils.copyProperties(bookDetails, bookDetail);
 
 		//書籍情報
 		mav.addObject("bookname", bookDetail.getBookName());

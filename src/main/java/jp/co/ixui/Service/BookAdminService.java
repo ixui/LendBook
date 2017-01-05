@@ -2,6 +2,7 @@ package jp.co.ixui.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import jp.co.ixui.domain.MstBook;
 import jp.co.ixui.domain.MstBookStock;
@@ -17,6 +18,7 @@ public class BookAdminService {
 	@Autowired
 	MstBookStockMapper mstBookStockMapper;
 
+	@Transactional
 	public void insertBook(MstBook mstBook, MstBookStock mstBookStock){
 		mstBookMapper.insertBook(mstBook);
 		mstBookStockMapper.insertBookStock(mstBookStock);
