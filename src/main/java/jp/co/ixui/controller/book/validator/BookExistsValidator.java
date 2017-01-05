@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import jp.co.ixui.controller.book.BookAdminForm;
 import jp.co.ixui.controller.book.validator.annotation.BookExists;
-import jp.co.ixui.domain.MstBook;
 import jp.co.ixui.mapper.MstBookMapper;
 
 public class BookExistsValidator implements ConstraintValidator<BookExists, BookAdminForm> {
@@ -27,7 +26,7 @@ public class BookExistsValidator implements ConstraintValidator<BookExists, Book
 		String isbn = value.getIsbn();
 
 		//既にISBNが登録されていればエラー
-		MstBook mstBook = this.mstBookMapper.selectBook(isbn);
+		BookAdminForm mstBook = this.mstBookMapper.selectBook(isbn);
 		if(mstBook != null){
 			return false;
 		}
