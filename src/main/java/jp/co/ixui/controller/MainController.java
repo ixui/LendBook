@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import jp.co.ixui.domain.MstBook;
-import jp.co.ixui.service.BookDisplayService;
+import jp.co.ixui.service.BookService;
 
 /**
  * メインコントローラ
@@ -20,7 +20,7 @@ import jp.co.ixui.service.BookDisplayService;
 public class MainController {
 
 	@Autowired
-	BookDisplayService bookDisplayService;
+	BookService bookService;
 
 	//トップページ
 	@RequestMapping(value = "/", method=RequestMethod.GET)
@@ -46,7 +46,7 @@ public class MainController {
 		int newbooks = 4;
 
 		//新着書籍を取得する
-		List<MstBook> newbook = bookDisplayService.selectNewBook(newbooks);
+		List<MstBook> newbook = bookService.selectNewBook(newbooks);
 
 		mav.addObject("newbook", newbook);
 		mav.setViewName("main");

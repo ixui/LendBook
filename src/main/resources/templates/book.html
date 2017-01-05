@@ -25,11 +25,11 @@
 		</div>
 		<div class="col-lg-offset-4">
 			<ul>
-			<li>書籍名:<span th:text="*{bookname}"></span></li>
-			<li>著者名:<span th:text="*{author}"></span></li>
-			<li>出版社:<span th:text="*{publisher}"></span></li>
-			<li>出版日:<span th:text="*{publishdate}"></span></li>
-			<li>ISBN:<span th:text="*{isbn}"></span></li>
+			<li>書籍名:<span th:text="*{bookDetail.bookName}"></span></li>
+			<li>著者名:<span th:text="*{bookDetail.author}"></span></li>
+			<li>出版社:<span th:text="*{bookDetail.publisher}"></span></li>
+			<li>出版日:<span th:text="*{bookDetail.publishDate}"></span></li>
+			<li>ISBN:<span th:text="*{bookDetail.isbn}"></span></li>
 			</ul>
 			<h3>タグ一覧</h3>
 			<p class="tag"><a href="search.html"><img src="gyazo/tag.jpeg"></img>Java</a> <a href="#"><img src="gyazo/tag.jpeg"></img>入門書</a></p>
@@ -60,7 +60,7 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class=" col-lg-1 col-lg-offset-1">
-			<button type="button" class="btn  btn-lg reserve-btn" onClick="location.href='reserve.html'">貸出する</button>
+			<a href="reserve.html" class="btn  btn-lg reserve-btn" th:href="@{'/reserve/' + ${isbn}}">貸出する</a>
 		</div>
 		<div class="input-group col-lg-4 col-lg-offset-4  tag-btn">
 			<input type="text" class="form-control"></input>
