@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import jp.co.ixui.domain.MstBook;
 import jp.co.ixui.domain.MstBookStock;
@@ -20,10 +19,9 @@ public class BookService {
 	@Autowired
 	MstBookStockMapper mstBookStockMapper;
 
-	@Transactional
-	public void insertBook(MstBook mstBook, MstBookStock mstBookStock){
+	public void insertBook(MstBook mstBook){
+		//オブジェクトに入れたものをmapperを使ってINSERT
 		mstBookMapper.insertBook(mstBook);
-		mstBookStockMapper.insertBookStock(mstBookStock);
 	}
 
 	//蔵書マスターに登録
