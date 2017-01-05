@@ -9,4 +9,9 @@
 	(#{isbn}, #{ownerEmpNum}, #{registEmpNum}, null,CURRENT_DATE() , null)
 </select>
 
+<select id="selectBookStock" resultType="MstBookStock">
+	select *
+	from m_book_stock
+	where isbn = #{isbn}
+</select>
 </mapper>

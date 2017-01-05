@@ -1,28 +1,37 @@
 package jp.co.ixui.domain;
 
-import javax.validation.constraints.NotNull;
-
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class MstBookStock {
+public class Lend {
 
-	//蔵書ID
+	//貸出id
+	private int lendId;
+
+	//蔵書id
 	private int bookStockId;
 
-	//ISBN
-	@NotNull
-	private String isbn;
+	//社員番号
+	private int empNum;
 
 	//所有者番号
 	private int ownerEmpNum;
 
-	//登録者
+	//貸出日
+	private String lendDate;
+
+	//返却予定日
+	private String returnDueDate;
+
+	//返却日
+	private String returnDate;
+
+	//登録者番号
 	private int registEmpNum;
 
-	//更新者
+	//更新者番号
 	private int updateEmpNum;
 
 	//登録日時
