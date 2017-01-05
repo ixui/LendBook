@@ -54,8 +54,7 @@ public class BookController {
 		BeanUtils.copyProperties(form, mstBookStock);
 
 		//サービスクラスで処理
-		bookService.insertBook(mstBook);
-		bookService.insertBookStock(mstBookStock);
+		bookService.insertBook(mstBook, mstBookStock);
 
 		//リダイレクト
 		mav.setViewName("redirect:/admin/book");
@@ -68,17 +67,14 @@ public class BookController {
 			@PathVariable String isbn){
 
 		//ISBNから書籍の情報を取得
-		MstBook bookDetail = bookService.selectBook(isbn);
+		MstBook bookDetails = bookService.selectBook(isbn);
+		BookAdminForm bookDetail = new BookAdminForm(bookDetails);
+		BeanUtils.copyProperties(bookDetails, bookDetail);
 
 		//書籍情報
-		mav.addObject("bookname", bookDetail.getBookName());
-		mav.addObject("author", bookDetail.getAuthor());
-		mav.addObject("publisher", bookDetail.getPublisher());
-		mav.addObject("publishdate", bookDetail.getPublishDate());
-		mav.addObject("isbn", bookDetail.getIsbn());
-		mav.addObject("content", bookDetail.getContent());
-
+		mav.addObject("bookDetail", bookDetail);
 		mav.setViewName("book");
+
 		return mav;
 	}
 
