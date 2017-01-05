@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import jp.co.ixui.controller.book.BookAdminForm;
 import jp.co.ixui.domain.MstBook;
 import jp.co.ixui.mapper.MstBookMapper;
 
@@ -20,7 +21,7 @@ public class BookDisplayService {
 	}
 
 	//各書籍画面表示
-	public MstBook selectBook(String isbn){
+	public BookAdminForm selectBook(String isbn){
 		return mstBookMapper.selectBook(isbn);
 	}
 }
