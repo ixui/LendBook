@@ -6,6 +6,7 @@ import javax.validation.constraints.Pattern;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import jp.co.ixui.controller.book.validator.annotation.BookExists;
+import jp.co.ixui.domain.MstBook;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -43,4 +44,9 @@ public class BookAdminForm {
 		@NotNull
 		@NotEmpty(message = "書籍の内容を入力してください。")
 		private String content;
+
+		BookAdminForm(MstBook copyBook){
+		}
+
+		BookAdminForm(){}
 }
