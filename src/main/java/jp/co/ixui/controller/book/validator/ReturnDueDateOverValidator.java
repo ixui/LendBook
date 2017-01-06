@@ -36,11 +36,11 @@ public class ReturnDueDateOverValidator implements ConstraintValidator<ReturnDue
 
 		//returnDueDateをDate型に置き換える
 		Date retunDueDateTo = null;
-		try {
-			retunDueDateTo = sdf.parse(returnDueDate);
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
+			try {
+				retunDueDateTo = sdf.parse(returnDueDate);
+			} catch (ParseException e) {
+				return true; //値が異常な場合はPatternアノテーションで表示する。
+			}
 
 		//日付をlong値に変換
 		long dateTimeTo = retunDueDateTo.getTime();
@@ -50,7 +50,7 @@ public class ReturnDueDateOverValidator implements ConstraintValidator<ReturnDue
 		long dayDiff = ( dateTimeTo - dateTimeFrom ) / (1000 * 60 * 60 * 24);
 
 		//60日以上の貸出はエラー
-		if(dayDiff > 62){
+		if(dayDiff > 60){
 			return false;
 		}
 
