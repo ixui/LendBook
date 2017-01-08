@@ -17,7 +17,7 @@ import jp.co.ixui.controller.book.validator.ReturnDueDateOverValidator;
 public @interface ReturnDueDateOver {
 
 	//表示するメッセージ
-	String message() default "貸出期限は2カ月までです。";
+	String message() default "貸出期限は60日までです。";
 	Class<?>[] groups() default {};
 	Class<? extends Payload>[] payload() default {};
 

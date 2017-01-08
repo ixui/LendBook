@@ -2,6 +2,8 @@ package jp.co.ixui.domain;
 
 
 
+import javax.validation.constraints.Pattern;
+
 import org.hibernate.validator.constraints.NotEmpty;
 
 import jp.co.ixui.controller.book.validator.annotation.ReturnDueDateOver;
@@ -30,6 +32,7 @@ public class Lend {
 
 	//返却予定日
 	@NotEmpty(message = "返却予定日を入力してください。")
+	@Pattern(regexp="[0-9]{4}/[0-9]{1,2}/[0-9]{1,2}", message="出版日はyyyy/mm/ddの形式で入力してください。 (例):2016/7/25")
 	private String returnDueDate;
 
 	//返却日
