@@ -88,6 +88,10 @@ public class BookController {
 		//ISBNから書籍の情報を取得
 		MstBook bookDetail = bookService.selectBook(isbn);
 
+		//ISBNから蔵書の情報を取得
+		MstBookStock mstBookStock = bookService.selectBookStock(isbn); //蔵書が複数になったときに修正が必要
+		BeanUtils.copyProperties(mstBookStock, lend);
+
 		//貸出可能かどうかチェック
 
 		//書籍情報
@@ -96,6 +100,7 @@ public class BookController {
 		mav.addObject("publisher", bookDetail.getPublisher());
 		mav.addObject("publishdate", bookDetail.getPublishDate());
 		mav.addObject("isbn", bookDetail.getIsbn());
+		mav.addObject("lend", lend);
 
 		mav.setViewName("reserve");
 
