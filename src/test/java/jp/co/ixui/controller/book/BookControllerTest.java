@@ -15,6 +15,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 
 import jp.co.ixui.service.BookService;
@@ -43,6 +44,7 @@ public class BookControllerTest {
 
 	//正常
 	@Test
+	@Transactional
 	public void 書籍登録フォーム送信テスト() throws Exception{
     ResultActions resultActions = mockMvc.perform(post("/admin/book")
     		.contentType(MediaType.APPLICATION_FORM_URLENCODED)
