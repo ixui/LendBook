@@ -62,13 +62,16 @@ public class BookService {
 		lendMapper.insertLend(lend);
 	}
 
-	//BookStockIdから貸出履歴を取得
-	public Lend selectLendHistory(int bookStockId){
-		return lendMapper.selectLendHistory(bookStockId);
-	}
+	public Boolean isLendable(int bookStockId){
+		if(lendMapper.selectLendHistory(bookStockId) == null){
+			return true;
+		}
 
-	//BookStockIdから返却日を取得
-	public Lend selectReturnDateBook(int bookStockId){
-		return lendMapper.selectRetunDateBook(bookStockId);
+		Lend lend = null;
+		if(lendMapper.selectRetunDateBook(bookStockId).getReturnDate() != null){
+			return true;
+		}
+
+		return false;
 	}
 }
