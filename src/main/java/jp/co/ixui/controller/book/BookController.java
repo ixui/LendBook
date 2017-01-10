@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -21,6 +22,7 @@ import jp.co.ixui.domain.MstEmp;
 import jp.co.ixui.service.BookService;
 
 @Controller
+@SessionAttributes(value = "bookDetail")
 public class BookController {
 
 	@Autowired
@@ -95,11 +97,7 @@ public class BookController {
 		//貸出可能かどうかチェック
 
 		//書籍情報
-		mav.addObject("bookname", bookDetail.getBookName());
-		mav.addObject("author", bookDetail.getAuthor());
-		mav.addObject("publisher", bookDetail.getPublisher());
-		mav.addObject("publishdate", bookDetail.getPublishDate());
-		mav.addObject("isbn", bookDetail.getIsbn());
+		mav.addObject("bookDetail", bookDetail);
 		mav.addObject("lend", lend);
 
 		mav.setViewName("reserve");
@@ -116,10 +114,6 @@ public class BookController {
 			@AuthenticationPrincipal LoginUserDetails user,
 			RedirectAttributes redirectAttributes){
 
-		/*
-		 * return時に、書籍情報が格納されていないので修正する必要がある
-		 *
-		 */
 		//エラー処理
 		if(result.hasErrors()){
 		mav.addObject(isbn);
