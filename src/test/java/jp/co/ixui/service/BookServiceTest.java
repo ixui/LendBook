@@ -1,6 +1,10 @@
 package jp.co.ixui.service;
 
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -11,6 +15,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import jp.co.ixui.domain.Lend;
 import jp.co.ixui.domain.MstBook;
+import jp.co.ixui.domain.MstBookStock;
+import jp.co.ixui.domain.MstEmp;
 import jp.co.ixui.mapper.LendMapper;
 import jp.co.ixui.mapper.MstBookMapper;
 import jp.co.ixui.mapper.MstBookStockMapper;
@@ -43,7 +49,7 @@ public class BookServiceTest {
     	mstBook.setRegistTime("2016/12/28");
     }
 
-/*	@Test
+	@Test
 	public void 新規書籍取得(){
 
 		//取得書籍数
@@ -86,7 +92,7 @@ public class BookServiceTest {
 
 
 		service.insertLend(lend, mstEmp, isbn);
-	}*/
+	}
 
     @Test
     public void 貸出可否テスト(){
