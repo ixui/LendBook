@@ -8,4 +8,19 @@
 	values
 	(#{bookStockId},#{empNum},#{ownerEmpNum},CURRENT_DATE(),#{returnDueDate})
 </select>
+
+<select id="selectLendHistory" resultType="Lend">
+	select *
+	from lend
+	where book_stock_id = #{bookStockId}
+	limit 1
+</select>
+
+<select id="selectRetunDateBook" resultType="Lend">
+	select *
+	from lend
+	where book_stock_id = #{bookStockId}
+	and return_date is null
+	limit 1
+</select>
 </mapper>

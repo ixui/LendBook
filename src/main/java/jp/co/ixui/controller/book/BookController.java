@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import jp.co.ixui.LoginUserDetails;
 import jp.co.ixui.domain.Lend;
@@ -20,6 +22,7 @@ import jp.co.ixui.domain.MstEmp;
 import jp.co.ixui.service.BookService;
 
 @Controller
+@SessionAttributes(value = "bookDetail")
 public class BookController {
 
 	@Autowired
@@ -81,19 +84,21 @@ public class BookController {
 	//貸出ページ
 	@RequestMapping(value = "/reserve/{isbn}", method=RequestMethod.GET)
 	public ModelAndView reserve(ModelAndView mav,
-			@PathVariable String isbn){
+			@PathVariable String isbn,
+			@ModelAttribute("lend") Lend lend){
 
 		//ISBNから書籍の情報を取得
 		MstBook bookDetail = bookService.selectBook(isbn);
 
+		//ISBNから蔵書の情報を取得
+		MstBookStock mstBookStock = bookService.selectBookStock(isbn); //蔵書が複数になったときに修正が必要
+		BeanUtils.copyProperties(mstBookStock, lend);
+
 		//貸出可能かどうかチェック
 
 		//書籍情報
-		mav.addObject("bookname", bookDetail.getBookName());
-		mav.addObject("author", bookDetail.getAuthor());
-		mav.addObject("publisher", bookDetail.getPublisher());
-		mav.addObject("publishdate", bookDetail.getPublishDate());
-		mav.addObject("isbn", bookDetail.getIsbn());
+		mav.addObject("bookDetail", bookDetail);
+		mav.addObject("lend", lend);
 
 		mav.setViewName("reserve");
 
@@ -103,9 +108,18 @@ public class BookController {
 	//貸出完了
 	@RequestMapping(value = "/reserve/{isbn}", method=RequestMethod.POST)
 	public ModelAndView lendComplete(ModelAndView mav,
-			@PathVariable String isbn,
-			Lend lend,
-			@AuthenticationPrincipal LoginUserDetails user){
+			@PathVariable("isbn") String isbn,
+			@ModelAttribute("lend") @Validated Lend lend,
+			BindingResult result,
+			@AuthenticationPrincipal LoginUserDetails user,
+			RedirectAttributes redirectAttributes){
+
+		//エラー処理
+		if(result.hasErrors()){
+		mav.addObject(isbn);
+		mav.setViewName("/reserve");
+		return mav;
+		}
 
 		MstEmp mstEmp = new MstEmp();
 		BeanUtils.copyProperties(user.getUser(), mstEmp);

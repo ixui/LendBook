@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import jp.co.ixui.domain.Lend;
 import jp.co.ixui.domain.MstBook;
@@ -25,9 +26,11 @@ public class BookService {
 	@Autowired
 	LendMapper lendMapper;
 
-	public void insertBook(MstBook mstBook){
+	@Transactional
+	public void insertBook(MstBook mstBook, MstBookStock mstBookStock){
 		//オブジェクトに入れたものをmapperを使ってINSERT
 		mstBookMapper.insertBook(mstBook);
+		mstBookStockMapper.insertBookStock(mstBookStock);
 	}
 
 	//蔵書マスターに登録
@@ -57,5 +60,18 @@ public class BookService {
 		lend.setBookStockId(mstBookStcok.getBookStockId());
 		lend.setOwnerEmpNum(mstBookStcok.getOwnerEmpNum());
 		lendMapper.insertLend(lend);
+	}
+
+	public Boolean isLendable(int bookStockId){
+		if(lendMapper.selectLendHistory(bookStockId) == null){
+			return true;
+		}
+
+		Lend lend = null;
+		if(lendMapper.selectRetunDateBook(bookStockId).getReturnDate() != null){
+			return true;
+		}
+
+		return false;
 	}
 }
