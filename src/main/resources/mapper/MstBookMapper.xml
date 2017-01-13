@@ -18,6 +18,6 @@
 <select id="selectNewBook" resultType="MstBook">
 	select *
 	from m_book
-	order by regist_time desc limit #{newbook}
+	order by regist_time desc limit #{limit}
 </select>
 </mapper>

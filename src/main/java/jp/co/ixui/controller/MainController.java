@@ -23,18 +23,18 @@ public class MainController {
 	BookService bookService;
 
 	//トップページ
-	@RequestMapping(value = "/", method=RequestMethod.GET)
+	@RequestMapping(value = {"/", "/index"}, method=RequestMethod.GET)
 	public ModelAndView top(
 			ModelAndView mav){
 		mav.setViewName("index");
 		return mav;
 	}
 
-	//トップページ
-	@RequestMapping(value = "/index", method=RequestMethod.GET)
-	public ModelAndView index(
+	//ログインページ
+	@RequestMapping(value = "/login", method=RequestMethod.GET)
+	public ModelAndView login(
 			ModelAndView mav){
-		mav.setViewName("index");
+		mav.setViewName("login");
 		return mav;
 	}
 
@@ -43,10 +43,10 @@ public class MainController {
 	public ModelAndView main(
 			ModelAndView mav){
 		//新着書籍表示数
-		int newbooks = 4;
+		int limit = 4;
 
 		//新着書籍を取得する
-		List<MstBook> newbook = bookService.selectNewBook(newbooks);
+		List<MstBook> newbook = bookService.selectNewBook(limit);
 
 		mav.addObject("newbook", newbook);
 		mav.setViewName("main");

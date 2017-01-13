@@ -49,14 +49,15 @@ public class BookController {
 		return mav;
 		}
 
+		//書籍、蔵書オブジェクト作成
 		MstBook mstBook = new MstBook();
 		MstBookStock mstBookStock = new MstBookStock();
 
-		//フォームで取得した値をmstBookへコピー
+		//フォームの値を書籍、蔵書にコピー
 		BeanUtils.copyProperties(form, mstBook);
 		BeanUtils.copyProperties(form, mstBookStock);
 
-		//サービスクラスで処理
+		//書籍、蔵書に登録
 		bookService.insertBook(mstBook, mstBookStock);
 
 		//リダイレクト
@@ -94,8 +95,6 @@ public class BookController {
 		MstBookStock mstBookStock = bookService.selectBookStock(isbn); //蔵書が複数になったときに修正が必要
 		BeanUtils.copyProperties(mstBookStock, lend);
 
-		//貸出可能かどうかチェック
-
 		//書籍情報
 		mav.addObject("bookDetail", bookDetail);
 		mav.addObject("lend", lend);
@@ -121,13 +120,14 @@ public class BookController {
 		return mav;
 		}
 
+		//ログインユーザ情報
 		MstEmp mstEmp = new MstEmp();
 		BeanUtils.copyProperties(user.getUser(), mstEmp);
 
+		//貸出処理
 		bookService.insertLend(lend, mstEmp,isbn);
 
 		mav.setViewName("complete");
-
 		return mav;
 	}
 }

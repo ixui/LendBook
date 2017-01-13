@@ -16,5 +16,5 @@ public interface MstBookMapper {
 	MstBook selectBook(String isbn);
 
 	//新着書籍取得
-	List<MstBook> selectNewBook(int newbook);
+	List<MstBook> selectNewBook(int limit);
 }
