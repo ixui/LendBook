@@ -13,8 +13,13 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import jp.co.ixui.domain.Lend;
 import jp.co.ixui.domain.MstBook;
+import jp.co.ixui.domain.MstBookStock;
+import jp.co.ixui.domain.MstEmp;
+import jp.co.ixui.mapper.LendMapper;
 import jp.co.ixui.mapper.MstBookMapper;
+import jp.co.ixui.mapper.MstBookStockMapper;
 
 @RunWith(SpringRunner.class)
 public class BookServiceTest {
@@ -26,6 +31,12 @@ public class BookServiceTest {
     private BookService service;
 
     MstBook mstBook = new MstBook();
+
+    @Mock
+    LendMapper lendMapper;
+
+    @Mock
+    MstBookStockMapper mstBookStockMapper;
 
     @Before
     public void before(){
@@ -62,4 +73,36 @@ public class BookServiceTest {
 
 		assertEquals(isbn, mstBook.getIsbn());
 	}
+
+	@Test
+	public void 貸出処理(){
+
+		String isbn = "111-9865327845";
+		Lend lend = new Lend();
+		lend.setEmpNum(5010);
+
+		MstEmp mstEmp = new MstEmp();
+
+		MstBookStock mstBookStock = new MstBookStock();
+		mstBookStock.setBookStockId(10);
+		mstBookStock.setOwnerEmpNum(9999);
+		mstBookStock.setIsbn(isbn);
+
+		when(service.selectBookStock(isbn)).thenReturn(mstBookStock);
+
+
+		service.insertLend(lend, mstEmp, isbn);
+	}
+
+    @Test
+    public void 貸出可否テスト(){
+
+    	Lend lend = new Lend();
+    	lend.setBookStockId(50);
+
+    	when(service.lendMapper.selectLendHistory(lend.getBookStockId())).thenReturn(lend);
+    	when(service.lendMapper.selectRetunDateBook(lend.getBookStockId())).thenReturn(lend);
+
+    	service.isLendable(lend.getBookStockId());
+    }
 }

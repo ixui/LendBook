@@ -1,5 +1,6 @@
 package jp.co.ixui.controller.book;
 
+import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -8,68 +9,79 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.web.context.WebApplicationContext;
 
+import jp.co.ixui.LoginUserDetails;
+import jp.co.ixui.domain.MstBook;
+import jp.co.ixui.domain.MstBookStock;
+import jp.co.ixui.mapper.MstBookStockMapper;
 import jp.co.ixui.service.BookService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class BookControllerTest {
 
-	@Autowired
-	private WebApplicationContext context; //アプリケーションの設定等を管理するコンテキスト
-
-	private MockMvc mockMvc; //リクエストとレスポンスとそれに付属する情報のオブジェクト
+	@InjectMocks
+	BookController controller;
 
 	@Mock
 	BookService service;
 
-	@InjectMocks
-	BookControllerTest controller;
+	@Mock
+	MstBookStockMapper mstBookStockMapper;
 
-	//事前処理
+	private MockMvc mockMvc;
+
 	@Before
 	public void 事前処理() throws Exception{
-        this.mockMvc = MockMvcBuilders.webAppContextSetup(this.context) //モックの初期化
+        this.mockMvc = MockMvcBuilders.standaloneSetup(this.controller)
         		.build();
 	}
 
-	//正常
 	@Test
-	public void 書籍登録フォーム送信テスト() throws Exception{
-    ResultActions resultActions = mockMvc.perform(post("/admin/book")
-    		.contentType(MediaType.APPLICATION_FORM_URLENCODED)
-    		.param("bookName", "TEST")
-    		.param("author", "author")
-    		.param("publisher", "publish")
-    		.param("isbn", "123-1234567890")
-    		.param("publishDate", "2015/8/25")
-    		.param("content", "Test"));
+	public void 書籍ページアクセステスト() throws Exception{
+		String isbn = "999-9876543210";
 
-    resultActions.andExpect(model().hasNoErrors());
-}
+		MstBook bookDetail = new MstBook();
+		bookDetail.setAuthor("author");
+		bookDetail.setBookName("bookName");
+		bookDetail.setContent("content");
+		bookDetail.setIsbn(isbn);
+		bookDetail.setPublishDate("2000/10/10");
+		bookDetail.setPublisher("publisher");
 
-	//異常
+		when(service.selectBook(isbn)).thenReturn(bookDetail);
+
+		mockMvc.perform(get("/book/{isbn}", isbn))
+			.andExpect(status().isOk());
+	}
+
 	@Test
-	public void 書籍登録フォーム未入力送信テスト() throws Exception{
+	public void 貸出予約画面アクセステスト() throws Exception{
+		String isbn = "123-1234561230";
 
-		//ISBNを表記していない
-        ResultActions resultActions = mockMvc.perform(post("/admin/book")
-        		.contentType(MediaType.APPLICATION_FORM_URLENCODED)
-        		.param("bookName", "TEST")
-        		.param("author", "author")
-        		.param("publisher", "publish")
-        		.param("publishDate", "2015/8/25")
-        		.param("content", "Test"));
+		MstBook bookDetail = new MstBook();
+		bookDetail.setAuthor("author");
+		bookDetail.setBookName("bookName");
+		bookDetail.setContent("content");
+		bookDetail.setIsbn(isbn);
+		bookDetail.setPublishDate("2000/10/10");
+		bookDetail.setPublisher("publisher");
 
-        //エラー
-        resultActions.andExpect(model().hasErrors());
+		MstBookStock mstBookStock = new MstBookStock();
+		mstBookStock.setBookStockId(50);
+		mstBookStock.setOwnerEmpNum(9999);
+
+
+		LoginUserDetails user = mock(LoginUserDetails.class);
+
+		when(service.selectBook(isbn)).thenReturn(bookDetail);
+		when(service.selectBookStock(isbn)).thenReturn(mstBookStock);
+
+		mockMvc.perform(get("/reserve/{isbn}", isbn))
+			.andExpect(status().isOk());
 	}
 }
