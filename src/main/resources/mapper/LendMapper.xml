@@ -17,10 +17,14 @@
 </select>
 
 <select id="selectRetunDateBook" resultType="Lend">
-	select *
-	from lend
-	where book_stock_id = #{bookStockId}
-	and return_date is null
-	limit 1
+select *
+from lend as l
+join m_book_stock as mbs
+on mbs.book_stock_id = l.book_stock_id
+where l.book_stock_id = #{bookStockId}
+and (return_date is NULL
+or return_date is NOT NULL)
+order by return_date is NULL desc
+limit 1
 </select>
 </mapper>

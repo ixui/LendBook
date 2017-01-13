@@ -11,7 +11,7 @@
 
 <select id="selectBookStock" resultType="MstBookStock">
 	select *
-	from m_book_stock
+	from m_book_stock as mbs
 	where isbn = #{isbn}
 </select>
 </mapper>

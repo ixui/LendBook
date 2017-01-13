@@ -70,9 +70,11 @@ public class BookController {
 	public ModelAndView book(ModelAndView mav,
 			@PathVariable String isbn){
 
-		//ISBNから書籍の情報を取得
-		MstBook bookDetails = bookService.selectBook(isbn);
-		BookAdminForm bookDetail = new BookAdminForm(bookDetails);
+		MstBook bookDetails = bookService.selectBook(isbn); //ISBNから書籍の情報を取得
+
+		//取得した情報を格納したオブジェクトを作成
+		BookAdminForm bookDetail = new BookAdminForm();
+		bookDetail.setIsLendable(bookService.isLendableISBN(isbn));
 		BeanUtils.copyProperties(bookDetails, bookDetail);
 
 		//書籍情報

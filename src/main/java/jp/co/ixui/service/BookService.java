@@ -26,8 +26,10 @@ public class BookService {
 	@Autowired
 	LendMapper lendMapper;
 
+	//書籍登録(
 	@Transactional
 	public void insertBook(MstBook mstBook, MstBookStock mstBookStock){
+
 		//オブジェクトに入れたものをmapperを使ってINSERT
 		mstBookMapper.insertBook(mstBook);
 		mstBookStockMapper.insertBookStock(mstBookStock);
@@ -44,8 +46,8 @@ public class BookService {
 	}
 
 	//新着書籍4件取得
-	public List<MstBook> selectNewBook(int newbook){
-		return mstBookMapper.selectNewBook(newbook);
+	public List<MstBook> selectNewBook(int limit){
+		return mstBookMapper.selectNewBook(limit);
 	}
 
 	//各書籍画面表示
@@ -62,16 +64,22 @@ public class BookService {
 		lendMapper.insertLend(lend);
 	}
 
+	//貸出の可否を判別
 	public Boolean isLendable(int bookStockId){
 		if(lendMapper.selectLendHistory(bookStockId) == null){
 			return true;
 		}
 
-		Lend lend = null;
 		if(lendMapper.selectRetunDateBook(bookStockId).getReturnDate() != null){
 			return true;
 		}
 
 		return false;
+	}
+
+	//ISBNから貸出の可否を判別
+	public Boolean isLendableISBN(String isbn){
+		MstBookStock mstBookStock = selectBookStock(isbn);
+		return	isLendable(mstBookStock.getBookStockId());
 	}
 }

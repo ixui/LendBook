@@ -187,6 +187,10 @@ hr.style-one {
 	color: white;
 }
 
+.reserve-disable-btn{
+	margin-top: 30px;
+}
+
 .reserve-btn:hover{
 	color:white;
 }
