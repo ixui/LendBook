@@ -100,17 +100,25 @@ public class BookControllerPostTest {
 		loginUser.setPassword("aaaa");
 
 		//蔵書
-		MstBookStock mstBookStock = new MstBookStock();
-		mstBookStock.setBookStockId(bookStockId);
-		mstBookStock.setIsbn(isbn);
-		mstBookStock.setOwnerEmpNum(9999);
+		MstBookStock mockBookStock = new MstBookStock();
+		mockBookStock.setBookStockId(bookStockId);
+		mockBookStock.setIsbn(isbn);
+		mockBookStock.setOwnerEmpNum(9999);
 
 	    //認証処理
 		LoginUserDetails user = new LoginUserDetails(loginUser);
 		Authentication auth = new UsernamePasswordAuthenticationToken(user, null);
 		SecurityContextHolder.getContext().setAuthentication(auth);
 
-		service.insertBookStock(mstBookStock);
+		//登録処理
+	    ResultActions resultActions = mockMvc.perform(post("/admin/book")
+	    		.contentType(MediaType.APPLICATION_FORM_URLENCODED)
+	    		.param("bookName", "TEST")
+	    		.param("author", "author")
+	    		.param("publisher", "publish")
+	    		.param("isbn", isbn)
+	    		.param("publishDate", "2015/8/25")
+	    		.param("content", "Test"));
 
 	    //貸出完了
 		mockMvc.perform(post("/reserve/{isbn}", isbn)
