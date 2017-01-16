@@ -35,6 +35,13 @@ public class BookController {
 	@Autowired
 	BookService bookService;
 
+	/**
+	 * 書籍登録画面<br>
+	 * 管理者ユーザ以外アクセスは不可<br>
+	 * @param mav 画面以外に渡す情報はなし。
+	 * @param form 書籍登録フォームを格納するためのオブジェクト
+	 * @return book_adminを渡す。
+	 */
 	//書籍登録ページ
 	@RequestMapping(value = "/admin/book", method=RequestMethod.GET)
 	public ModelAndView bookAdmin(ModelAndView mav,
@@ -43,6 +50,19 @@ public class BookController {
 		return mav;
 	}
 
+	/**
+	 * 書籍フォームからPOSTした時の画面遷移<br>
+	 * フォームの値をチェックし、<br>
+	 * 問題が無ければ入力されたフォームの値を蔵書、書籍にコピーし<br>
+	 * サービスクラスに渡して登録処理を行う。<br>
+	 * 処理後書籍登録ページへとリダイレクトする。
+	 * @param mav 画面とエラー発生時はエラー情報を渡す
+	 * @param form 書籍登録用のフォーム 画面から入力された時に値が格納される。
+	 * @param result バリデーションエラー発生時にhasErrorsメソッドが実行され、<br>
+	 * エラー処理を行う
+	 * @return 正常に処理が行われた後、書籍登録ページへとリダイレクトする。<br>
+	 * エラー時はエラーメッセージを保持し、書籍登録ページへと遷移する。
+	 */
 	//新規書籍登録
 	@RequestMapping(value = "/admin/book", method=RequestMethod.POST)
 	public ModelAndView postBookAdmin
@@ -72,6 +92,15 @@ public class BookController {
 		return mav;
 	}
 
+	/**
+	 * 個別書籍画面<br>
+	 * ISBNから該当書籍を検索し、DB上の値を{@link MstBook}に格納する。
+	 * {@link MstBook}に入った値とISBNから貸出可否を判別した結果を
+	 * {@link BookAdminForm}にコピーし、インスタンスを渡してあげる。
+	 * @param mav 書籍情報と画面book.htmlを渡す。
+	 * @param isbn 書籍用個別URLと書籍検索用
+	 * @return 格納された書籍情報と画面を表示する。
+	 */
 	//書籍ページ
 	@RequestMapping(value = "/book/{isbn}", method=RequestMethod.GET)
 	public ModelAndView book(ModelAndView mav,
@@ -91,6 +120,13 @@ public class BookController {
 		return mav;
 	}
 
+	/**
+	 * 貸出用画面
+	 * @param mav
+	 * @param isbn
+	 * @param lend
+	 * @return
+	 */
 	//貸出ページ
 	@RequestMapping(value = "/reserve/{isbn}", method=RequestMethod.GET)
 	public ModelAndView reserve(ModelAndView mav,

@@ -21,6 +21,7 @@ import lombok.Setter;
 public class BookAdminForm {
 
 		/**
+		 * String型 ISBN-13を使用<br>
 		 * ISBN-10の場合エラー
 		 */
 		//ISBN
@@ -30,6 +31,7 @@ public class BookAdminForm {
 
 		/**
 		 * 書籍の名前<br>
+		 * 空文字、Null以外に指定なし。<br>
 		 * 可能であればAmazonで使われている書籍名を利用。
 		 */
 		//書籍名
@@ -40,6 +42,7 @@ public class BookAdminForm {
 		/**
 		 * 著者名<br>
 		 * 複数の著者も入力可能だが、<br>
+		 * 複数名の検索が行えるか不明なので非推奨
 		 */
 		//著者
 		@NotNull
@@ -58,6 +61,7 @@ public class BookAdminForm {
 
 		/**
 		 * 出版社<br>
+		 * 正式名称を使用してください。
 		 */
 		//出版社
 		@NotNull
