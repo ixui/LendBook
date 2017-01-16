@@ -15,16 +15,33 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+/**
+ * SpringSecurity実装クラス
+ * @author NAKAJIMA
+ *
+ */
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 
+	/**
+	 * css/js/imagesフォルダをログインしていない状態でも読み込めるように設定。
+	 */
 	//静的コンテンツに対して除外設定 css/js/imagesを読み込めるようにする
 	@Override
 	public void configure(WebSecurity web) throws Exception {
 		web.ignoring().antMatchers("/css/**", "/js/**", "/images/**");
 	}
 
+	/**
+	 * アクセス管理メソッド<br>
+	 * /index、loginページは全ユーザーアクセス許可<br>
+	 * その他のページはログイン後にアクセスを許可する。<br>
+	 * また、管理者用のページは管理者権限を持たないアカウントはアクセスはできない。<br><br>
+	 *
+	 * ログインフォームに入力が必要な情報は<br>
+	 * メールアドレスとパスワード<br>
+	 */
 	//アクセス管理
 	@Override
 	protected void configure(HttpSecurity http) throws Exception{
@@ -53,6 +70,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 			.logoutSuccessUrl("/index");
 	}
 
+	/**
+	 * ログイン処理
+	 * GlobalAuthenticationConfigurerAdapterを継承してログイン処理のカスタマイズを行っている。
+	 * @author NAKAJIMA
+	 *
+	 */
 	@Configuration
     static class AuthenticationConfiguration
     extends GlobalAuthenticationConfigurerAdapter {
@@ -60,11 +83,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		@Autowired
 		UserDetailsServiceImpl userDetailsService;
 
+		/**
+		 * パスワードの暗号化
+		 * BCryptPasswordEncoderを使用
+		 * @return コンストラクタ内にパスワードハッシュ化の強度を指定する。
+		 * 指定しない場合はデフォルト値の10が入っている。
+		 */
         @Bean //パスワードの暗号化方式を宣言
         public PasswordEncoder passwordEncoder() {
             return new BCryptPasswordEncoder();
         }
 
+        /**
+         * ログインユーザの認証処理を行う。
+         * UserDetailsServiceを使いユーザ情報を取得する。
+         * passwordEncoderを使い入力されたパスワードをハッシュ化し認証を行う。
+         */
 		@Override
         public void init(AuthenticationManagerBuilder auth) throws Exception {
             // 認証するユーザーを設定する

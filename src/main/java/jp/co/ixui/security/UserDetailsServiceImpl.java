@@ -11,6 +11,7 @@ import jp.co.ixui.domain.MstEmp;
 import jp.co.ixui.mapper.MstEmpMapper;
 
 /**
+ * ログインフォームPOST時の妥当性判定
  * @author NAKAJIMA
  *
  */
