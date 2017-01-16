@@ -22,6 +22,7 @@ public class ReturnDueDateOverValidator implements ConstraintValidator<ReturnDue
 
 	@Override
 	public boolean isValid(Lend value, ConstraintValidatorContext context) {
+		return service.isReturnDueDateOver(value.getReturnDueDate());
 	}
 
 }

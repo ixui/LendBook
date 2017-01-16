@@ -96,7 +96,7 @@ public class BookService {
 	}
 
 	//返却予定日の判別
-	public Boolean isreturnDueDateOver(String returnDueDate){
+	public Boolean isReturnDueDateOver(String returnDueDate){
 
 		//空だった場合はここでの判別はしない
 		if(returnDueDate == ""){

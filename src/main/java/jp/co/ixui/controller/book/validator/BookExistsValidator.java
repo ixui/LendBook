@@ -26,6 +26,7 @@ public class BookExistsValidator implements ConstraintValidator<BookExists, Book
 		String isbn = value.getIsbn();
 
 		//登録されていなければTrueを返す
+		return service.isBookResgitered(isbn);
 	}
 
 }
