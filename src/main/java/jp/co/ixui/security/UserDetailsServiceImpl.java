@@ -10,12 +10,26 @@ import jp.co.ixui.LoginUserDetails;
 import jp.co.ixui.domain.MstEmp;
 import jp.co.ixui.mapper.MstEmpMapper;
 
+/**
+ * @author NAKAJIMA
+ *
+ */
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService{
 
 	@Autowired
 	MstEmpMapper mstEmpMapper;
 
+	/**
+	 * ログインフォームに入力されたメールアドレスからユーザ情報を確認。<br>
+	 * メールアドレスが空、又はnullの場合にはエラー<br>
+	 * メールアドレスが入力されている場合、該当ユーザーが存在するかDBを検索し、<br>
+	 * 存在していない場合はエラー<br>
+	 * 存在している場合は{@link LoginUserDetails#LoginUserDetails(MstEmp)}に取得したユーザ情報を渡す。<br>
+	 * @param mailAddress ログイン時にPOSTされたメールアドレス<br>
+	 * @return ログインユーザーの情報を取得し、<br>
+	 * {@link LoginUserDetails#LoginUserDetails(MstEmp)}に渡す。
+	 */
 	@Override
 	public UserDetails loadUserByUsername(String mailAddress) throws UsernameNotFoundException {
 
