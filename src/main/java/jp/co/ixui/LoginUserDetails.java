@@ -15,6 +15,7 @@ public class LoginUserDetails extends User{
 	private final MstEmp mstEmp;
 
 	/**
+	 * ログイン時に起動され、ログインユーザの情報をこのクラスに格納する。<br>
 	 * ログインユーザ情報を取得する際はこのクラスを利用する。
 	 * @param mstEmp UserDetailsServiceImplで取得したログイン情報
 	 */
