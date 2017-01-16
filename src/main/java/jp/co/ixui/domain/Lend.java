@@ -1,7 +1,5 @@
 package jp.co.ixui.domain;
 
-
-
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotEmpty;
