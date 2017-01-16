@@ -12,15 +12,15 @@
 	<script type="text/javascript" src="/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
   	<script src="/js/myjs.js" th:src="@{/js/myjs.js}"></script>
   </head>
-  
+
 <body>
 <!-- ヘッダー -->
 <div th:include="header :: main_header"></div>
 
 <!-- メイン -->
 <div class="text-center">
-	<h1 style="margin: 100px 0px 50px 0px;">貸し出しました</h1> 
-	<a href="main.html" class="mainview">メイン画面へ</a>
+	<h1 style="margin: 100px 0px 50px 0px;">貸し出しました</h1>
+	<a href="/main" th:href="@{/main}" class="mainview">メイン画面へ</a>
 </div>
 </body>
 </html>

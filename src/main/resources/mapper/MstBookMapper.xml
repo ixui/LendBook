@@ -2,20 +2,20 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="jp.co.ixui.mapper.MstBookMapper">
 
-<select id="insertBook" resultType="MstBook">
+<select id="registerBook" resultType="MstBook">
 	insert into m_book
 	(book_name, author, publisher, publish_date, isbn, content, regist_time)
 	values
 	(#{bookName}, #{author}, #{publisher}, #{publishDate}, #{isbn}, #{content}, CURRENT_DATE())
 </select>
 
-<select id="selectBook" resultType="MstBook">
+<select id="getBook" resultType="MstBook">
 	select *
 	from m_book
 	where isbn = #{isbn}
 </select>
 
-<select id="selectNewBook" resultType="MstBook">
+<select id="getNewlyBook" resultType="MstBook">
 	select *
 	from m_book
 	order by regist_time desc limit #{limit}

@@ -2,21 +2,21 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="jp.co.ixui.mapper.LendMapper">
 
-<select id="insertLend" resultType="Lend">
+<select id="registerLend" resultType="Lend">
 	insert into lend
 	(book_stock_id,emp_num,owner_emp_num,lend_date,return_due_date)
 	values
 	(#{bookStockId},#{empNum},#{ownerEmpNum},CURRENT_DATE(),#{returnDueDate})
 </select>
 
-<select id="selectLendHistory" resultType="Lend">
+<select id="getLendingHistory" resultType="Lend">
 	select *
 	from lend
 	where book_stock_id = #{bookStockId}
 	limit 1
 </select>
 
-<select id="selectRetunDateBook" resultType="Lend">
+<select id="getReturnDate" resultType="Lend">
 select *
 from lend as l
 join m_book_stock as mbs

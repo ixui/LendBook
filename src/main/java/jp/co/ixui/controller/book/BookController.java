@@ -58,7 +58,7 @@ public class BookController {
 		BeanUtils.copyProperties(form, mstBookStock);
 
 		//書籍、蔵書に登録
-		bookService.insertBook(mstBook, mstBookStock);
+		bookService.registerBook(mstBook, mstBookStock);
 
 		//リダイレクト
 		mav.setViewName("redirect:/admin/book");
@@ -70,7 +70,7 @@ public class BookController {
 	public ModelAndView book(ModelAndView mav,
 			@PathVariable String isbn){
 
-		MstBook bookDetails = bookService.selectBook(isbn); //ISBNから書籍の情報を取得
+		MstBook bookDetails = bookService.getBook(isbn); //ISBNから書籍の情報を取得
 
 		//取得した情報を格納したオブジェクトを作成
 		BookAdminForm bookDetail = new BookAdminForm();
@@ -91,10 +91,10 @@ public class BookController {
 			@ModelAttribute("lend") Lend lend){
 
 		//ISBNから書籍の情報を取得
-		MstBook bookDetail = bookService.selectBook(isbn);
+		MstBook bookDetail = bookService.getBook(isbn);
 
 		//ISBNから蔵書の情報を取得
-		MstBookStock mstBookStock = bookService.selectBookStock(isbn); //蔵書が複数になったときに修正が必要
+		MstBookStock mstBookStock = bookService.getBookStock(isbn); //蔵書が複数になったときに修正が必要
 		BeanUtils.copyProperties(mstBookStock, lend);
 
 		//書籍情報
@@ -127,7 +127,7 @@ public class BookController {
 		BeanUtils.copyProperties(user.getUser(), mstEmp);
 
 		//貸出処理
-		bookService.insertLend(lend, mstEmp,isbn);
+		bookService.registerLend(lend, mstEmp,isbn);
 
 		mav.setViewName("complete");
 		return mav;

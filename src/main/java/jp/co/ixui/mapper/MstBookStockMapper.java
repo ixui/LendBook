@@ -7,8 +7,8 @@ import jp.co.ixui.domain.MstBookStock;
 @Mapper
 public interface MstBookStockMapper {
 	//蔵書の登録
-	void insertBookStock(MstBookStock mstBookStock);
+	void registerBookStock(MstBookStock mstBookStock);
 
 	//ISBNから蔵書の検索
-	MstBookStock selectBookStock(String isbn);
+	MstBookStock getBookStock(String isbn);
 }

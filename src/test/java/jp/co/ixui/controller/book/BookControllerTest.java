@@ -53,7 +53,7 @@ public class BookControllerTest {
 		bookDetail.setPublishDate("2000/10/10");
 		bookDetail.setPublisher("publisher");
 
-		when(service.selectBook(isbn)).thenReturn(bookDetail);
+		when(service.getBook(isbn)).thenReturn(bookDetail);
 
 		mockMvc.perform(get("/book/{isbn}", isbn))
 			.andExpect(status().isOk());
@@ -78,8 +78,8 @@ public class BookControllerTest {
 
 		LoginUserDetails user = mock(LoginUserDetails.class);
 
-		when(service.selectBook(isbn)).thenReturn(bookDetail);
-		when(service.selectBookStock(isbn)).thenReturn(mstBookStock);
+		when(service.getBook(isbn)).thenReturn(bookDetail);
+		when(service.getBookStock(isbn)).thenReturn(mstBookStock);
 
 		mockMvc.perform(get("/reserve/{isbn}", isbn))
 			.andExpect(status().isOk());

@@ -46,7 +46,7 @@ public class MainController {
 		int limit = 4;
 
 		//新着書籍を取得する
-		List<MstBook> newbook = bookService.selectNewBook(limit);
+		List<MstBook> newbook = bookService.getNewlyBook(limit);
 
 		mav.addObject("newbook", newbook);
 		mav.setViewName("main");

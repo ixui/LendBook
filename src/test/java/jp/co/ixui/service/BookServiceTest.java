@@ -58,10 +58,10 @@ public class BookServiceTest {
 		List<MstBook> list = new ArrayList<MstBook>();
 		list.add(mstBook);
 		//selectNewBookの戻り値をlistに指定
-		when(service.selectNewBook(newbook)).thenReturn(list);
+		when(service.getNewlyBook(newbook)).thenReturn(list);
 
 		//取得した書籍数が正しいか確認
-		assertEquals(newbook,service.selectNewBook(newbook).size());
+		assertEquals(newbook,service.getNewlyBook(newbook).size());
 	}
 
 	@Test
@@ -69,7 +69,7 @@ public class BookServiceTest {
 
 		//取得ISBN
 		String isbn = "123-1234567890";
-		when(service.selectBook(isbn)).thenReturn(mstBook);
+		when(service.getBook(isbn)).thenReturn(mstBook);
 
 		assertEquals(isbn, mstBook.getIsbn());
 	}
@@ -88,10 +88,10 @@ public class BookServiceTest {
 		mstBookStock.setOwnerEmpNum(9999);
 		mstBookStock.setIsbn(isbn);
 
-		when(service.selectBookStock(isbn)).thenReturn(mstBookStock);
+		when(service.getBookStock(isbn)).thenReturn(mstBookStock);
 
 
-		service.insertLend(lend, mstEmp, isbn);
+		service.registerLend(lend, mstEmp, isbn);
 	}
 
     @Test
@@ -100,8 +100,8 @@ public class BookServiceTest {
     	Lend lend = new Lend();
     	lend.setBookStockId(50);
 
-    	when(service.lendMapper.selectLendHistory(lend.getBookStockId())).thenReturn(lend);
-    	when(service.lendMapper.selectRetunDateBook(lend.getBookStockId())).thenReturn(lend);
+    	when(service.lendMapper.getLendingHistory(lend.getBookStockId())).thenReturn(lend);
+    	when(service.lendMapper.getReturnDate(lend.getBookStockId())).thenReturn(lend);
 
     	service.isLendable(lend.getBookStockId());
     }

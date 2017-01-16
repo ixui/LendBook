@@ -10,11 +10,11 @@ import jp.co.ixui.domain.MstBook;
 public interface MstBookMapper {
 
 	//書籍の登録
-	void insertBook(MstBook mstBook);
+	void registerBook(MstBook mstBook);
 
 	//ISBNから書籍の検索
-	MstBook selectBook(String isbn);
+	MstBook getBook(String isbn);
 
 	//新着書籍取得
-	List<MstBook> selectNewBook(int limit);
+	List<MstBook> getNewlyBook(int limit);
 }
