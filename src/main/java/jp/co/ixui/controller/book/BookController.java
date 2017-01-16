@@ -21,6 +21,13 @@ import jp.co.ixui.domain.MstBookStock;
 import jp.co.ixui.domain.MstEmp;
 import jp.co.ixui.service.BookService;
 
+/**
+ * <b>書籍ページ用コントローラ</b><br><br>
+ *
+ * ログイン後の基本的な画面遷移を行う。<br>
+ * @author NAKAJIMA
+ *
+ */
 @Controller
 @SessionAttributes(value = "bookDetail")
 public class BookController {
