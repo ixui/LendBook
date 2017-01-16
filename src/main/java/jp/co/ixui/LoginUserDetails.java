@@ -5,10 +5,19 @@ import org.springframework.security.core.userdetails.User;
 
 import jp.co.ixui.domain.MstEmp;
 
+/**
+ * ログイン時にユーザー情報を格納する。
+ * @author NAKAJIMA
+ *
+ */
 public class LoginUserDetails extends User{
 
 	private final MstEmp mstEmp;
 
+	/**
+	 * ログインユーザ情報を取得する際はこのクラスを利用する。
+	 * @param mstEmp UserDetailsServiceImplで取得したログイン情報
+	 */
 	//LoginUserDetailsで取得した情報を格納する
 	public LoginUserDetails(MstEmp mstEmp){
 		super(
