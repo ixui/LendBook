@@ -4,22 +4,26 @@ import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.User;
 
 import jp.co.ixui.domain.MstEmp;
+import jp.co.ixui.security.UserDetailsServiceImpl;
 
 /**
- * ログイン時にユーザー情報を格納する。
+ * <p> ログイン時に起動され、ログインユーザの情報をこのクラスに格納します。</p>
+ * <p> {@link UserDetailsServiceImpl#loadUserByUsername(String)}から渡された<br>
+ * {@link MstEmp}(ログインユーザ)を保持し、呼び出された際にログインユーザーの情報を渡します。</p>
  * @author NAKAJIMA
  *
  */
 public class LoginUserDetails extends User{
 
+	/**
+	 * ログインユーザ情報
+	 */
 	private final MstEmp mstEmp;
 
 	/**
-	 * ログイン時に起動され、ログインユーザの情報をこのクラスに格納する。<br>
-	 * ログインユーザ情報を取得する際はこのクラスを利用する。
-	 * @param mstEmp UserDetailsServiceImplで取得したログイン情報
+	 * 渡されたMstEmpの値をこのクラスのフィールドに格納します。
+	 * @param mstEmp {@link UserDetailsServiceImpl#loadUserByUsername(String)で取得した値
 	 */
-	//LoginUserDetailsで取得した情報を格納する
 	public LoginUserDetails(MstEmp mstEmp){
 		super(
 				mstEmp.getMailAddress(),
@@ -29,6 +33,9 @@ public class LoginUserDetails extends User{
 
 	}
 
+	/**
+	 * @return このクラスの{@link MstEmp}の値を返す
+	 */
 	public MstEmp getUser(){
 		return this.mstEmp;
 	}

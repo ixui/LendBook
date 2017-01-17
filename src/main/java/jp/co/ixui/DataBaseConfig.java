@@ -8,8 +8,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * DB接続用クラス<br>
- * 環境変数を利用してDBへとアクセス
+ * DB接続用クラスです。<br>
+ * 環境変数を利用してDBへとアクセスする。
  * @author NAKAJIMA
  *
  */
@@ -17,14 +17,19 @@ import org.springframework.context.annotation.Configuration;
 public class DataBaseConfig {
 
 	/**
-	 * DBのURL,ID,PASSWORDを環境変数を利用してアクセスする。<br>
+	 * <p>DBのURL,ID,PASSWORDを環境変数を利用してアクセスします。<br>
 	 * 変数に、環境変数に入力されているURL,ID,PASSWORDを入れるので、<br>
 	 * 事前に環境変数を設定しておく必要があります。<br>
-	 * 取得した環境変数をDataSoruceBuilderを用いて、
-	 * DBにアクセスする設定をする。
-	 * 「@Configuration」を利用しているのでアクセス時にこの設定ファイルが読み込まれる。
+	 * 取得する変数は<br>
+	 * 1.DATABASE_URL<br>
+	 * 2.DATABASE_ID<br>
+	 * 3.DATABASE_PASS<br>
+	 * になります。<br></p>
+	 * <p>取得した環境変数をDataSoruceBuilderを用いて、<br>
+	 * DBにアクセスする設定をします。<br></p>
+	 * 「@Configuration」を利用しているのでアクセス時にこの設定ファイルが読み込まれます。
 	 *
-	 * @return DBにアクセスする設定を作成
+	 * @return DBにアクセスする設定を返します。
 	 */
 	//プロパティの設定を各フィールドにインジェクション
 	@Bean
