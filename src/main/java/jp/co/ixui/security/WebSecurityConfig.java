@@ -27,7 +27,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	/**
 	 * css/js/imagesフォルダをログインしていない状態でも読み込めるように設定しています。
 	 */
-	//静的コンテンツに対して除外設定 css/js/imagesを読み込めるようにする
 	@Override
 	public void configure(WebSecurity web) throws Exception {
 		web.ignoring().antMatchers("/css/**", "/js/**", "/images/**");
@@ -43,7 +42,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	 * usernameParameter("mailAddress")<br>
 	 * passwordParameter("password")です。
 	 */
-	//アクセス管理
 	@Override
 	protected void configure(HttpSecurity http) throws Exception{
 
@@ -92,7 +90,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		 * @return コンストラクタ内にパスワードハッシュ化の強度を指定できます。
 		 * 指定しない場合はデフォルト値の10が入っています。
 		 */
-        @Bean //パスワードの暗号化方式を宣言
+        @Bean
         public PasswordEncoder passwordEncoder() {
             return new BCryptPasswordEncoder();
         }

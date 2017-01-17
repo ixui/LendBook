@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import jp.co.ixui.controller.book.BookController;
 import jp.co.ixui.domain.MstBook;
+import jp.co.ixui.security.WebSecurityConfig;
 import jp.co.ixui.service.BookService;
 
 /**
@@ -44,7 +45,7 @@ public class MainController {
 
 	/**
 	 * ログイン画面を表示します。<br>
-	 * POSTはSpringSecurityを実装したクラスによって行われます。
+	 * POSTはSpringSecurityを実装したクラス{@link WebSecurityConfig}によって行われます。
 	 * @param mav 画面情報
 	 * @return 画面情報を渡します。
 	 */
@@ -63,7 +64,7 @@ public class MainController {
 	 * <p>新着書籍/おすすめ書籍を表示します。<br>
 	 * 表示させる書籍数は変数limitを使い設定します。</p>
 	 * @param mav 画面情報と書籍情報
-	 * @return 画面情報と格納した情報を渡します。
+	 * @return 画面情報と格納した書籍情報を返します。
 	 */
 	//ログイン後メイン
 	@RequestMapping(value = "/main", method=RequestMethod.GET)

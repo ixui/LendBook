@@ -29,7 +29,7 @@ public class ReturnDueDateOverValidator implements ConstraintValidator<ReturnDue
 	}
 
 	/**
-	 * {@link Lend}に格納されている返却予定日の妥当性を判定する。<br>
+	 * {@link Lend}に格納されている返却予定日の妥当性を判定します。<br>
 	 * 返却予定日が正常ならtrue,問題があればfalseを返す。
 	 */
 	@Override

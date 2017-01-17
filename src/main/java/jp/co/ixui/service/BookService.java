@@ -46,7 +46,7 @@ public class BookService {
 
 	/**
 	 * <p>新規で書籍を登録します。</p>
-	 * <b>蔵書登録ページがないので、書籍の登録時に同時に蔵書を登録しています</b>
+	 * <b>蔵書登録ページがないので、書籍の登録時に同時に蔵書を登録しています。</b>
 	 * @param mstBook 登録したい書籍の情報
 	 * @param mstBookStock 登録したい蔵書の情報
 	 */
@@ -133,13 +133,14 @@ public class BookService {
 	 * <p>貸出の履歴と返却がされているかをチェックします。<br>
 	 * 返却の確認は返却日がNullのものがあれば先に表示し、なければ返却日が最新のものを取得しています。</p>
 	 * @param bookStockId DBの蔵書マスターと貸出の外部キーである蔵書IDを使用します。
-	 * @return getLendingHistoryを使い、貸出DBに該当する蔵書IDがあるかどうかを判別します。<br>
+	 * @return getLendingHistoryを使い、貸出DBに該当する蔵書IDがあるかどうかを確認します。<br>
 	 * 一度でも貸し出されていなければ(nullであれば)貸出が可能でありtrueを返します。<br>
 	 * getReturnDateを使い、貸出DBに該当する蔵書IDの返却日を取得します。<br>
 	 * 返却日の値が入力されていれば、蔵書は貸出が可能でありtrueを返します。<br>
 	 * 両者に該当しない場合は貸出ができずfalseを返します。
 	 */
 	//貸出の可否を判別
+	@Transactional
 	public Boolean isLendable(int bookStockId){
 		if(lendMapper.getLendingHistory(bookStockId) == null){
 			return true;
@@ -160,6 +161,7 @@ public class BookService {
 	 * @return 取得した処理がtrueなら貸出可能、falseなら貸出不能。
 	 */
 	//ISBNから貸出の可否を判別
+	@Transactional
 	public Boolean isLendableISBN(String isbn){
 		MstBookStock mstBookStock = getBookStock(isbn);
 		return	isLendable(mstBookStock.getBookStockId());
@@ -175,6 +177,7 @@ public class BookService {
 	 * DB上にデータが存在せず、nullの時は登録が可能でありtrueを返します。
 	 */
 	//ISBNから既に本が登録されているか判別
+	@Transactional
 	public Boolean isBookResgitered(String isbn){
 		MstBook mstBook = this.mstBookMapper.getBook(isbn);
 		if(mstBook != null){
@@ -197,10 +200,11 @@ public class BookService {
 	 * 上記に該当しない場合trueを返し貸出します。
 	 */
 	//返却予定日の判別
+	@Transactional
 	public Boolean isReturnDueDateOver(String returnDueDate){
 
 		//空だった場合はここでの判別はしない
-		if(returnDueDate == ""){
+		if(returnDueDate == "" || returnDueDate == null){
 			return true;
 		}
 

@@ -34,7 +34,7 @@ public class LoginUserDetails extends User{
 	}
 
 	/**
-	 * @return このクラスの{@link MstEmp}の値を返す
+	 * @return このクラスの{@link MstEmp}の値を返します。
 	 */
 	public MstEmp getUser(){
 		return this.mstEmp;

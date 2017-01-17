@@ -10,7 +10,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * <p><b>書籍登録用フォーム</b></p>
+ * <p>書籍登録用フォーム</p>
  * 書籍登録フォームで送信された値が格納されます。
  * @author NAKAJIMA
  */

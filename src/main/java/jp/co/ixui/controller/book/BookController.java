@@ -23,7 +23,7 @@ import jp.co.ixui.service.BookService;
 /**
  * <p><b>書籍ページ用コントローラ</b></p>
  *
- * <p>ログイン後の画面遷移を行います。<br></p>
+ * <p>ログイン後の画面遷移を行います。</p><br>
  * <p>セッションスコープに書籍情報を格納しています。</p>
  * @author NAKAJIMA
  *
@@ -42,13 +42,13 @@ public class BookController {
 	 * <p>書籍登録画面</p>
 	 *
 	 * <p>{@link BookAdminForm}のクラスを初期化します。</p>
-	 * @param mav 画面情報。
-	 * @param form {@link BookAdminForm}書籍登録フォームを格納するためのオブジェクト
-	 * @return 画面情報を渡します。
+	 * @param mav 画面情報
+	 * @param form 書籍登録フォームを格納するためのオブジェクト
+	 * @return 画面情報を返します。
 	 */
 	//書籍登録ページ
 	@RequestMapping(value = "/admin/book", method=RequestMethod.GET)
-	public ModelAndView bookAdmin	(ModelAndView mav,
+	public ModelAndView registerBook	(ModelAndView mav,
 			@ModelAttribute("form") BookAdminForm form){
 		mav.setViewName("book_admin");
 		return mav;
@@ -60,18 +60,18 @@ public class BookController {
 	 * 問題が無ければ入力された{@link BookAdminForm}の値を<br>
 	 * 書籍{@link MstBook}、蔵書{@link MstBookStock}にコピーし<br>
 	 * サービスクラスに渡して登録処理を行います。</p>
-	 * 処理後書籍登録ページ{@link BookController#bookAdmin(ModelAndView, BookAdminForm)}へとリダイレクトする。
+	 * 処理後書籍登録ページ{@link BookController#registerBook(ModelAndView, BookAdminForm)}へとリダイレクトする。
 	 * @param mav 画面情報<br>
 	 * エラー発生時はエラー情報を格納します。
 	 * @param form {@link BookAdminForm}書籍登録用のフォーム 画面から入力された値が格納されます。
 	 * @param result バリデーションエラー発生時にhasErrorsメソッドが実行され、<br>
 	 * エラー処理を行います。
 	 * @return 正常に処理が行われた後、書籍登録ページへとリダイレクトします。<br>
-	 * エラー時はエラーメッセージを保持し、書籍登録ページへと遷移します。
+	 * エラー時はエラーメッセージを保持し、書籍登録ページをセットし返します。
 	 */
 	//新規書籍登録
 	@RequestMapping(value = "/admin/book", method=RequestMethod.POST)
-	public ModelAndView postBookAdmin
+	public ModelAndView registeredBook
 		(ModelAndView mav,
 				@ModelAttribute("form") @Validated BookAdminForm form,
 				BindingResult result){
@@ -106,19 +106,19 @@ public class BookController {
 	 * {@link BookAdminForm}にコピーし、インスタンスを渡してあげます。<p>
 	 * @param mav 書籍情報と画面情報
 	 * @param isbn ISBN-13 書籍用個別URLと書籍検索用
-	 * @return 格納された書籍情報と画面を渡します。
+	 * @return 格納された書籍情報と画面を返します。
 	 */
 	//書籍ページ
 	@RequestMapping(value = "/book/{isbn}", method=RequestMethod.GET)
-	public ModelAndView book(ModelAndView mav,
+	public ModelAndView bookDetail(ModelAndView mav,
 			@PathVariable String isbn){
 
-		MstBook bookDetails = bookService.getBook(isbn); //ISBNから書籍の情報を取得
+		MstBook MstBookDetail = bookService.getBook(isbn); //ISBNから書籍の情報を取得
 
 		//取得した情報を格納したオブジェクトを作成
 		BookAdminForm bookDetail = new BookAdminForm();
 		bookDetail.setIsLendable(bookService.isLendableISBN(isbn));
-		BeanUtils.copyProperties(bookDetails, bookDetail);
+		BeanUtils.copyProperties(MstBookDetail, bookDetail);
 
 		//書籍情報
 		mav.addObject("bookDetail", bookDetail);
@@ -132,16 +132,16 @@ public class BookController {
 	 *
 	 * <p>ISBNから書籍の情報と蔵書の情報を取得し<br>
 	 * それぞれ書籍{@link MstBook}、蔵書{@link MstBookStock}に格納します。<br>
-	 * 蔵書の情報を{@link Lend}にコピーし書籍{@link MstBook}と蔵書{@link Lend}のインスタンスを<br>
+	 * 蔵書の情報を{@link Lend}にコピーし書籍{@link MstBook}と蔵書{@link MstBookStock}のインスタンスを<br>
 	 * 渡してあげます。</p>
 	 * @param mav 書籍情報/貸出情報/画面情報
 	 * @param isbn ISBN-13 貸出用個別URLと書籍検索用
 	 * @param lend 貸出フォーム 貸出蔵書IDを格納
-	 * @return 格納された書籍情報と貸出情報、画面情報を渡します。
+	 * @return 格納された書籍情報と貸出情報、画面情報を返します。
 	 */
 	//貸出ページ
 	@RequestMapping(value = "/reserve/{isbn}", method=RequestMethod.GET)
-	public ModelAndView reserve(ModelAndView mav,
+	public ModelAndView lend(ModelAndView mav,
 			@PathVariable String isbn,
 			@ModelAttribute("lend") Lend lend){
 
@@ -155,7 +155,6 @@ public class BookController {
 		//書籍情報
 		mav.addObject("bookDetail", bookDetail);
 		mav.addObject("lend", lend);
-
 		mav.setViewName("reserve");
 
 		return mav;
@@ -164,7 +163,7 @@ public class BookController {
 	/**
 	 * <p>貸出完了画面</p>
 	 *
-	 * <p>POSTされた内容に問題がなければ貸出処理をして、<br>
+	 * <p>POSTされた内容に問題がなければ貸出処理を行い、<br>
 	 * 貸出完了ページへと遷移します。</p>
 	 * @param mav 画面情報
 	 * @param isbn ISBN-13 個別URLと書籍検索用
