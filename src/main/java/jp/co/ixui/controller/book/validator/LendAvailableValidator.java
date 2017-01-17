@@ -27,7 +27,7 @@ public class LendAvailableValidator implements ConstraintValidator<LendAvailable
 	}
 
 	/**
-	 * Lendに格納されている蔵書ID(bookStockId)を使用して貸出が可能かどうか確認する。
+	 * {@link Lend}に格納されている蔵書ID(bookStockId)を使用して貸出が可能かどうか確認する。
 	 * @return 貸出可能ならtrue, 貸出不可ならfalseを渡す。
 	 */
 	@Override

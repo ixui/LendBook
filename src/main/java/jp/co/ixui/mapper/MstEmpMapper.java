@@ -18,6 +18,6 @@ public interface MstEmpMapper {
 	 * @return 該当社員の情報を返します。
 	 */
 	//社員1名の情報取得
-	 MstEmp selectUser(String mail_address);
+	 MstEmp getUser(String mail_address);
 
 }

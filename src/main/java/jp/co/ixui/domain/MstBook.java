@@ -15,16 +15,18 @@ import lombok.Setter;
 public class MstBook {
 
 	/**
-	 * <p>String型 ISBN-13を使用します。</p><br>
-	 * 例: 123-1234567890<br>
+		 * <p>String型 ISBN-13を使用します。<br>
+		 * 3桁の数字-10桁の数字を使用してください。<br>
+		 * 例: 123-1234567890</p>
+		 * Nullは使用できません。
 	 */
 	//ISBN
 	@NotNull
 	private String isbn;
 
 	/**
-	 * <p>書籍の名前</p><br>
-	 * 空文字、Null以外は使えません。<br>
+	 * <p>書籍の名前</p>
+	 * nullは使用できません。<br>
 	 */
 	//書籍名
 	@NotNull
@@ -32,17 +34,19 @@ public class MstBook {
 
 	/**
 	 * <p>著者名</p><br>
-	 * 複数の著者も入力可能できてしまうが、非推奨です。
+	 * <b>複数の著者の入力は非推奨です。</b><br>
+	 * Nullは使用できません。
 	 */
 	//著者
 	@NotNull
 	private String author;
 
 	/**
-	 * <p>出版日</p><br>
-	 * 半角yyyy/MM/ddのフォーマットで入力<br>
+	 * <p>出版日</p>
+	 * <p>半角yyyy/MM/ddのフォーマットで入力してください。<br>
 	 * 例: 2010/12/24<br>
-	 * 全角やyyyy-MM-ddの場合エラーになります。
+	 * 全角やyyyy-MM-ddの場合エラーになります。<br>
+	 * Nullは使用できません。</p>
 	 */
 	//出版日
 	@NotNull
@@ -50,15 +54,16 @@ public class MstBook {
 
 	/**
 	 * <p>出版社</p><br>
-	 * 空文字、Nullはエラーになります。
+	 * Nullは使用できません。
 	 */
 	//出版社
 	@NotNull
 	private String publisher;
 
 	/**
-	 * <p>書籍の内容</p><br>
-	 * 文字数は200文字以下です。
+	 * <p>書籍の内容</p>
+	 * <p>文字数は200文字以下です。<br>
+	 * Nullや空文字は使用できません。</p>
 	 */
 	//内容
 	@NotNull

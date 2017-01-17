@@ -48,7 +48,7 @@ public class BookController {
 	 */
 	//書籍登録ページ
 	@RequestMapping(value = "/admin/book", method=RequestMethod.GET)
-	public ModelAndView bookAdmin(ModelAndView mav,
+	public ModelAndView bookAdmin	(ModelAndView mav,
 			@ModelAttribute("form") BookAdminForm form){
 		mav.setViewName("book_admin");
 		return mav;
@@ -62,7 +62,7 @@ public class BookController {
 	 * サービスクラスに渡して登録処理を行います。</p>
 	 * 処理後書籍登録ページ{@link BookController#bookAdmin(ModelAndView, BookAdminForm)}へとリダイレクトする。
 	 * @param mav 画面情報<br>
-	 * エラー発生時はエラー情報を与える。
+	 * エラー発生時はエラー情報を格納します。
 	 * @param form {@link BookAdminForm}書籍登録用のフォーム 画面から入力された値が格納されます。
 	 * @param result バリデーションエラー発生時にhasErrorsメソッドが実行され、<br>
 	 * エラー処理を行います。
@@ -136,7 +136,7 @@ public class BookController {
 	 * 渡してあげます。</p>
 	 * @param mav 書籍情報/貸出情報/画面情報
 	 * @param isbn ISBN-13 貸出用個別URLと書籍検索用
-	 * @param lend 貸出フォーム 貸し出す蔵書IDを格納
+	 * @param lend 貸出フォーム 貸出蔵書IDを格納
 	 * @return 格納された書籍情報と貸出情報、画面情報を渡します。
 	 */
 	//貸出ページ
@@ -167,7 +167,7 @@ public class BookController {
 	 * <p>POSTされた内容に問題がなければ貸出処理をして、<br>
 	 * 貸出完了ページへと遷移します。</p>
 	 * @param mav 画面情報
-	 * @param isbn ISBN-13 個別URLﾄ書籍検索用
+	 * @param isbn ISBN-13 個別URLと書籍検索用
 	 * @param lend 貸出フォーム<br>
 	 *  バリデーションチェックを行います。
 	 * @param result バリデーションエラー発生時にhasErrorsメソッドが実行され、<br>

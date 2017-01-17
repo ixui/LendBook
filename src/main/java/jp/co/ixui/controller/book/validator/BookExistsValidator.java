@@ -27,7 +27,7 @@ public class BookExistsValidator implements ConstraintValidator<BookExists, Book
 	}
 
 	/**
-	 * BookAdminFormに格納されているISBNから登録されているか確認する。
+	 * {@link BookAdminForm}に格納されているISBNから登録されているか確認する。
 	 * @return 既に登録されていればFalse,登録されていなければTrueを返す。
 	 */
 	@Override

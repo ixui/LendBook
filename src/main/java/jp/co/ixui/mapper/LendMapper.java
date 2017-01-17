@@ -22,7 +22,7 @@ public interface LendMapper {
 	/**
 	 * 借りようとしている蔵書の情報を取得します。<br>
 	 * @param bookStockId 借りようとしている蔵書ID
-	 * @return Lendに借りる蔵書の情報を返します。
+	 * @return 借りる蔵書の情報を返します。
 	 */
 	//返却されているかを取得
 	Lend getReturnDate(int bookStockId);
@@ -30,7 +30,7 @@ public interface LendMapper {
 	/**
 	 * 借りようとしている書籍が貸出履歴に存在するかを取得します<br>
 	 * @param bookStockId 借りようとしている蔵書ID
-	 * @return Lendにかかりる蔵書の情報を返します。
+	 * @return 借りる蔵書の情報を返します。
 	 */
 	//貸出履歴を検索
 	Lend getLendingHistory(int bookStockId);

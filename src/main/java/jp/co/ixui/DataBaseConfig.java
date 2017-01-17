@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * DB接続用クラスです。<br>
- * 環境変数を利用してDBへとアクセスする。
+ * 環境変数を利用してDBへとアクセスします。
  * @author NAKAJIMA
  *
  */

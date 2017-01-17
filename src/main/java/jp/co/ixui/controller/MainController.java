@@ -58,7 +58,7 @@ public class MainController {
 
 	/**
 	 * <p>メイン画面を表示します。<br>
-	 * SpringSecurity側のチェックを通過した場合にこの画面に自動的に遷移します。</p><br>
+	 * SpringSecurity側のチェックを通過した場合にこの画面に自動的に遷移します。</p>
 	 *
 	 * <p>新着書籍/おすすめ書籍を表示します。<br>
 	 * 表示させる書籍数は変数limitを使い設定します。</p>

@@ -25,7 +25,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 
 	/**
-	 * css/js/imagesフォルダをログインしていない状態でも読み込めるように設定。
+	 * css/js/imagesフォルダをログインしていない状態でも読み込めるように設定しています。
 	 */
 	//静的コンテンツに対して除外設定 css/js/imagesを読み込めるようにする
 	@Override
@@ -34,13 +34,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	}
 
 	/**
-	 * アクセス管理メソッド<br>
+	 * アクセス管理<br>
 	 * /index、loginページは全ユーザーアクセス許可<br>
 	 * その他のページはログイン後にアクセスを許可する。<br>
-	 * また、管理者用のページは管理者権限を持たないアカウントはアクセスはできない。<br><br>
+	 * また、管理者用のページは管理者権限を持たないアカウントはアクセスはできません。<br><br>
 	 *
 	 * ログインフォームに入力が必要な情報は<br>
-	 * メールアドレスとパスワード<br>
+	 * usernameParameter("mailAddress")<br>
+	 * passwordParameter("password")です。
 	 */
 	//アクセス管理
 	@Override
@@ -72,7 +73,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 
 	/**
 	 * ログイン処理
-	 * GlobalAuthenticationConfigurerAdapterを継承してログイン処理のカスタマイズを行っている。
+	 * GlobalAuthenticationConfigurerAdapterを継承してログイン処理のカスタマイズを行っています。
 	 * @author NAKAJIMA
 	 *
 	 */
@@ -80,14 +81,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
     static class AuthenticationConfiguration
     extends GlobalAuthenticationConfigurerAdapter {
 
+		/**
+		 * 認証ユーザの処理をUserDetailsServiceを継承した{@link UserDetailsServiceImpl}で行っています。
+		 */
 		@Autowired
 		UserDetailsServiceImpl userDetailsService;
 
 		/**
-		 * パスワードの暗号化
-		 * BCryptPasswordEncoderを使用
-		 * @return コンストラクタ内にパスワードハッシュ化の強度を指定する。
-		 * 指定しない場合はデフォルト値の10が入っている。
+		 * パスワードの暗号化にBCryptPasswordEncoderを使用しています。
+		 * @return コンストラクタ内にパスワードハッシュ化の強度を指定できます。
+		 * 指定しない場合はデフォルト値の10が入っています。
 		 */
         @Bean //パスワードの暗号化方式を宣言
         public PasswordEncoder passwordEncoder() {
@@ -95,9 +98,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
         }
 
         /**
-         * ログインユーザの認証処理を行う。
-         * UserDetailsServiceを使いユーザ情報を取得する。
-         * passwordEncoderを使い入力されたパスワードをハッシュ化し認証を行う。
+         * ログインユーザの認証処理を行っています。
+         * {@link UserDetailsServiceImpl}を使いユーザ情報を取得します。
+         * passwordEncoderを使い入力されたパスワードをハッシュ化し認証を行います。
          */
 		@Override
         public void init(AuthenticationManagerBuilder auth) throws Exception {

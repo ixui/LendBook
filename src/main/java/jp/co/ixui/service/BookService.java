@@ -20,24 +20,33 @@ import jp.co.ixui.mapper.MstBookStockMapper;
 /**
  * 書籍用サービスクラス<br><br>
  *
- * コントローラやバリデーションなどでの処理は基本的にこちらで行う。
+ * 書籍の登録や貸出の処理を行います。
  * @author NAKAJIMA
- *
  */
 @Service
 public class BookService {
 
+	/**
+	 * 書籍マッパー
+	 */
 	@Autowired
 	MstBookMapper mstBookMapper;
 
+	/**
+	 * 蔵書マッパー
+	 */
 	@Autowired
 	MstBookStockMapper mstBookStockMapper;
 
+	/**
+	 * 貸出マッパー
+	 */
 	@Autowired
 	LendMapper lendMapper;
 
 	/**
-	 * 新規で書籍を登録する。
+	 * <p>新規で書籍を登録します。</p>
+	 * <b>蔵書登録ページがないので、書籍の登録時に同時に蔵書を登録しています</b>
 	 * @param mstBook 登録したい書籍の情報
 	 * @param mstBookStock 登録したい蔵書の情報
 	 */
@@ -51,7 +60,7 @@ public class BookService {
 	}
 
 	/**
-	 * 新規で蔵書を登録する。
+	 * 新規で蔵書を登録します。
 	 * @param mstBookStock 登録したい蔵書の情報
 	 */
 	//蔵書マスターに登録
@@ -60,13 +69,14 @@ public class BookService {
 	}
 
 	/**
-	 * ISBN-13から指定された蔵書の情報を1冊取得する。<br>
-	 * 半角数字、半角ハイフンで記述すること。<br>
-	 * <b>例: "123-1234567890"</b><br>
-	 * 現在の蔵書は書籍の数とイコールになっているので、
-	 * 同ISBNは一つのみとなる。
-	 * @param isbn ISBN-13を使う。 ISBN-10と混同しないよう注意
-	 * @return ISBNから取得した蔵書情報をMstBookStockに格納する。
+	 * <p>ISBN-13から指定された蔵書の情報を1冊取得します。</p>
+	 * <p>半角数字、半角ハイフンで記述してください。<br>
+	 * <b>例: "123-1234567890"</b></p>
+	 * <p>現在の蔵書は書籍の数とイコールになっているので、
+	 * 同ISBNは一つだけになります。</p>
+	 * @param isbn ISBN-13を使います<br>
+	 * ISBN-10と混同しないよう注意してください。
+	 * @return ISBNから取得した蔵書情報をMstBookStockに返します。
 	 */
 	//蔵書検索
 	public MstBookStock getBookStock(String isbn){
@@ -74,12 +84,12 @@ public class BookService {
 	}
 
 	/**
-	 * 書籍が登録された日付(yyyy/MM/dd)から新しいもの順に取得する。<br>
-	 * 取得する冊数は変数limitによって変更する。<br>
-	 * 日付で取得しているため、登録日時が同じものがlimit以上存在した場合、<br>
-	 * ISBN順で表示される。
+	 * <p>書籍が登録された日付(yyyy/MM/dd)から新しいもの順に取得します。</p>
+	 * <p>取得する冊数は変数limitによって変更します。</p>
+	 * <p>日付で取得しているので、登録日時が同じものがlimit以上に存在した時、<br>
+	 * ISBN順で表示されます。</p>
 	 * @param limit 取得する新着書籍の冊数
-	 * @return limitで指定した冊数の新着書籍を取得する
+	 * @return limitで指定した冊数の新着書籍を返します。
 	 */
 	//新着書籍取得
 	public List<MstBook> getNewlyBook(int limit){
@@ -87,12 +97,13 @@ public class BookService {
 	}
 
 	/**
-	 * ISBN-13から指定された書籍の情報を1冊取得する。<br>
-	 * 半角数字、半角ハイフンで記述すること。<br>
+	 * <p>ISBN-13から指定された書籍の情報を1冊取得する。</p>
+	 * <p>半角数字、半角ハイフンで記述してください。<br>
 	 * <b>例: "123-1234567890"</b><br>
-	 * 書籍の同ISBNは存在しないものとする。
-	 * @param isbn ISBN-13を使う。 ISBN-10と混同しないよう注意
-	 * @return ISBNから取得した書籍情報をMstBookに格納する。
+	 * 書籍の同ISBNは存在しません。</p>
+	 * @param isbn ISBN-13を使います。<br>
+	 * ISBN-10と混同しないよう注意してください。
+	 * @return ISBNから取得した書籍情報をMstBookに返します。
 	 */
 	//書籍情報
 	public MstBook getBook(String isbn){
@@ -100,12 +111,12 @@ public class BookService {
 	}
 
 	/**
-	 * 書籍の貸出処理を行う。<br>
-	 * 実際の貸出処理はLendで行う。<br>
-	 * Lendに貸出に必要なプロパティを渡すためにMstEmp、ISBNを引数として使っている。
-	 * @param lend Lendに情報を格納し最終的な貸出処理を行う。
-	 * @param mstEmp 誰が借りたのかを明らかにするために社員番号をlendに渡す。
-	 * @param isbn MstBookStockに借りる蔵書の情報を取得する引数として使用
+	 * <p>書籍の貸出処理を行います。<br>
+	 * 実際の貸出処理はLendで行います。</p>
+	 * Lendに貸出に必要なプロパティを渡すためにMstEmp、ISBNを引数として使っています。
+	 * @param lend Lendに情報を格納し最終的な貸出処理を行います。
+	 * @param mstEmp 誰が借りたのかを明らかにするために社員番号をlendに渡します。
+	 * @param isbn MstBookStockに借りる蔵書の情報を取得する引数として使用しています。
 	 */
 	//貸出処理
 	@Transactional
@@ -118,15 +129,15 @@ public class BookService {
 	}
 
 	/**
-	 * 貸出が可能かどうかを蔵書ID(bookStockId)を使い判別する。<br>
-	 * 貸出の履歴と返却がされているかをチェックする。<br>
-	 * 返却の確認は返却日がNullのものがあれば先に表示し、なければ返却日が最新のものを取得している。<br>
-	 * @param bookStockId DBの蔵書マスターと貸出の外部キーである蔵書IDを使用
-	 * @return getLendingHistoryを使い、貸出DBに該当する蔵書IDがあるかどうかを判別する。<br>
-	 * 一度でも貸し出されていなければ(null)貸し出しが可能となりtrueを返す。<br>
-	 * getReturnDateを使い、貸出DBに該当する蔵書IDの返却日を取得する。<br>
-	 * 返却日の値が入力されていれば、蔵書は貸出可能な状態であるのでtrueを返す。<br>
-	 * 両者に該当しない場合は貸出ができずfalseとなる。
+	 * <p>貸出が可能かどうかを蔵書ID(bookStockId)を使い判別します。</p>
+	 * <p>貸出の履歴と返却がされているかをチェックします。<br>
+	 * 返却の確認は返却日がNullのものがあれば先に表示し、なければ返却日が最新のものを取得しています。</p>
+	 * @param bookStockId DBの蔵書マスターと貸出の外部キーである蔵書IDを使用します。
+	 * @return getLendingHistoryを使い、貸出DBに該当する蔵書IDがあるかどうかを判別します。<br>
+	 * 一度でも貸し出されていなければ(nullであれば)貸出が可能でありtrueを返します。<br>
+	 * getReturnDateを使い、貸出DBに該当する蔵書IDの返却日を取得します。<br>
+	 * 返却日の値が入力されていれば、蔵書は貸出が可能でありtrueを返します。<br>
+	 * 両者に該当しない場合は貸出ができずfalseを返します。
 	 */
 	//貸出の可否を判別
 	public Boolean isLendable(int bookStockId){
@@ -142,10 +153,10 @@ public class BookService {
 	}
 
 	/**
-	 * 貸出が可能かどうかをISBNを使い判別する。<br>
-	 * ISBNから蔵書IDを取得しisLendableメソッド利用している。<br>
-	 * 実際の処理は{@link BookService#isLendable(int)}を参照
-	 * @param isbn ISBN-13を使う。 ISBN-10と混同しないよう注意
+	 * <p>貸出が可能かどうかをISBNを使い判別します。</p>
+	 * <p>ISBNから蔵書IDを取得しisLendableメソッド利用しています。<br>
+	 * 実際の処理は{@link BookService#isLendable(int)}を参照してください。</p>
+	 * @param isbn ISBN-13を使。 ISBN-10と混同しないよう注意
 	 * @return 取得した処理がtrueなら貸出可能、falseなら貸出不能。
 	 */
 	//ISBNから貸出の可否を判別
@@ -157,9 +168,11 @@ public class BookService {
 	/**
 	 * 新規に書籍登録を行う時に登録ができるかどうか判別を行う。<br>
 	 * ISBN-13から指定されたISBNが既にDB上に登録されているか確認する。
-	 * @param isbn ISBN-13を使う。 ISBN-10と混同しないよう注意
-	 * @return もし既に登録されていて値が取得できた場合、新規で登録できないようfalseを返す。<br>
-	 * DB上にデータが存在せず、nullの場合、登録が可能でありtrueを返す。
+	 * @param isbn ISBN-13を使います。<br>
+	 * ISBN-10と混同しないよう注意してください。
+	 * @return もし既に登録されていて値が取得できた時、<br>
+	 * 新規で登録できないようfalseを返します。<br>
+	 * DB上にデータが存在せず、nullの時は登録が可能でありtrueを返します。
 	 */
 	//ISBNから既に本が登録されているか判別
 	public Boolean isBookResgitered(String isbn){
@@ -171,17 +184,17 @@ public class BookService {
 	}
 
 	/**
-	 * 返却予定日を判別する。<br>
-	 * String型で取得した返却予定日(returnDueDate)をDate型(yyyy/MM/dd)に置き換え
-	 * 現在の日付との差分を算出する。
-	 * 60日以上だった場合は貸出はできない。
-	 * @param returnDueDate String型で(yyyy/MM/dd)の形で渡される。
-	 * それ以外の値の場合は、Date型に置き換える時に値が異常になる。
-	 * @return 空だった場合は、別に処理するためtrueを返す。
-	 * 受け取った値が異常だった場合は例外をキャッチしtrueとして別に処理する。
-	 * 本日の日付を貸出日とし、返却予定日との日付の差分を算出し
-	 * 60日以上だった場合にはfalseを返す。
-	 * 上記に該当しない場合trueを返し貸出す。
+	 * <p>返却予定日を判別します。</p>
+	 * <p>String型で取得した返却予定日(returnDueDate)をDate型(yyyy/MM/dd)に置き換え<br>
+	 * 現在の日付との差分を算出します。<br>
+	 * 60日以上だった場合は貸出はできません。</p>
+	 * @param returnDueDate String型で(yyyy/MM/dd)の形で渡されます。
+	 * それ以外の値の場合は、Date型に置き換える時に値が異常になります。
+	 * @return 空だった場合は、別の処理をするためtrueを返します。
+	 * 受け取った値が異常だった場合は例外をキャッチしtrueとして別に処理をします。
+	 * 本日の日付を貸出日とし、返却予定日との日付の差分を算出し、
+	 * 60日以上だった場合にはfalseを返します。
+	 * 上記に該当しない場合trueを返し貸出します。
 	 */
 	//返却予定日の判別
 	public Boolean isReturnDueDateOver(String returnDueDate){
