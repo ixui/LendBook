@@ -13,24 +13,27 @@ import jp.co.ixui.domain.MstBook;
 import jp.co.ixui.service.BookService;
 
 /**
- * <b>メインコントローラ</b><br><br>
+ * <p><b>メインコントローラ</b></p>
  *
- * インデックス画面、ログイン画面、書籍画面を表示する。<br>
- * 書籍の処理を行うような画面は{@link BookController}を使用する。
+ * <p>インデックス画面、ログイン画面、メイン画面を表示します。<br>
+ * 書籍の処理を行うような画面は{@link BookController}を使用します。</p>
  * @author NAKAJIMA
  *
  */
 @Controller
 public class MainController {
 
+	/**
+	 * 書籍に関する処理を行うサービスクラス
+	 */
 	@Autowired
 	BookService bookService;
 
 	/**
-	 * index画面を表示する<br>
+	 * index画面を表示します<br>
 	 * /indexと/は同じ画面を表示
-	 * @param mav 画面以外に渡す情報はなし
-	 * @return index.htmlを渡す。
+	 * @param mav 画面情報
+	 * @return 画面情報を渡します。
 	 */
 	//トップページ
 	@RequestMapping(value = {"/", "/index"}, method=RequestMethod.GET)
@@ -41,10 +44,10 @@ public class MainController {
 	}
 
 	/**
-	 * ログイン画面を表示する。<br>
-	 * POSTはSpringSecurityを実装したクラスにて行う。
-	 * @param mav 画面以外に渡す情報なし。
-	 * @return login.htmlを渡す。
+	 * ログイン画面を表示します。<br>
+	 * POSTはSpringSecurityを実装したクラスによって行われます。
+	 * @param mav 画面情報
+	 * @return 画面情報を渡します。
 	 */
 	//ログインページ
 	@RequestMapping(value = "/login", method=RequestMethod.GET)
@@ -55,13 +58,13 @@ public class MainController {
 	}
 
 	/**
-	 * メイン画面を表示する。<br>
-	 * SpringSecurity側のチェックを通過した場合にこの画面に自動的に遷移する。<br><br>
+	 * <p>メイン画面を表示します。<br>
+	 * SpringSecurity側のチェックを通過した場合にこの画面に自動的に遷移します。</p><br>
 	 *
-	 * 新着書籍/おすすめ書籍を表示させる。<br>
-	 * 表示させる書籍数は変数limitを使い設定する。
-	 * @param mav 書籍情報を格納する。
-	 * @return main.htmlと格納した情報を渡す。
+	 * <p>新着書籍/おすすめ書籍を表示します。<br>
+	 * 表示させる書籍数は変数limitを使い設定します。</p>
+	 * @param mav 画面情報と書籍情報
+	 * @return 画面情報と格納した情報を渡します。
 	 */
 	//ログイン後メイン
 	@RequestMapping(value = "/main", method=RequestMethod.GET)

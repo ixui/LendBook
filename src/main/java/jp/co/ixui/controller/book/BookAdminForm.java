@@ -10,10 +10,9 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * 書籍登録用フォーム
- * 書籍登録フォームで送信された値が格納される。
+ * <p><b>書籍登録用フォーム</b></p>
+ * 書籍登録フォームで送信された値が格納されます。
  * @author NAKAJIMA
- *
  */
 @Getter
 @Setter
@@ -21,7 +20,8 @@ import lombok.Setter;
 public class BookAdminForm {
 
 		/**
-		 * String型 ISBN-13を使用<br>
+		 * <p>String型 ISBN-13を使用します。</p><br>
+		 * 例: 123-1234567890<br>
 		 * ISBN-10の場合エラー
 		 */
 		//ISBN
@@ -30,9 +30,8 @@ public class BookAdminForm {
 		private String isbn;
 
 		/**
-		 * 書籍の名前<br>
-		 * 空文字、Null以外に指定なし。<br>
-		 * 可能であればAmazonで使われている書籍名を利用。
+		 * <p>書籍の名前</p><br>
+		 * 空文字、Null以外は使えません。<br>
 		 */
 		//書籍名
 		@NotNull
@@ -40,9 +39,8 @@ public class BookAdminForm {
 		private String bookName;
 
 		/**
-		 * 著者名<br>
-		 * 複数の著者も入力可能だが、<br>
-		 * 複数名の検索が行えるか不明なので非推奨
+		 * <p>著者名</p><br>
+		 * 複数の著者も入力可能できてしまうが、非推奨です。
 		 */
 		//著者
 		@NotNull
@@ -50,8 +48,9 @@ public class BookAdminForm {
 		private String author;
 
 		/**
-		 * 出版日<br>
+		 * <p>出版日</p><br>
 		 * 半角yyyy/MM/ddのフォーマットで入力<br>
+		 * 例: 2010/12/24<br>
 		 * 全角やyyyy-MM-ddの場合エラーになります。
 		 */
 		//出版日
@@ -60,8 +59,8 @@ public class BookAdminForm {
 		private String publishDate;
 
 		/**
-		 * 出版社<br>
-		 * 正式名称を使用してください。
+		 * <p>出版社</p><br>
+		 * 空文字、Nullはエラーになります。
 		 */
 		//出版社
 		@NotNull
@@ -69,9 +68,8 @@ public class BookAdminForm {
 		private String publisher;
 
 		/**
-		 * 書籍の内容<br>
-		 * 可能であれば読んだ人間の書籍評が望ましい。<br>
-		 * Amazonや公式サイトなどから引用可能であれば使用。
+		 * <p>書籍の内容</p><br>
+		 * 文字数は200文字以下です。
 		 */
 		//内容
 		@NotNull
@@ -79,8 +77,8 @@ public class BookAdminForm {
 		private String content;
 
 		/**
-		 * 貸出状況<br>
-		 * 貸出可否のバリデーションチェックで使用。<br>
+		 * <p>貸出状況</p><br>
+		 * 貸出可否のバリデーションチェックで使用します。<br>
 		 * Trueを返されれば貸出可能
 		 */
 		//貸出可否

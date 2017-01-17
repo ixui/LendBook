@@ -108,6 +108,7 @@ public class BookService {
 	 * @param isbn MstBookStockに借りる蔵書の情報を取得する引数として使用
 	 */
 	//貸出処理
+	@Transactional
 	public void registerLend(Lend lend, MstEmp mstEmp,String isbn){
 		lend.setEmpNum(mstEmp.getEmpNum());
 		MstBookStock mstBookStcok = getBookStock(isbn);

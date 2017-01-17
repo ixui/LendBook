@@ -21,8 +21,8 @@ public class LoginUserDetails extends User{
 	private final MstEmp mstEmp;
 
 	/**
-	 * 渡されたMstEmpの値をこのクラスのフィールドに格納します。
-	 * @param mstEmp {@link UserDetailsServiceImpl#loadUserByUsername(String)で取得した値
+	 * 渡された{@link MstEmp}の値をこのクラスのフィールドに格納します。
+	 * @param mstEmp {@link UserDetailsServiceImpl#loadUserByUsername(String)}で取得した値
 	 */
 	public LoginUserDetails(MstEmp mstEmp){
 		super(
