@@ -5,6 +5,11 @@ import javax.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * 蔵書マスタードメインオブジェクト
+ * @author NAKAJIMA
+ *
+ */
 @Getter
 @Setter
 public class MstBookStock {

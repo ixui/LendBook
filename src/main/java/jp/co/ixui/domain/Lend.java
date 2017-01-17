@@ -10,7 +10,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * 貸出用オブジェクト
+ * 貸出用ドメインオブジェクト
  * @author NAKAJIMA
  *
  */

@@ -63,7 +63,7 @@ public class BookController {
 	 * 処理後書籍登録ページ{@link BookController#bookAdmin(ModelAndView, BookAdminForm)}へとリダイレクトする。
 	 * @param mav 画面情報<br>
 	 * エラー発生時はエラー情報を与える。
-	 * @param form {@lin BookAdminForm}書籍登録用のフォーム 画面から入力された値が格納されます。
+	 * @param form {@link BookAdminForm}書籍登録用のフォーム 画面から入力された値が格納されます。
 	 * @param result バリデーションエラー発生時にhasErrorsメソッドが実行され、<br>
 	 * エラー処理を行います。
 	 * @return 正常に処理が行われた後、書籍登録ページへとリダイレクトします。<br>
