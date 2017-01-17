@@ -11,6 +11,11 @@ import javax.validation.Payload;
 
 import jp.co.ixui.controller.book.validator.LendAvailableValidator;
 
+/**
+ * 貸出ができるかを判別するアノテーション
+ * @author NAKAJIMA
+ *
+ */
 @Constraint(validatedBy = LendAvailableValidator.class)
 @Target({ ElementType.TYPE, ElementType.FIELD })
 @Retention(RetentionPolicy.RUNTIME)
