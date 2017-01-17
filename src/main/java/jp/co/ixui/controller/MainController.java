@@ -18,7 +18,6 @@ import jp.co.ixui.service.BookService;
  * <p>インデックス画面、ログイン画面、メイン画面を表示します。<br>
  * 書籍の処理を行うような画面は{@link BookController}を使用します。</p>
  * @author NAKAJIMA
- *
  */
 @Controller
 public class MainController {
