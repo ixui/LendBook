@@ -18,7 +18,6 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 /**
  * SpringSecurity実装クラス
  * @author NAKAJIMA
- *
  */
 @Configuration
 @EnableWebSecurity
@@ -73,7 +72,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	 * ログイン処理
 	 * GlobalAuthenticationConfigurerAdapterを継承してログイン処理のカスタマイズを行っています。
 	 * @author NAKAJIMA
-	 *
 	 */
 	@Configuration
     static class AuthenticationConfiguration

@@ -18,6 +18,9 @@ import jp.co.ixui.service.BookService;
  */
 public class ReturnDueDateOverValidator implements ConstraintValidator<ReturnDueDateOver, Lend> {
 
+	/**
+	 * 書籍に関する処理を行うサービスクラス
+	 */
 	@Autowired
 	BookService service;
 

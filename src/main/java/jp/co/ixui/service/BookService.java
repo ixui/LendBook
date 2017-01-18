@@ -50,8 +50,8 @@ public class BookService {
 	 * <b>蔵書登録ページがないので、書籍の登録時に同時に蔵書を登録しています。</b>
 	 * @param mstBook 登録したい書籍の情報
 	 * @param mstBookStock 登録したい蔵書の情報
+	 * @param user 登録するユーザの情報
 	 */
-	//書籍登録
 	@Transactional
 	public void registerBook(MstBook mstBook, MstBookStock mstBookStock, LoginUserDetails user){
 
@@ -68,7 +68,6 @@ public class BookService {
 	 * 新規で蔵書を登録します。
 	 * @param mstBookStock 登録したい蔵書の情報
 	 */
-	//蔵書マスターに登録
 	public void registerBookStock(MstBookStock mstBookStock){
 		mstBookStockMapper.registerBookStock(mstBookStock);
 	}
@@ -83,7 +82,6 @@ public class BookService {
 	 * ISBN-10と混同しないよう注意してください。
 	 * @return ISBNから取得した蔵書情報をMstBookStockに返します。
 	 */
-	//蔵書検索
 	public MstBookStock getBookStock(String isbn){
 		return mstBookStockMapper.getBookStock(isbn);
 	}
@@ -96,7 +94,6 @@ public class BookService {
 	 * @param limit 取得する新着書籍の冊数
 	 * @return limitで指定した冊数の新着書籍を返します。
 	 */
-	//新着書籍取得
 	public List<MstBook> getNewlyBook(int limit){
 		return mstBookMapper.getNewlyBook(limit);
 	}
@@ -110,7 +107,6 @@ public class BookService {
 	 * ISBN-10と混同しないよう注意してください。
 	 * @return ISBNから取得した書籍情報をMstBookに返します。
 	 */
-	//書籍情報
 	public MstBook getBook(String isbn){
 		return mstBookMapper.getBook(isbn);
 	}
@@ -123,13 +119,15 @@ public class BookService {
 	 * @param mstEmp 誰が借りたのかを明らかにするために社員番号をlendに渡します。
 	 * @param isbn MstBookStockに借りる蔵書の情報を取得する引数として使用しています。
 	 */
-	//貸出処理
 	@Transactional
 	public void registerLend(Lend lend, MstEmp mstEmp,String isbn){
+
+		//Lendに貸出処理に必要な値を渡す
 		lend.setEmpNum(mstEmp.getEmpNum());
 		MstBookStock mstBookStcok = getBookStock(isbn);
 		lend.setBookStockId(mstBookStcok.getBookStockId());
 		lend.setOwnerEmpNum(mstBookStcok.getOwnerEmpNum());
+
 		lendMapper.registerLend(lend);
 	}
 
@@ -144,9 +142,9 @@ public class BookService {
 	 * 返却日の値が入力されていれば、蔵書は貸出が可能でありtrueを返します。<br>
 	 * 両者に該当しない場合は貸出ができずfalseを返します。
 	 */
-	//貸出の可否を判別
 	@Transactional
 	public Boolean isLendable(int bookStockId){
+
 		if(lendMapper.getLendingHistory(bookStockId) == null){
 			return true;
 		}
@@ -165,7 +163,6 @@ public class BookService {
 	 * @param isbn ISBN-13を使。 ISBN-10と混同しないよう注意
 	 * @return 取得した処理がtrueなら貸出可能、falseなら貸出不能。
 	 */
-	//ISBNから貸出の可否を判別
 	@Transactional
 	public Boolean isLendableISBN(String isbn){
 		MstBookStock mstBookStock = getBookStock(isbn);
@@ -181,13 +178,15 @@ public class BookService {
 	 * 新規で登録できないようfalseを返します。<br>
 	 * DB上にデータが存在せず、nullの時は登録が可能でありtrueを返します。
 	 */
-	//ISBNから既に本が登録されているか判別
 	@Transactional
-	public Boolean isBookResgitered(String isbn){
+	public Boolean isBookRegistered(String isbn){
+
 		MstBook mstBook = this.mstBookMapper.getBook(isbn);
+
 		if(mstBook != null){
 			return false;
 		}
+
 		return true;
 	}
 
@@ -204,7 +203,6 @@ public class BookService {
 	 * 60日以上だった場合にはfalseを返します。
 	 * 上記に該当しない場合trueを返し貸出します。
 	 */
-	//返却予定日の判別
 	@Transactional
 	public Boolean isReturnDueDateOver(String returnDueDate){
 

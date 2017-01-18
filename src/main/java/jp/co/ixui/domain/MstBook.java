@@ -2,6 +2,8 @@ package jp.co.ixui.domain;
 
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,16 +22,16 @@ public class MstBook {
 		 * 例: 123-1234567890</p>
 		 * Nullは使用できません。
 	 */
-	//ISBN
 	@NotNull
+	@NotEmpty
 	private String isbn;
 
 	/**
 	 * <p>書籍の名前</p>
 	 * nullは使用できません。<br>
 	 */
-	//書籍名
 	@NotNull
+	@NotEmpty
 	private String bookName;
 
 	/**
@@ -37,8 +39,8 @@ public class MstBook {
 	 * <b>複数の著者の入力は非推奨です。</b><br>
 	 * Nullは使用できません。
 	 */
-	//著者
 	@NotNull
+	@NotEmpty
 	private String author;
 
 	/**
@@ -48,16 +50,16 @@ public class MstBook {
 	 * 全角やyyyy-MM-ddの場合エラーになります。<br>
 	 * Nullは使用できません。</p>
 	 */
-	//出版日
 	@NotNull
+	@NotEmpty
 	private String publishDate;
 
 	/**
 	 * <p>出版社</p><br>
 	 * Nullは使用できません。
 	 */
-	//出版社
 	@NotNull
+	@NotEmpty
 	private String publisher;
 
 	/**
@@ -65,21 +67,19 @@ public class MstBook {
 	 * <p>文字数は200文字以下です。<br>
 	 * Nullや空文字は使用できません。</p>
 	 */
-	//内容
 	@NotNull
+	@NotEmpty
 	private String content;
 
 	/**
 	 * <p>登録者番号</p>
 	 */
-	//登録者
 	private int registEmpNum;
 
 	/**
 	 * <p>更新者番号</p>
 	 * DBの更新したアカウントの社員番号が入ります。
 	 */
-	//更新者
 	private int updateEmpNum;
 
 	/**
@@ -87,7 +87,6 @@ public class MstBook {
 	 * DBに最初に入力された日の日付が入ります。<br>
 	 * 一度入力された後は変更しないでください。
 	 */
-	//登録日時
 	private String registTime;
 
 	/**
@@ -95,6 +94,5 @@ public class MstBook {
 	 * 最初に値が入るのは登録された日付です。<br>
 	 * それ以降は返却処理が行われるなどのDB上の処理が行われた時に更新されます。
 	 */
-	//更新日時
 	private String updateTime;
 }

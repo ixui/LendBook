@@ -66,6 +66,7 @@ public class BookController {
 	 * @param form {@link BookAdminForm}書籍登録用のフォーム 画面から入力された値が格納されます。
 	 * @param result バリデーションエラー発生時にhasErrorsメソッドが実行され、<br>
 	 * エラー処理を行います。
+	 * @param user 書籍登録を行うユーザの情報
 	 * @return 正常に処理が行われた後、書籍登録ページへとリダイレクトします。<br>
 	 * エラー時はエラーメッセージを保持し、書籍登録ページをセットし返します。
 	 */

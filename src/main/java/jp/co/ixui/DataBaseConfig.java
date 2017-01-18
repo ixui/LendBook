@@ -31,7 +31,6 @@ public class DataBaseConfig {
 	 *
 	 * @return DBにアクセスする設定を返します。
 	 */
-	//プロパティの設定を各フィールドにインジェクション
 	@Bean
 	@ConfigurationProperties("spring.datarsource")
 	public DataSource datasource(){

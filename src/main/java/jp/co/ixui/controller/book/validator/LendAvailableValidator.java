@@ -16,6 +16,9 @@ import jp.co.ixui.service.BookService;
  */
 public class LendAvailableValidator implements ConstraintValidator<LendAvailable, Lend> {
 
+	/**
+	 * 書籍に関する処理を行うサービスクラス
+	 */
 	@Autowired
 	BookService service;
 

@@ -15,6 +15,9 @@ import jp.co.ixui.service.BookService;
  */
 public class BookExistsValidator implements ConstraintValidator<BookExists, BookAdminForm> {
 
+	/**
+	 * 書籍に関する処理を行うサービスクラス
+	 */
 	@Autowired
 	BookService service;
 
@@ -23,7 +26,6 @@ public class BookExistsValidator implements ConstraintValidator<BookExists, Book
 	 */
 	@Override
 	public void initialize(BookExists constraintAnnotation) {
-
 	}
 
 	/**
@@ -37,7 +39,6 @@ public class BookExistsValidator implements ConstraintValidator<BookExists, Book
 		String isbn = value.getIsbn();
 
 		//登録されていなければTrueを返す
-		return service.isBookResgitered(isbn);
+		return service.isBookRegistered(isbn);
 	}
-
 }

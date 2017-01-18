@@ -82,7 +82,8 @@ public class BookAdminForm {
 		private Boolean isLendable;
 
 		/**
-		 * <p>登録者番号</p>
+		 * <p>社員番号</p>
+		 * Nullは使用できません。
 		 */
 		@NotNull
 		private int empNum;

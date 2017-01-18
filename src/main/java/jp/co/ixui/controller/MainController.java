@@ -35,7 +35,6 @@ public class MainController {
 	 * @param mav 画面情報
 	 * @return 画面情報を渡します。
 	 */
-	//トップページ
 	@RequestMapping(value = {"/", "/index"}, method=RequestMethod.GET)
 	public ModelAndView top(
 			ModelAndView mav){
@@ -49,7 +48,6 @@ public class MainController {
 	 * @param mav 画面情報
 	 * @return 画面情報を渡します。
 	 */
-	//ログインページ
 	@RequestMapping(value = "/login", method=RequestMethod.GET)
 	public ModelAndView login(
 			ModelAndView mav){
@@ -66,7 +64,6 @@ public class MainController {
 	 * @param mav 画面情報と書籍情報
 	 * @return 画面情報と格納した書籍情報を返します。
 	 */
-	//ログイン後メイン
 	@RequestMapping(value = "/main", method=RequestMethod.GET)
 	public ModelAndView main(
 			ModelAndView mav){
