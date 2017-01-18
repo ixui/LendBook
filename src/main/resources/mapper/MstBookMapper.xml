@@ -4,9 +4,8 @@
 
 <select id="registerBook" resultType="MstBook">
 	insert into m_book
-	(book_name, author, publisher, publish_date, isbn, content, regist_time)
 	values
-	(#{bookName}, #{author}, #{publisher}, #{publishDate}, #{isbn}, #{content}, CURRENT_DATE())
+	(#{isbn}, #{bookName}, #{author}, #{publishDate}, #{publisher}, #{content}, #{registEmpNum},#{registEmpNum}, CURRENT_DATE(), CURRENT_DATE())
 </select>
 
 <select id="getBook" resultType="MstBook">

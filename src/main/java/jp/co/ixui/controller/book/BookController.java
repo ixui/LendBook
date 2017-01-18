@@ -74,7 +74,8 @@ public class BookController {
 	public ModelAndView registeredBook
 		(ModelAndView mav,
 				@ModelAttribute("form") @Validated BookAdminForm form,
-				BindingResult result){
+				BindingResult result,
+				@AuthenticationPrincipal LoginUserDetails user){
 
 		//エラー処理
 		if(result.hasErrors()){
@@ -91,7 +92,7 @@ public class BookController {
 		BeanUtils.copyProperties(form, mstBookStock);
 
 		//書籍、蔵書に登録
-		bookService.registerBook(mstBook, mstBookStock);
+		bookService.registerBook(mstBook, mstBookStock, user);
 
 		//リダイレクト
 		mav.setViewName("redirect:/admin/book");

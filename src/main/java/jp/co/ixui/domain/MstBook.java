@@ -73,14 +73,14 @@ public class MstBook {
 	 * <p>登録者番号</p>
 	 */
 	//登録者
-	private String registEmpNum;
+	private int registEmpNum;
 
 	/**
 	 * <p>更新者番号</p>
 	 * DBの更新したアカウントの社員番号が入ります。
 	 */
 	//更新者
-	private String updateEmpNum;
+	private int updateEmpNum;
 
 	/**
 	 * <p>登録日時</p>

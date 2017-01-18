@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import jp.co.ixui.LoginUserDetails;
 import jp.co.ixui.domain.Lend;
 import jp.co.ixui.domain.MstBook;
 import jp.co.ixui.domain.MstBookStock;
@@ -52,7 +53,11 @@ public class BookService {
 	 */
 	//書籍登録
 	@Transactional
-	public void registerBook(MstBook mstBook, MstBookStock mstBookStock){
+	public void registerBook(MstBook mstBook, MstBookStock mstBookStock, LoginUserDetails user){
+
+		//社員番号を格納
+		mstBook.setRegistEmpNum(user.getUser().getEmpNum());
+		mstBookStock.setRegistEmpNum(user.getUser().getEmpNum());
 
 		//オブジェクトに入れたものをmapperを使ってINSERT
 		mstBookMapper.registerBook(mstBook);

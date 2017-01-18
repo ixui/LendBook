@@ -4,9 +4,9 @@
 
 <select id="registerLend" resultType="Lend">
 	insert into lend
-	(book_stock_id,emp_num,owner_emp_num,lend_date,return_due_date)
+	(book_stock_id,emp_num,owner_emp_num,lend_date,return_due_date, regist_emp_num, update_emp_num, regist_time, update_time)
 	values
-	(#{bookStockId},#{empNum},#{ownerEmpNum},CURRENT_DATE(),#{returnDueDate})
+	(#{bookStockId},#{empNum},#{ownerEmpNum},CURRENT_DATE(),#{returnDueDate},#{empNum}, #{empNum}, CURRENT_DATE() , CURRENT_DATE())
 </select>
 
 <select id="getLendingHistory" resultType="Lend">
