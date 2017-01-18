@@ -43,7 +43,7 @@ public class BookExistsValidatorTest {
 		bookAdminForm.setPublishDate("1995/8/10");
 		bookAdminForm.setPublisher("publish");
 
-		when(service.isBookResgitered(bookAdminForm.getIsbn())).thenReturn(true);
+		when(service.isBookRegistered(bookAdminForm.getIsbn())).thenReturn(true);
 
 		//ISBN認証
 		bookExistsValidator.isValid(bookAdminForm, context);

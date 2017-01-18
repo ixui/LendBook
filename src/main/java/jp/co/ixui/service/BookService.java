@@ -147,9 +147,7 @@ public class BookService {
 
 		if(lendMapper.getLendingHistory(bookStockId) == null){
 			return true;
-		}
-
-		if(lendMapper.getReturnDate(bookStockId).getReturnDate() != null){
+		}else if(lendMapper.getReturnDate(bookStockId).getReturnDate() != null){
 			return true;
 		}
 
