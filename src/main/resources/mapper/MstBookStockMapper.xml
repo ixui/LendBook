@@ -4,9 +4,9 @@
 
 <select id="registerBookStock" resultType="MstBookStock">
 	insert into m_book_stock
-	(isbn, regist_emp_num, update_emp_num, regist_time, update_time)
+	( isbn, regist_emp_num, update_emp_num, regist_time, update_time)
 	values
-	(#{isbn}, #{registEmpNum}, #{registEmpNum}, CURRENT_DATE() , CURRENT_DATE())
+	( #{isbn}, #{registEmpNum}, #{registEmpNum}, CURRENT_DATE() , CURRENT_DATE())
 </select>
 
 <select id="getBookStock" resultType="MstBookStock">

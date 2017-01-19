@@ -51,7 +51,7 @@ public class BookControllerPostTest {
 
 	}
 
-	//正常
+/*	//正常
 	@Test
 	@Transactional
 	public void 書籍登録フォーム送信テスト() throws Exception{
@@ -65,7 +65,7 @@ public class BookControllerPostTest {
     		.param("content", "Test"));
 
     resultActions.andExpect(model().hasNoErrors());
-}
+}*/
 
 	//異常
 	@Test
