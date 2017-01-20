@@ -59,8 +59,9 @@
 <!-- 予約ボタン -->
 <div class="container-fluid">
 	<div class="row">
-		<div class=" col-lg-1 col-lg-offset-1">
-			<a href="reserve.html" class="btn  btn-lg reserve-btn" th:href="@{'/reserve/' + ${isbn}}">貸出する</a>
+		<div class=" col-lg-1 col-lg-offset-1" th:switch="${bookDetail.isLendable}">
+			<a href="reserve.html" class="btn  btn-lg reserve-btn" th:href="@{'/reserve/' + ${isbn}}" th:case="true">貸出する</a>
+			<button type="submit" class="btn btn-lg reserve-disable-btn" disabled="disabled" th:case="false">貸出できません</button>
 		</div>
 		<div class="input-group col-lg-4 col-lg-offset-4  tag-btn">
 			<input type="text" class="form-control"></input>

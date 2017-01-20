@@ -2,25 +2,29 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="jp.co.ixui.mapper.LendMapper">
 
-<select id="insertLend" resultType="Lend">
+<select id="registerLend" resultType="Lend">
 	insert into lend
-	(book_stock_id,emp_num,owner_emp_num,lend_date,return_due_date)
+	(book_stock_id,emp_num,owner_emp_num,lend_date,return_due_date, regist_emp_num, update_emp_num, regist_time, update_time)
 	values
-	(#{bookStockId},#{empNum},#{ownerEmpNum},CURRENT_DATE(),#{returnDueDate})
+	(#{bookStockId},#{empNum},#{ownerEmpNum},CURRENT_DATE(),#{returnDueDate},#{empNum}, #{empNum}, CURRENT_DATE() , CURRENT_DATE())
 </select>
 
-<select id="selectLendHistory" resultType="Lend">
+<select id="getLendingHistory" resultType="Lend">
 	select *
 	from lend
 	where book_stock_id = #{bookStockId}
 	limit 1
 </select>
 
-<select id="selectRetunDateBook" resultType="Lend">
+<select id="getReturnDate" resultType="Lend">
 	select *
-	from lend
-	where book_stock_id = #{bookStockId}
-	and return_date is null
+	from lend as l
+	join m_book_stock as mbs
+	on mbs.book_stock_id = l.book_stock_id
+	where l.book_stock_id = #{bookStockId}
+	and (return_date is NULL
+	or return_date is NOT NULL)
+	order by return_date is NULL desc
 	limit 1
 </select>
 </mapper>

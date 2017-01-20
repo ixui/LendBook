@@ -11,6 +11,11 @@ import javax.validation.Payload;
 
 import jp.co.ixui.controller.book.validator.ReturnDueDateOverValidator;
 
+/**
+ * 貸出期限の上限を指定するアノテーション
+ * @author NAKAJIMA
+ *
+ */
 @Constraint(validatedBy = ReturnDueDateOverValidator.class)
 @Target({ ElementType.TYPE, ElementType.FIELD })
 @Retention(RetentionPolicy.RUNTIME)

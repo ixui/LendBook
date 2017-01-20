@@ -2,59 +2,41 @@ package jp.co.ixui.controller.book.validator;
 
 
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import jp.co.ixui.controller.book.validator.annotation.ReturnDueDateOver;
 import jp.co.ixui.domain.Lend;
+import jp.co.ixui.service.BookService;
 
+/**
+ * 貸出時の返却予定日バリデーション
+ * @author NAKAJIMA
+ *
+ */
 public class ReturnDueDateOverValidator implements ConstraintValidator<ReturnDueDateOver, Lend> {
 
+	/**
+	 * 書籍に関する処理を行うサービスクラス
+	 */
+	@Autowired
+	BookService service;
+
+	/**
+	 * 初期設定なし
+	 */
 	@Override
 	public void initialize(ReturnDueDateOver constraintAnnotation) {
 	}
 
+	/**
+	 * {@link Lend}に格納されている返却予定日の妥当性を判定します。<br>
+	 * 返却予定日が正常ならtrue,問題があればfalseを返す。
+	 */
 	@Override
 	public boolean isValid(Lend value, ConstraintValidatorContext context) {
-
-		//空文字はNotEmptyで表示する。
-		if(value.getReturnDueDate() == ""){
-			return true;
-		}
-
-		//返却予定日
-		String returnDueDate = value.getReturnDueDate();
-		//現在の日付
-		Date today = new Date();
-
-		//フォーマット作成
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-
-		//returnDueDateをDate型に置き換える
-		Date retunDueDateTo = null;
-			try {
-				retunDueDateTo = sdf.parse(returnDueDate);
-			} catch (ParseException e) {
-				return true; //値が異常な場合はPatternアノテーションで表示する。
-			}
-
-		//日付をlong値に変換
-		long dateTimeTo = retunDueDateTo.getTime();
-		long dateTimeFrom = today.getTime();
-
-		//差分の日付を算出
-		long dayDiff = ( dateTimeTo - dateTimeFrom ) / (1000 * 60 * 60 * 24);
-
-		//60日以上の貸出はエラー
-		if(dayDiff > 60){
-			return false;
-		}
-
-		return true;
+		return service.isReturnDueDateOver(value.getReturnDueDate());
 	}
-
 }

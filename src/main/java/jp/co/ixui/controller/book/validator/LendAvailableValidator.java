@@ -9,15 +9,30 @@ import jp.co.ixui.controller.book.validator.annotation.LendAvailable;
 import jp.co.ixui.domain.Lend;
 import jp.co.ixui.service.BookService;
 
+/**
+ * 貸出可否バリデーション
+ * @author NAKAJIMA
+ *
+ */
 public class LendAvailableValidator implements ConstraintValidator<LendAvailable, Lend> {
 
+	/**
+	 * 書籍に関する処理を行うサービスクラス
+	 */
 	@Autowired
 	BookService service;
 
+	/**
+	 * 初期設定なし
+	 */
 	@Override
 	public void initialize(LendAvailable constraintAnnotation) {
 	}
 
+	/**
+	 * {@link Lend}に格納されている蔵書ID(bookStockId)から貸出が可能か確認する。
+	 * @return 貸出可能ならtrue, 貸出不可ならfalseを返す。
+	 */
 	@Override
 	public boolean isValid(Lend value, ConstraintValidatorContext context) {
 
