@@ -7,4 +7,10 @@
 	from m_emp
 	where mail_address = #{mail_address}
 </select>
+
+<select id="registerUser" resultType="MstEmp">
+	insert into m_emp
+	values
+	(#{empNum}, #{mailAddress}, #{empName}, #{password}, #{adminFrag}, null, null, CURRENT_DATE(), CURRENT_DATE())
+</select>
 </mapper>

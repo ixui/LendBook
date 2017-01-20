@@ -30,4 +30,12 @@ public class EmpService {
 	public MstEmp getUser(String mailAddress){
 		return mstEmpMapper.getUser(mailAddress);
 	}
+
+	/**
+	 * <p>新規でユーザの登録を行います</p>
+	 * @param mstEmp 登録するユーザの情報
+	 */
+	public void registerUser(MstEmp mstEmp){
+		mstEmpMapper.registerUser(mstEmp);
+	}
 }
