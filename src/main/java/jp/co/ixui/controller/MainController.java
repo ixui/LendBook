@@ -30,8 +30,8 @@ public class MainController {
 	BookService bookService;
 
 	/**
-	 * index画面を表示します<br>
-	 * /indexと/は同じ画面を表示
+	 * index画面を表示します。<br>
+	 * /indexと/は同じ画面を表示します。
 	 * @param mav 画面情報
 	 * @return 画面情報を渡します。
 	 */

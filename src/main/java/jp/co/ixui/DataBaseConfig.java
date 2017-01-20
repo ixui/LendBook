@@ -3,7 +3,6 @@ package jp.co.ixui;
 import javax.sql.DataSource;
 
 import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -32,7 +31,6 @@ public class DataBaseConfig {
 	 * @return DBにアクセスする設定を返します。
 	 */
 	@Bean
-	@ConfigurationProperties("spring.datarsource")
 	public DataSource datasource(){
 		//環境変数からDB情報取得
 		String databaseUrl  = System.getenv("DATABASE_URL");

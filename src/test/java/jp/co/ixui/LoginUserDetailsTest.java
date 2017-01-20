@@ -18,7 +18,7 @@ import jp.co.ixui.domain.MstEmp;
 public class LoginUserDetailsTest {
 
 	/**
-	 * MstEmpに仮の値を入れ、{@link LoginUserDetails}に渡します。<br>
+	 * {@link MstEmp}に仮の値を入れ、{@link LoginUserDetails}に渡します。<br>
 	 * 渡した値が正常に入っているかを確認しています。
 	 */
 	//正常

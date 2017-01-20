@@ -60,7 +60,7 @@ public class BookController {
 	 * 問題が無ければ入力された{@link BookAdminForm}の値を<br>
 	 * 書籍{@link MstBook}、蔵書{@link MstBookStock}にコピーし<br>
 	 * サービスクラスに渡して登録処理を行います。</p>
-	 * 処理後書籍登録ページ{@link BookController#registerBook(ModelAndView, BookAdminForm)}へとリダイレクトする。
+	 * 処理後書籍登録ページ{@link BookController#registerBook(ModelAndView, BookAdminForm)}へとリダイレクトします。
 	 * @param mav 画面情報<br>
 	 * エラー発生時はエラー情報を格納します。
 	 * @param form {@link BookAdminForm}書籍登録用のフォーム 画面から入力された値が格納されます。
@@ -115,12 +115,12 @@ public class BookController {
 	public ModelAndView bookDetail(ModelAndView mav,
 			@PathVariable String isbn){
 
-		MstBook MstBookDetail = bookService.getBook(isbn); //ISBNから書籍の情報を取得
+		MstBook mstBookDetail = bookService.getBook(isbn); //ISBNから書籍の情報を取得
 
 		//取得した情報を格納したオブジェクトを作成
 		BookAdminForm bookDetail = new BookAdminForm();
 		bookDetail.setIsLendable(bookService.isLendableISBN(isbn));
-		BeanUtils.copyProperties(MstBookDetail, bookDetail);
+		BeanUtils.copyProperties(mstBookDetail, bookDetail);
 
 		//書籍情報
 		mav.addObject("bookDetail", bookDetail);
