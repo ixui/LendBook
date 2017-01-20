@@ -77,4 +77,12 @@ public class MainController {
 		mav.setViewName("main");
 		return mav;
 	}
+
+	@RequestMapping(value = "/admin/user", method=RequestMethod.GET)
+	public ModelAndView user(ModelAndView mav){
+
+		mav.setViewName("user_admin");
+
+		return mav;
+	}
 }
