@@ -1,6 +1,7 @@
 package jp.co.ixui.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import jp.co.ixui.domain.MstEmp;
@@ -36,6 +37,15 @@ public class EmpService {
 	 * @param mstEmp 登録するユーザの情報
 	 */
 	public void registerUser(MstEmp mstEmp){
+		String password = passwordEncoder(mstEmp.getPassword());
+		mstEmp.setPassword(password);
 		mstEmpMapper.registerUser(mstEmp);
+	}
+
+	public String passwordEncoder(String password){
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		String encodePassword = encoder.encode(password);
+
+		return encodePassword;
 	}
 }

@@ -2,6 +2,7 @@ package jp.co.ixui.controller;
 
 import java.util.List;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,8 +11,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import jp.co.ixui.controller.book.BookController;
 import jp.co.ixui.domain.MstBook;
+import jp.co.ixui.domain.MstEmp;
 import jp.co.ixui.security.WebSecurityConfig;
 import jp.co.ixui.service.BookService;
+import jp.co.ixui.service.EmpService;
 
 /**
  * <p><b>メインコントローラ</b></p>
@@ -28,6 +31,12 @@ public class MainController {
 	 */
 	@Autowired
 	BookService bookService;
+
+	/**
+	 * ユーザに関する処理を行うサービスクラス
+	 */
+	@Autowired
+	EmpService empService;
 
 	/**
 	 * index画面を表示します。<br>
@@ -90,6 +99,11 @@ public class MainController {
 	public ModelAndView registerdBook(
 			ModelAndView mav,
 			NewUserRegstrationForm userForm){
+
+		MstEmp mstEmp = new MstEmp();
+		BeanUtils.copyProperties(userForm, mstEmp);
+
+		empService.registerUser(mstEmp);
 
 		mav.setViewName("redirect:/admin/user");
 		return mav;
