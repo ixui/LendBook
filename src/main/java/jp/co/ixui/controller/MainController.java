@@ -85,4 +85,13 @@ public class MainController {
 
 		return mav;
 	}
+
+	@RequestMapping(value = "/admin/user", method=RequestMethod.POST)
+	public ModelAndView registerdBook(
+			ModelAndView mav,
+			NewUserRegstrationForm userForm){
+
+		mav.setViewName("redirect:/admin/user");
+		return mav;
+	}
 }
