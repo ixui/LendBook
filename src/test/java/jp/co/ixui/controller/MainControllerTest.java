@@ -13,31 +13,50 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+/**
+ * {@link MainController}のユニットテストです。
+ * @author NAKAJIMA
+ *
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class MainControllerTest {
 
+	/**
+	 * MockMvcのオブジェクトを作成するのに必要なアプリケーション設定
+	 */
     @Autowired
     private WebApplicationContext context;
 
-	private MockMvc mockMvc; //リクエストとレスポンスとそれに付属する情報のオブジェクト
+    /**
+     * モックオブジェクト
+     */
+	private MockMvc mockMvc;
 
-	//事前処理
+	/**
+	 * MockMvcの初期設定
+	 */
 	@Before
-	public void 事前処理() throws Exception{
+	public void 事前処理(){
         this.mockMvc = MockMvcBuilders
         		.webAppContextSetup(this.context) //モックの初期化
         		.build();
 		}
 
-	//正常
+	/**
+	 * インデックス画面へアクセスします。<br>
+	 * @throws Exception
+	 */
 	@Test
-	public void メイン画面へアクセス() throws Exception{
+	public void インデックス画面へアクセス() throws Exception{
 			mockMvc.perform(get("/"))
 			.andExpect(status().isOk());
 	}
 
-	//正常
+	/**
+	 * ログイン画面へアクセスします。<br>
+	 * @throws Exception
+	 */
 	@Test
 	public void ログイン画面へアクセス() throws Exception{
 			mockMvc.perform(get("/login"))

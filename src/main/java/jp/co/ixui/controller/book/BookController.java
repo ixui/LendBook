@@ -176,7 +176,6 @@ public class BookController {
 	 * @param user ログインしているユーザの情報
 	 * @return 画面情報を渡します。
 	 */
-	//貸出完了
 	@RequestMapping(value = "/reserve/{isbn}", method=RequestMethod.POST)
 	public ModelAndView lendComplete(ModelAndView mav,
 			@PathVariable("isbn") String isbn,

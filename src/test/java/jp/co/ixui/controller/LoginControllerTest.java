@@ -1,6 +1,5 @@
 package jp.co.ixui.controller;
 
-import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestBuilders.*;
 import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -16,45 +15,58 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+/**
+ * {@link MainController#main(org.springframework.web.servlet.ModelAndView)}のユニットテストです。<br>
+ * SpringSecurityが正常に動作しているか確認のためのテストクラスです。
+ * @author NAKAJIMA
+ *
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class LoginControllerTest {
 
+	/**
+	 * MockMvcのオブジェクトを作成するのに必要なアプリケーション設定
+	 */
 	@Autowired
-	private WebApplicationContext context; //アプリケーションの設定等を管理するコンテキスト
+	private WebApplicationContext context;
 
-	private MockMvc mockMvc; //リクエストとレスポンスとそれに付属する情報のオブジェクト
+	/**
+     * モックオブジェクト
+     */
+	private MockMvc mockMvc;
 
-	//事前処理
+	/**
+	 * MockMvcの初期設定<br>
+	 * SpringSecurityが適用されています。
+	 */
 	@Before
 	public void 事前処理() throws Exception{
-        this.mockMvc = MockMvcBuilders.webAppContextSetup(this.context) //モックの初期化
+        this.mockMvc = MockMvcBuilders.webAppContextSetup(this.context)
         		.apply(springSecurity())
         		.build();
 		}
 
-	//異常
+	/**
+	 * ログインしないでメイン画面へアクセスします。<br>
+	 * SpringSecurityによってアクセスが許可されずエラーになります。
+	 * @throws Exception
+	 */
 	@Test
 	public void ログインしないでメイン画面へアクセス() throws Exception{
 		mockMvc.perform(get("/main"))
 				.andExpect(status().is3xxRedirection());
 	}
 
-	//正常
+	/**
+	 * モックユーザを作成しログイン状態でメイン画面へアクセスします。<br>
+	 * 正常にログインできます。
+	 * @throws Exception
+	 */
 	@Test
 	@WithMockUser(username="admin@tosyo.co.jp")
 	public void ログインしてメイン画面へアクセス() throws Exception{
 		mockMvc.perform(get("/main"))
 				.andExpect(status().isOk());
-	}
-
-	//正常
-	@Test
-	public void ログインページのテスト() throws Exception{
-		mockMvc.perform(
-				formLogin()
-					.user("username", "admin@tosyo.co.jp")
-					.password("password", "aaaa")
-					.loginProcessingUrl("/main"));
 	}
 }
