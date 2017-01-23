@@ -35,12 +35,14 @@ public class NewUserRegistrationForm {
 	 * パスワード
 	 */
 	@NotNull
+	@NotEmpty(message = "パスワードを入力してください。")
 	private String password;
 
 	/**
 	 * 確認用パスワード
 	 */
 	@NotNull
+	@NotEmpty(message = "確認用パスワードを入力してください。")
 	private String retypePassword;
 
 	@NotNull
