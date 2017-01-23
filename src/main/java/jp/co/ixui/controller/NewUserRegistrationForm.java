@@ -1,5 +1,7 @@
 package jp.co.ixui.controller;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -17,6 +19,8 @@ public class NewUserRegistrationForm {
 	 * 社員番号
 	 */
 	@NotNull
+	@Min(message = "社員番号は1桁以上入力してください。", value = 1)
+	@Max(message = "社員番号は4桁以下入力してください。", value= 9999)
 	private int empNum;
 
 	/**
