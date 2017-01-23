@@ -9,7 +9,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class NewUserRegstrationForm {
+public class NewUserRegistrationForm {
 
 	/**
 	 * 社員番号
@@ -21,30 +21,30 @@ public class NewUserRegstrationForm {
 	 * ユーザ名
 	 */
 	@NotNull
-	@NotEmpty
+	@NotEmpty(message = "ユーザ名を入力してください。")
 	private String empName;
 
 	/**
 	 * メールアドレス
 	 */
 	@NotNull
-	@NotEmpty
+	@NotEmpty(message = "メールアドレスを入力してください。")
 	private String mailAddress;
 
 	/**
 	 * パスワード
 	 */
 	@NotNull
-	@NotEmpty
 	private String password;
 
 	/**
 	 * 確認用パスワード
 	 */
 	@NotNull
-	@NotEmpty
 	private String retypePassword;
 
+	@NotNull
+	@NotEmpty
 	private String adminFrag;
 
 	/**

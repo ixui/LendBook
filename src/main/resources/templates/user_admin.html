@@ -25,32 +25,37 @@
 	<form class="form-horizontal user-form" th:action="@{/admin/user}" th:object="${userForm}" method="post">
 		<div class="form-group">
 			<label class="col-lg-3 col-lg-offset-1 text-right">社員番号</label>
+			<span th:if="${#fields.hasErrors('empNum')}" th:errors="*{empNum}" style="color: red" ></span>
 			<div class="col-lg-4">
-				<input type="text" name="empNum" class="form-control"></input>
+				<input type="text" name="empNum" class="form-control" th:field="*{empNum}" th:errorclass="fieldError"></input>
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="col-lg-3 col-lg-offset-1 text-right">名前</label>
+			<span th:if="${#fields.hasErrors('empName')}" th:errors="*{empName}" style="color: red" ></span>
 			<div class="col-lg-4">
-				<input type="text" name="empName" class="form-control" placeholder="中嶋"></input>
+				<input type="text" name="empName" class="form-control" th:field="*{empName}" th:errorclass="fieldError" placeholder="中嶋"></input>
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="col-lg-3 col-lg-offset-1 text-right">メールアドレス</label>
+			<span th:if="${#fields.hasErrors('mailAddress')}" th:errors="*{mailAddress}" style="color: red" ></span>
 			<div class="col-lg-4">
-				<input type="email" name="mailAddress" class="form-control" placeholder="nakajima-kohei@tosyo.co.jp"></input>
+				<input type="email" name="mailAddress" class="form-control" th:field="*{mailAddress}" th:errorclass="fieldError" placeholder="nakajima-kohei@tosyo.co.jp"></input>
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="col-lg-3 col-lg-offset-1 text-right">パスワード</label>
+			<span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" style="color: red" ></span>
 			<div class="col-lg-4">
-				<input type="password" name="password" class="form-control"></input>
+				<input type="password" name="password" class="form-control" th:field="*{password}" th:errorclass="fieldError"></input>
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="col-lg-3 col-lg-offset-1 text-right">確認用パスワード</label>
+			<span th:if="${#fields.hasErrors('retypePassword')}" th:errors="*{retypePassword}" style="color: red" ></span>
 			<div class="col-lg-4">
-				<input type="password" name="retypePassword" class="form-control"></input>
+				<input type="password" name="retypePassword" class="form-control" th:field="*{retypePassword}" th:errorclass="fieldError"></input>
 			</div>
 		</div>
 				<div class="col-lg-12">
