@@ -13,11 +13,15 @@ import jp.co.ixui.domain.MstEmp;
 public interface MstEmpMapper {
 
 	/**
-	 * <p>社員の情報を取得します</p>
+	 * <p>ユーザの情報を取得します</p>
 	 * @param mail_address 各社員毎に設定したメールアドレス
 	 * @return 該当社員の情報を返します。
 	 */
-	//社員1名の情報取得
 	 MstEmp getUser(String mail_address);
 
+	 /**
+	  * <p>ユーザを新規で登録します。</p>
+	  * @param mstEmp 登録するユーザの情報です。
+	  */
+	 void registerUser(MstEmp mstEmp);
 }
