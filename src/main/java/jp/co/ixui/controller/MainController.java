@@ -22,6 +22,7 @@ import jp.co.ixui.service.EmpService;
 /**
  * <p><b>メインコントローラ</b></p>
  *
+ * <p>インデックス画面、ログイン画面、メイン画面、ユーザに関する画面を表示します。<br>
  * 書籍の処理を行うような画面は{@link BookController}を使用します。</p>
  * @author NAKAJIMA
  */
