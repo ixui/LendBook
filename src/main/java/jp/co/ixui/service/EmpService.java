@@ -32,6 +32,10 @@ public class EmpService {
 		return mstEmpMapper.getUser(mailAddress);
 	}
 
+	public MstEmp getUser(int empNum){
+		return mstEmpMapper.getUser(empNum);
+	}
+
 	/**
 	 * <p>新規でユーザの登録を行います</p>
 	 * @param mstEmp 登録するユーザの情報
@@ -47,5 +51,21 @@ public class EmpService {
 		String encodePassword = encoder.encode(password);
 
 		return encodePassword;
+	}
+
+	public Boolean isUserRegistered(int empNum){
+
+		//空だった場合はここでの判別はしない
+		String stringNum = String.valueOf(empNum);
+		if(stringNum == null || stringNum == ""){
+			return true;
+		}
+
+		MstEmp user = getUser(empNum);
+		if(user == null){
+			return true;
+		}
+
+		return false;
 	}
 }

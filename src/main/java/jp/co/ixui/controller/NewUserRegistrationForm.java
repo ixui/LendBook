@@ -4,11 +4,13 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+import jp.co.ixui.controller.validator.annotation.UserExists;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
+@UserExists
 public class NewUserRegistrationForm {
 
 	/**

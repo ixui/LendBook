@@ -19,6 +19,8 @@ public interface MstEmpMapper {
 	 */
 	 MstEmp getUser(String mail_address);
 
+	 MstEmp getUser(int empNum);
+
 	 /**
 	  * <p>ユーザを新規で登録します。</p>
 	  * @param mstEmp 登録するユーザの情報です。
