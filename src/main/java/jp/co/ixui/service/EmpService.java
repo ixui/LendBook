@@ -55,14 +55,17 @@ public class EmpService {
 
 	public Boolean isUserRegistered(int empNum){
 
-		//空だった場合はここでの判別はしない
-		String stringNum = String.valueOf(empNum);
-		if(stringNum == null || stringNum == ""){
+		MstEmp user = getUser(empNum);
+		if(user == null){
 			return true;
 		}
 
-		MstEmp user = getUser(empNum);
-		if(user == null){
+		return false;
+	}
+
+	public Boolean passwordMatch(String password, String retypePassword){
+
+		if(password.equals(retypePassword) == true){
 			return true;
 		}
 

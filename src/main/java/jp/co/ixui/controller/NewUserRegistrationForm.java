@@ -6,6 +6,7 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+import jp.co.ixui.controller.validator.annotation.MatchPassword;
 import jp.co.ixui.controller.validator.annotation.UserExists;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,6 +14,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @UserExists
+@MatchPassword
 public class NewUserRegistrationForm {
 
 	/**
