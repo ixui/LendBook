@@ -16,6 +16,12 @@ import jp.co.ixui.controller.NewUserRegistrationForm;
 import jp.co.ixui.mapper.MstEmpMapper;
 import jp.co.ixui.service.EmpService;
 
+/**
+ * {@link MatchPasswordValidator}のユニットテストです。<br>
+ * バリデーションが正しく動作しているか確認しています。
+ * @author NAKAJIMA
+ *
+ */
 @RunWith(SpringRunner.class)
 public class MatchPasswordValidatorTest {
 
@@ -44,8 +50,11 @@ public class MatchPasswordValidatorTest {
 	@Mock
 	EmpService service;
 
+	/**
+	 * サービスクラスがTrueを返す時にバリデーションがTrueを正しく返しているか確認しています。
+	 */
 	@Test
-	public void パスワードの一致しているときにTrueを返す(){
+	public void バリデーションがTrueを正しく返しているかを確認(){
 
 		NewUserRegistrationForm form = new NewUserRegistrationForm();
 		form.setPassword("aiueo");

@@ -46,11 +46,12 @@ public class MstEmpMapperTest {
 	}
 
 	/**
-	 * ユーザ登録を作成していません。
+	 * {@link MstEmpMapper#registerUser(MstEmp)}が正常に登録がされているかを、<br>
+	 * 登録後{@link MstEmpMapper#getUser(String)}を用いて確認しています。
 	 */
 	@Test
 	@Transactional
-	public void ユーザ情報を取得(){
+	public void ユーザ情報の登録と取得(){
 		mapper.registerUser(mstEmp);
 		MstEmp getUser = mapper.getUser(mstEmp.getMailAddress());
 

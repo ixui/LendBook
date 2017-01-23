@@ -11,13 +11,18 @@ import javax.validation.Payload;
 
 import jp.co.ixui.controller.validator.UserExistsValidator;
 
+/**
+ * 社員番号が既に登録されていないかを確認するアノテーション
+ * @author NAKAJIMA
+ *
+ */
 @Constraint(validatedBy = UserExistsValidator.class)
 @Target({ ElementType.TYPE, ElementType.FIELD })
 @Retention(RetentionPolicy.RUNTIME)
 public @interface UserExists {
 
 		//表示するメッセージ
-		String message() default "既に同じ社員番号は登録されています。";
+		String message() default "既に同じ社員番号が登録されています。";
 		Class<?>[] groups() default {};
 		Class<? extends Payload>[] payload() default {};
 

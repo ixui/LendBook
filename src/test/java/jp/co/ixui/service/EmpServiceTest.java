@@ -40,6 +40,9 @@ public class EmpServiceTest {
 	 */
 	MstEmp mstEmp = new MstEmp();
 
+	/**
+	 * ユーザの値を設定しています。
+	 */
 	@Before
 	public void 事前準備(){
 		mstEmp.setEmpName("test");
@@ -63,6 +66,11 @@ public class EmpServiceTest {
 		assertEquals("test@tosyo.co.jp", service.getUser(anyString()).getMailAddress());
 	}
 
+	/**
+	 * {@link EmpService#passwordEncoder(String)}のテストです。<br>
+	 * パスワードがハッシュ化が正しく行われているかを、<br>
+	 * ハッシュ化前の値とハッシュ化後の値とで比較しています。
+	 */
 	@Test
 	public void パスワードがハッシュ化できているか確認(){
 		String encodedPassword = service.passwordEncoder("1234");
@@ -71,6 +79,10 @@ public class EmpServiceTest {
 		assertFalse(service.passwordMatch(encodedPassword, rawPassword));
 	}
 
+	/**
+	 * {@link EmpService#passwordMatch(String, String)}のテストです。<br>
+	 * パスワードが一致しているかを確認しています。
+	 */
 	@Test
 	public void パスワードが一致しているか確認(){
 		String password = "abcd";
