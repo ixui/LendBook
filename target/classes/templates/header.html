@@ -26,6 +26,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 		<li class="dropdown">
 			<a class="dropdown-toggle" data-toggle="dropdown" sec:authentication="name">[ROLE_USER]<b class="caret"></b></a>
 			<ul class="dropdown-menu">
+				<li><a href="/user/lend" th:href="@{/user/lend}">本の返却</a></li>
 				<li sec:authorize="hasAuthority('1')"><a href="/admin/book" th:href="@{/admin/book}" >本の登録</a></li>
 				<li sec:authorize="hasAuthority('1')"><a href="/admin/user" th:href="@{/admin/user}" >ユーザ管理</a></li>
 			</ul>

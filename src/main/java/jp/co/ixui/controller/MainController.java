@@ -138,4 +138,13 @@ public class MainController {
 		mav.setViewName("redirect:/admin/user");
 		return mav;
 	}
+
+	@RequestMapping(value = "/user/lend", method=RequestMethod.GET)
+	public ModelAndView userLendingInformation(
+			ModelAndView mav){
+
+
+		mav.setViewName("user");
+		return mav;
+	}
 }
