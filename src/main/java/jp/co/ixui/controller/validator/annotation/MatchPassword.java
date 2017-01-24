@@ -11,13 +11,18 @@ import javax.validation.Payload;
 
 import jp.co.ixui.controller.validator.MatchPasswordValidator;
 
+/**
+ * パスワードが一致しているかを確認するアノテーション
+ * @author NAKAJIMA
+ *
+ */
 @Constraint(validatedBy = MatchPasswordValidator.class)
 @Target({ ElementType.TYPE, ElementType.FIELD })
 @Retention(RetentionPolicy.RUNTIME)
 public @interface MatchPassword {
 
 	//表示するメッセージ
-	String message() default "パスワードが一致しません。";
+	String message() default "パスワードが一致していません。";
 	Class<?>[] groups() default {};
 	Class<? extends Payload>[] payload() default {};
 
