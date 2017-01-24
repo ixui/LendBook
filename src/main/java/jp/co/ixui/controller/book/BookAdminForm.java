@@ -26,6 +26,7 @@ public class BookAdminForm {
 		 * Nullは使用できません。
 		 */
 		@NotNull
+		@Pattern(regexp="[0-9]{3}-[0-9]{10}", message="{bookAdminForm.isbn.pattern}")
 		private String isbn;
 
 		/**
