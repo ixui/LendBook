@@ -6,6 +6,8 @@
 	select *
 	from m_emp
 	where mail_address = #{mail_address}
+	or emp_num = #{empNum}
+	limit 1
 </select>
 
 <select id="registerUser" resultType="MstEmp">

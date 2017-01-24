@@ -5,6 +5,9 @@ import java.util.List;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -88,7 +91,8 @@ public class MainController {
 	}
 
 	@RequestMapping(value = "/admin/user", method=RequestMethod.GET)
-	public ModelAndView user(ModelAndView mav){
+	public ModelAndView user(ModelAndView mav,
+			@ModelAttribute("userForm") NewUserRegistrationForm userForm){
 
 		mav.setViewName("user_admin");
 
@@ -98,7 +102,14 @@ public class MainController {
 	@RequestMapping(value = "/admin/user", method=RequestMethod.POST)
 	public ModelAndView registerdBook(
 			ModelAndView mav,
-			NewUserRegstrationForm userForm){
+			@ModelAttribute("userForm") @Validated NewUserRegistrationForm userForm,
+			BindingResult result){
+
+		//エラー処理
+		if(result.hasErrors()){
+		mav.setViewName("/user_admin");
+		return mav;
+		}
 
 		MstEmp mstEmp = new MstEmp();
 		BeanUtils.copyProperties(userForm, mstEmp);

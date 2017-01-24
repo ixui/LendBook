@@ -62,4 +62,20 @@ public class EmpServiceTest {
 		assertEquals(5010, service.getUser(anyString()).getEmpNum());
 		assertEquals("test@tosyo.co.jp", service.getUser(anyString()).getMailAddress());
 	}
+
+	@Test
+	public void パスワードがハッシュ化できているか確認(){
+		String encodedPassword = service.passwordEncoder("1234");
+		String rawPassword = "1234";
+
+		assertFalse(service.passwordMatch(encodedPassword, rawPassword));
+	}
+
+	@Test
+	public void パスワードが一致しているか確認(){
+		String password = "abcd";
+		String retypePassword = "abcd";
+
+		assertEquals(true, service.passwordMatch(password, retypePassword));
+	}
 }

@@ -1,5 +1,7 @@
 package jp.co.ixui.mapper;
 
+import static org.junit.Assert.*;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -49,5 +51,11 @@ public class MstEmpMapperTest {
 	@Test
 	@Transactional
 	public void ユーザ情報を取得(){
+		mapper.registerUser(mstEmp);
+		MstEmp getUser = mapper.getUser(mstEmp.getMailAddress());
+
+		assertEquals("test", getUser.getEmpName());
+		assertEquals(5010, getUser.getEmpNum());
+		assertEquals("test@tosyo.co.jp", getUser.getMailAddress());
 	}
 }
