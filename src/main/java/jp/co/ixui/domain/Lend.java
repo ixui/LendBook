@@ -59,7 +59,7 @@ public class Lend {
 	 */
 	@NotNull
 	@NotEmpty(message = "返却予定日を入力してください。")
-	@Pattern(regexp="[0-9]{4}/[0-9]{1,2}/[0-9]{1,2}", message="出版日はyyyy/mm/ddの形式で入力してください。 (例):2016/7/25")
+	@Pattern(regexp="[0-9]{4}/[0-9]{1,2}/[0-9]{1,2}", message="{lend.returnDueDate.pattern}")
 	private String returnDueDate;
 
 	/**

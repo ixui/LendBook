@@ -26,7 +26,6 @@ public class BookAdminForm {
 		 * Nullは使用できません。
 		 */
 		@NotNull
-		@Pattern(regexp="[0-9]{3}-[0-9]{10}", message="ISBNは「3桁の数字-(ハイフン)10桁の数字」を入力してください。(例):978-4844330868")
 		private String isbn;
 
 		/**
@@ -34,7 +33,7 @@ public class BookAdminForm {
 		 * Nullは使用できません。
 		 */
 		@NotNull
-		@NotEmpty(message = "書籍名を入力してください。")
+		@NotEmpty(message = "{bookAdminForm.bookName.notEmpty}")
 		private String bookName;
 
 		/**
@@ -43,7 +42,7 @@ public class BookAdminForm {
 		 * Nullは使用できません。
 		 */
 		@NotNull
-		@NotEmpty(message = "著者を入力してください。")
+		@NotEmpty(message = "{bookAdminForm.author.notEmpty}")
 		private String author;
 
 		/**
@@ -54,7 +53,7 @@ public class BookAdminForm {
 		 * Nullは使用できません。</p>
 		 */
 		@NotNull
-		@Pattern(regexp="[0-9]{4}/[0-9]{1,2}/[0-9]{1,2}", message="出版日はyyyy/mm/ddの形式で入力してください。 (例):2016/7/25")
+		@Pattern(regexp="[0-9]{4}/[0-9]{1,2}/[0-9]{1,2}", message= "{bookAdminForm.publishDate.pattern}")
 		private String publishDate;
 
 		/**
@@ -62,7 +61,7 @@ public class BookAdminForm {
 		 * Nullは使用できません。
 		 */
 		@NotNull
-		@NotEmpty(message = "出版社を入力してください。")
+		@NotEmpty(message = "{bookAdminForm.publisher.notEmpty}")
 		private String publisher;
 
 		/**
@@ -71,7 +70,7 @@ public class BookAdminForm {
 		 * Nullや空文字は使用できません。</p>
 		 */
 		@NotNull
-		@NotEmpty(message = "書籍の内容を入力してください。")
+		@NotEmpty(message = "{bookAdminForm.content.notEmpty}")
 		private String content;
 
 		/**

@@ -21,36 +21,36 @@ public class NewUserRegistrationForm {
 	 * 社員番号
 	 */
 	@NotNull
-	@Min(message = "社員番号は1桁以上入力してください。", value = 1)
-	@Max(message = "社員番号は4桁以下入力してください。", value= 9999)
+	@Min(value = 1, message = "{empNum.min}")
+	@Max(value= 9999, message = "{empNum.max}")
 	private int empNum;
 
 	/**
 	 * ユーザ名
 	 */
 	@NotNull
-	@NotEmpty(message = "ユーザ名を入力してください。")
+	@NotEmpty(message = "{empName.notEmpty}")
 	private String empName;
 
 	/**
 	 * メールアドレス
 	 */
 	@NotNull
-	@NotEmpty(message = "メールアドレスを入力してください。")
+	@NotEmpty(message = "{mailAddress.notEmpty}")
 	private String mailAddress;
 
 	/**
 	 * パスワード
 	 */
 	@NotNull
-	@NotEmpty(message = "パスワードを入力してください。")
+	@NotEmpty(message = "{password.notEmpty}")
 	private String password;
 
 	/**
 	 * 確認用パスワード
 	 */
 	@NotNull
-	@NotEmpty(message = "確認用パスワードを入力してください。")
+	@NotEmpty(message = "{retypepassword.notEmpty}")
 	private String retypePassword;
 
 	@NotNull
