@@ -23,8 +23,13 @@ public class NewUserRegistrationForm {
 	 * nullは使用できません。
 	 */
 	@NotNull
+<<<<<<< HEAD
 	@Min(message = "社員番号は1桁以上入力してください。", value = 0)
 	@Max(message = "社員番号は4桁以下入力してください。", value= 9999)
+=======
+	@Min(value = 1, message = "{empNum.min}")
+	@Max(value= 9999, message = "{empNum.max}")
+>>>>>>> refs/remotes/origin/#76
 	private int empNum;
 
 	/**
@@ -32,7 +37,7 @@ public class NewUserRegistrationForm {
 	 * null、空文字は使用できません。
 	 */
 	@NotNull
-	@NotEmpty(message = "ユーザ名を入力してください。")
+	@NotEmpty(message = "{empName.notEmpty}")
 	private String empName;
 
 	/**
@@ -40,7 +45,7 @@ public class NewUserRegistrationForm {
 	 * null、空文字は使用できません。
 	 */
 	@NotNull
-	@NotEmpty(message = "メールアドレスを入力してください。")
+	@NotEmpty(message = "{mailAddress.notEmpty}")
 	private String mailAddress;
 
 	/**
@@ -48,7 +53,7 @@ public class NewUserRegistrationForm {
 	 * null、空文字は使用できません。
 	 */
 	@NotNull
-	@NotEmpty(message = "パスワードを入力してください。")
+	@NotEmpty(message = "{password.notEmpty}")
 	private String password;
 
 	/**
@@ -56,7 +61,7 @@ public class NewUserRegistrationForm {
 	 * null、空文字は使用できません。
 	 */
 	@NotNull
-	@NotEmpty(message = "確認用パスワードを入力してください。")
+	@NotEmpty(message = "{retypepassword.notEmpty}")
 	private String retypePassword;
 
 	/**
