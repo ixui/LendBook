@@ -23,13 +23,9 @@ public class NewUserRegistrationForm {
 	 * nullは使用できません。
 	 */
 	@NotNull
-<<<<<<< HEAD
-	@Min(message = "社員番号は1桁以上入力してください。", value = 0)
-	@Max(message = "社員番号は4桁以下入力してください。", value= 9999)
-=======
+
 	@Min(value = 1, message = "{empNum.min}")
 	@Max(value= 9999, message = "{empNum.max}")
->>>>>>> refs/remotes/origin/#76
 	private int empNum;
 
 	/**
