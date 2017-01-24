@@ -51,14 +51,14 @@ public class MainControllerTest {
 	/**
 	 * インデックス画面へアクセスします。<br>
 	 * @throws Exception
-	 *//*
+	 */
 	@Test
 	public void インデックス画面へアクセス() throws Exception{
 			mockMvc.perform(get("/"))
 			.andExpect(status().isOk());
 	}
 
-	*//**
+	/**
 	 * ログイン画面へアクセスします。<br>
 	 * @throws Exception
 	 */
@@ -68,12 +68,20 @@ public class MainControllerTest {
 				.andExpect(status().isOk());
 	}
 
+	/**
+	 * ユーザ登録/管理画面へアクセスします。
+	 * @throws Exception
+	 */
 	@Test
-	public void ユーザ登録画面へアクセス() throws Exception{
+	public void ユーザ登録管理画面へアクセス() throws Exception{
 		mockMvc.perform(get("/admin/user"))
 		.andExpect(status().isOk());
 	}
 
+	/**
+	 * ユーザ登録/管理ページから新規ユーザ登録ができるかを確認しています。
+	 * @throws Exception
+	 */
 	@Test
 	@Transactional
 	public void ユーザ登録フォームの送信テスト() throws Exception{

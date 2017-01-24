@@ -16,6 +16,12 @@ import jp.co.ixui.controller.NewUserRegistrationForm;
 import jp.co.ixui.mapper.MstEmpMapper;
 import jp.co.ixui.service.EmpService;
 
+/**
+ * {@link UserExistsValidator}のユニットテストです。<br>
+ * バリデーションが正しく動作しているか確認しています。
+ * @author NAKAJIMA
+ *
+ */
 @RunWith(SpringRunner.class)
 public class UserExistsValidatorTest {
 
@@ -44,8 +50,11 @@ public class UserExistsValidatorTest {
 	@Mock
 	EmpService service;
 
+	/**
+	 * サービスクラスがFalseを返す時にバリデーションがFalseを正しく返しているか確認しています。
+	 */
 	@Test
-	public void ユーザが存在している時にFalseを返す(){
+	public void バリデーションがFalseを正しく返しているかを確認(){
 
 		NewUserRegistrationForm form = new NewUserRegistrationForm();
 		form.setEmpNum(5010);

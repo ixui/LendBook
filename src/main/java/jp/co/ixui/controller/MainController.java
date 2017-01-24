@@ -22,7 +22,7 @@ import jp.co.ixui.service.EmpService;
 /**
  * <p><b>メインコントローラ</b></p>
  *
- * <p>インデックス画面、ログイン画面、メイン画面を表示します。<br>
+ * <p>インデックス画面、ログイン画面、メイン画面、ユーザに関する画面を表示します。<br>
  * 書籍の処理を行うような画面は{@link BookController}を使用します。</p>
  * @author NAKAJIMA
  */
@@ -56,7 +56,7 @@ public class MainController {
 
 	/**
 	 * ログイン画面を表示します。<br>
-	 * POSTはSpringSecurityを実装したクラス{@link WebSecurityConfig}によって行われます。
+	 * ログイン認証は{@link WebSecurityConfig}によって行われます。
 	 * @param mav 画面情報
 	 * @return 画面情報を渡します。
 	 */
@@ -90,6 +90,12 @@ public class MainController {
 		return mav;
 	}
 
+	/**
+	 * <p>ユーザ情報の登録/管理画面を表示します。</p>
+	 * @param mav 画面情報
+	 * @param userForm 新規ユーザ登録フォームを格納するためのオブジェクト
+	 * @return 画面情報を返します。
+	 */
 	@RequestMapping(value = "/admin/user", method=RequestMethod.GET)
 	public ModelAndView user(ModelAndView mav,
 			@ModelAttribute("userForm") NewUserRegistrationForm userForm){
@@ -99,6 +105,19 @@ public class MainController {
 		return mav;
 	}
 
+	/**
+	 * <p>新規ユーザ登録フォームからPOSTした時の画面遷移</p>
+	 * フォームの値に問題がなければ、フォームの値を{@link MstEmp}にコピーし、<br>
+	 * {@link EmpService#registerUser(MstEmp)}で登録処理を行います。<br>
+	 * 処理が行われたらユーザ情報の登録/管理画面へとリダイレクトします。
+	 * @param mav 画面情報<br>
+	 * エラー発生時はエラー情報を格納します。
+	 * @param userForm {@link NewUserRegistrationForm}新規ユーザ登録用のフォーム画面から入力された値が格納されます。
+	 * @param result バリデーションエラー発生時にhasErrorsメソッドが実行され、<br>
+	 * エラー処理を行います。
+	 * @return 正常に処理が行われた後、ユーザ登録/管理ページへとリダイレクトします。<br>
+	 * エラー時はエラーメッセージを保持し、ユーザ登録/管理ページをセットし返します。
+	 */
 	@RequestMapping(value = "/admin/user", method=RequestMethod.POST)
 	public ModelAndView registerdBook(
 			ModelAndView mav,
@@ -117,6 +136,15 @@ public class MainController {
 		empService.registerUser(mstEmp);
 
 		mav.setViewName("redirect:/admin/user");
+		return mav;
+	}
+
+	@RequestMapping(value = "/user/lend", method=RequestMethod.GET)
+	public ModelAndView userLendingInformation(
+			ModelAndView mav){
+
+
+		mav.setViewName("user");
 		return mav;
 	}
 }
