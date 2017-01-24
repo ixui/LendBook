@@ -238,4 +238,14 @@ public class BookService {
 
 		return true;
 	}
+
+	public List<Lend> getLendingList(int empNum){
+
+		List<Lend> lendingList = lendMapper.getLendingList(empNum);
+		return lendingList;
+	}
+	public List<MstBook> getLendingBookList(int empNum){
+
+		return lendingBookList;
+	}
 }

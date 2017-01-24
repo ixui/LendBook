@@ -36,4 +36,7 @@ public interface MstBookMapper {
 	 */
 	//新着書籍取得
 	List<MstBook> getNewlyBook(int limit);
+
+	//貸出本リスト
+	List<MstBook> getLendingBookList(int empNum);
 }

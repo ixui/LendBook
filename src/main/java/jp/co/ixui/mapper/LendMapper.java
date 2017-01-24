@@ -1,5 +1,7 @@
 package jp.co.ixui.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import jp.co.ixui.domain.Lend;
@@ -16,7 +18,6 @@ public interface LendMapper {
 	 * 書籍の貸出処理を行います。
 	 * @param lend 貸出情報
 	 */
-	//貸出処理
 	void registerLend(Lend lend);
 
 	/**
@@ -24,7 +25,6 @@ public interface LendMapper {
 	 * @param bookStockId 借りようとしている蔵書ID
 	 * @return 借りる蔵書の情報を返します。
 	 */
-	//返却されているかを取得
 	Lend getReturnDate(int bookStockId);
 
 	/**
@@ -32,6 +32,8 @@ public interface LendMapper {
 	 * @param bookStockId 借りようとしている蔵書ID
 	 * @return 借りる蔵書の情報を返します。
 	 */
-	//貸出履歴を検索
 	Lend getLendingHistory(int bookStockId);
+
+	//貸出リスト
+	List<Lend> getLendingList(int empNum);
 }

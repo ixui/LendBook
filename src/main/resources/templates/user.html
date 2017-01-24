@@ -21,20 +21,10 @@
  <div class="col-lg-10 col-lg-offset-1">
 	<h3 class="user-title">借りている本</h3>
 	<table class="table table-hover user-table">
-	<tr>
-		<th class="col-lg-8">書籍名</th>
-		<th class="col-lg-1">返却予定日</th>
+	<tr th:each="lendingList : ${lendingList}">
+		<th class="col-lg-8" th:text="${lendingList.bookName}">書籍名</th>
+		<th class="col-lg-1" th:text="${lendingList.returnDueDate}">返却予定日</th>
 		<th class="col-lg-1">返却</th>
-	</tr>
-	<tr>
-		<td><a href="sukkirinyumon.html">スッキリわかるJava入門 第2版(スッキリシリーズ)</a></td>
-		<td class="alertday">11月22日</td>
-		<td><button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">返却する</button></td>
-	</tr>
-	<tr>
-		<td><a href="javase8silver.html">徹底攻略 Java SE 8 Silver 問題集[1Z0-808]対応</a></td>
-		<td class="alertday"></td>
-		<td><button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">返却する</button></td>
 	</tr>
 	</table>
 </div>
