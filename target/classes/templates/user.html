@@ -27,8 +27,14 @@
 		<th class="col-lg-1">返却</th>
 	</tr>
 	<tr th:each="lendList : ${lendList}">
-		<td class="col-lg-8" th:text="${lendList.bookName}">書籍名</td>
+		<td class="col-lg-8"><a th:text="${lendList.bookName}" href="/book" th:href="@{'/book/' + ${lendList.isbn}}"></a></td>
 		<td class="col-lg-1" th:text="${lendList.returnDueDate}">返却予定日</td>
+		<td>
+		<form th:action="@{/user/lend}" method="post">
+		<input type="hidden" name="lendId" th:value="${lendList.lendId}" />
+		<button type="submit" class="btn btn-default">返却する</button>
+		</form>
+		</td>
 	</tr>
 	</table>
 </div>

@@ -21,7 +21,7 @@
 </select>
 
 <select id="getLendingBookList" resultType="MstBook">
-	select mb.book_name
+	select mb.book_name, mb.isbn
 	from m_book as mb
 	join m_book_stock as mbs
 	on  mb.isbn = mbs.isbn

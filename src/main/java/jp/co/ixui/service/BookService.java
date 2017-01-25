@@ -259,10 +259,16 @@ public class BookService {
 		for(int i = 0; i < lendBookList.size(); i++){
 		lendList.add(new LendingListForm());
 		lendList.get(i).setBookName(lendBookList.get(i).getBookName());
+		lendList.get(i).setIsbn(lendBookList.get(i).getIsbn());
 		lendList.get(i).setReturnDueDate(lendReturnDueDateList.get(i).getReturnDueDate());
+		lendList.get(i).setLendId(lendReturnDueDateList.get(i).getLendId());
 		}
-		return lendList;
 
+		return lendList;
+	}
+
+	public void returnBook(int lendId){
+		lendMapper.returnBook(lendId);
 	}
 
 }

@@ -39,4 +39,10 @@
 	and l.emp_num = #{empNum}
 	order by mbs.book_stock_id
 </select>
+
+<select id="returnBook" resultType="Lend">
+	update lend
+	set return_date = CURRENT_DATE()
+	where lend_id = #{lendId};
+</select>
 </mapper>

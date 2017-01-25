@@ -11,6 +11,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import jp.co.ixui.LoginUserDetails;
@@ -155,4 +156,17 @@ public class MainController {
 		mav.setViewName("user");
 		return mav;
 	}
+
+	@RequestMapping(value = "/user/lend", method=RequestMethod.POST)
+	public ModelAndView userReturnBook(
+			ModelAndView mav,
+			@RequestParam("lendId") int lendId){
+
+		bookService.returnBook(lendId);
+
+		mav.setViewName("redirect:/user/lend");
+		return mav;
+	}
+
+
 }

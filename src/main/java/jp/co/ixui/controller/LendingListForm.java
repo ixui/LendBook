@@ -16,4 +16,8 @@ public class LendingListForm {
 	private String returnDueDate;
 
 	private String bookName;
+
+	private String isbn;
+
+	private int lendId;
 }

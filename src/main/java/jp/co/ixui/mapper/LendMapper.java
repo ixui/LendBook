@@ -36,4 +36,7 @@ public interface LendMapper {
 
 	//貸出リスト
 	List<Lend> getLendingList(int empNum);
+
+	//本の返却
+	void returnBook(int lendId);
 }
