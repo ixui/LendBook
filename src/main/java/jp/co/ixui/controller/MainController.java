@@ -150,7 +150,8 @@ public class MainController {
 
 		List<MstBook> lendBookList = bookService.getLendingBookList(user.getUser().getEmpNum());
 		List<Lend> lendReturnDueDateList = bookService.getLendingList(user.getUser().getEmpNum());
-		List<LendingListForm> lendList = bookService.lendingList(lendBookList, lendReturnDueDateList);
+		LendingListForm list = new LendingListForm(lendBookList, lendReturnDueDateList);
+		List<LendingListForm> lendList = list.getLendingListForm();
 
 		mav.addObject("lendList", lendList);
 		mav.setViewName("user");
