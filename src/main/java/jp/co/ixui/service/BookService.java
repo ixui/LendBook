@@ -2,6 +2,7 @@ package jp.co.ixui.service;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import jp.co.ixui.LoginUserDetails;
+import jp.co.ixui.controller.LendingListForm;
 import jp.co.ixui.domain.Lend;
 import jp.co.ixui.domain.MstBook;
 import jp.co.ixui.domain.MstBookStock;
@@ -244,8 +246,23 @@ public class BookService {
 		List<Lend> lendingList = lendMapper.getLendingList(empNum);
 		return lendingList;
 	}
+
 	public List<MstBook> getLendingBookList(int empNum){
 
+		List<MstBook> lendingBookList = mstBookMapper.getLendingBookList(empNum);
 		return lendingBookList;
 	}
+
+	public List<LendingListForm> lendingList(List<MstBook> lendBookList, List<Lend> lendReturnDueDateList){
+
+		List<LendingListForm> lendList = new ArrayList();
+		for(int i = 0; i < lendBookList.size(); i++){
+		lendList.add(new LendingListForm());
+		lendList.get(i).setBookName(lendBookList.get(i).getBookName());
+		lendList.get(i).setReturnDueDate(lendReturnDueDateList.get(i).getReturnDueDate());
+		}
+		return lendList;
+
+	}
+
 }

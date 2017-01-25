@@ -21,10 +21,14 @@
  <div class="col-lg-10 col-lg-offset-1">
 	<h3 class="user-title">借りている本</h3>
 	<table class="table table-hover user-table">
-	<tr th:each="lendingList : ${lendingList}">
-		<th class="col-lg-8" th:text="${lendingList.bookName}">書籍名</th>
-		<th class="col-lg-1" th:text="${lendingList.returnDueDate}">返却予定日</th>
+	<tr>
+		<th class="col-lg-8">書籍名</th>
+		<th class="col-lg-1" >返却予定日</th>
 		<th class="col-lg-1">返却</th>
+	</tr>
+	<tr th:each="lendList : ${lendList}">
+		<td class="col-lg-8" th:text="${lendList.bookName}">書籍名</td>
+		<td class="col-lg-1" th:text="${lendList.returnDueDate}">返却予定日</td>
 	</tr>
 	</table>
 </div>
