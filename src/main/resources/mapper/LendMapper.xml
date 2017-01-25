@@ -27,4 +27,22 @@
 	order by return_date is NULL desc
 	limit 1
 </select>
+
+<select id="getLendingList" resultType="Lend">
+	select *
+	from lend as l
+	join m_book_stock as mbs
+	on mbs.book_stock_id = l.book_stock_id
+	join m_book as mb
+	on mb.isbn = mbs.isbn
+	where return_date is null
+	and l.emp_num = #{empNum}
+	order by mbs.book_stock_id
+</select>
+
+<select id="returnBook" resultType="Lend">
+	update lend
+	set return_date = CURRENT_DATE()
+	where lend_id = #{lendId};
+</select>
 </mapper>
