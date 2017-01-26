@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import jp.co.ixui.domain.Lend;
-import jp.co.ixui.domain.MstBook;
 import jp.co.ixui.mapper.LendMapper;
 import jp.co.ixui.mapper.MstBookMapper;
 import lombok.Getter;
@@ -40,21 +39,27 @@ public class LendingListForm {
 
 	public LendingListForm(){}
 
-	public LendingListForm(List<MstBook> lendBookList, List<Lend> lendReturnDueDateList){
+	public LendingListForm(List<Lend> getList){
 
-		List<LendingListForm> lendList = new ArrayList();
-		for(int i = 0; i < lendBookList.size(); i++){
-		lendList.add(new LendingListForm());
-		lendList.get(i).setBookName(lendBookList.get(i).getBookName());
-		lendList.get(i).setIsbn(lendBookList.get(i).getIsbn());
-		lendList.get(i).setReturnDueDate(lendReturnDueDateList.get(i).getReturnDueDate());
-		lendList.get(i).setLendId(lendReturnDueDateList.get(i).getLendId());
+		List<LendingListForm> lendList = new ArrayList<LendingListForm>();
+
+		for(int i = 0; i < getList.size(); i++){
+			String bookName = getList.get(i).getBookStock().get(i).getBook().get(i).getBookName();
+			String isbn = getList.get(i).getBookStock().get(i).getIsbn();
+			String returnDueDate = getList.get(i).getReturnDueDate();
+			int lendId = getList.get(i).getLendId();
+
+			lendList.add(new LendingListForm());
+			lendList.get(i).setBookName(bookName);
+			lendList.get(i).setIsbn(isbn);
+			lendList.get(i).setReturnDueDate(returnDueDate);
+			lendList.get(i).setLendId(lendId);
+		}
 
 		this.lendList = lendList;
-		}
 	}
 
-	public List<LendingListForm> getLendingListForm(){
+	public List<LendingListForm> getLendList(){
 		return this.lendList;
 	}
 }

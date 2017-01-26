@@ -148,10 +148,8 @@ public class MainController {
 			ModelAndView mav,
 			@AuthenticationPrincipal LoginUserDetails user){
 
-		List<MstBook> lendBookList = bookService.getLendingBookList(user.getUser().getEmpNum());
-		List<Lend> lendReturnDueDateList = bookService.getLendingList(user.getUser().getEmpNum());
-		LendingListForm list = new LendingListForm(lendBookList, lendReturnDueDateList);
-		List<LendingListForm> lendList = list.getLendingListForm();
+		List<Lend> getList = bookService.getLendingList(user.getUser().getEmpNum());
+		List<LendingListForm> lendList = new LendingListForm(getList).getLendList();
 
 		mav.addObject("lendList", lendList);
 		mav.setViewName("user");
@@ -168,6 +166,4 @@ public class MainController {
 		mav.setViewName("redirect:/user/lend");
 		return mav;
 	}
-
-
 }

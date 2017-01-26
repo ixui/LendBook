@@ -244,11 +244,6 @@ public class BookService {
 		return lendingList;
 	}
 
-	public List<MstBook> getLendingBookList(int empNum){
-		List<MstBook> lendingBookList = mstBookMapper.getLendingBookList(empNum);
-		return lendingBookList;
-	}
-
 	public void returnBook(int lendId){
 		lendMapper.returnBook(lendId);
 	}
