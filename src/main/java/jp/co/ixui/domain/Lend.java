@@ -23,6 +23,8 @@ import lombok.Setter;
 @LendAvailable
 public class Lend {
 
+	private List<MstBookStock> bookStock;
+
 	/**
 	 * <p>貸出ID</p>
 	 * DB側でオートインクリメント設定しているので数値の変更をしないでください。
@@ -96,6 +98,4 @@ public class Lend {
 	 * それ以降は返却処理が行われるなどのDB上の処理が行われた時に更新されます。
 	 */
 	private String updateTime;
-
-	private List<MstBookStock> bookStock;
 }

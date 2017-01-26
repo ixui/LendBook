@@ -1,5 +1,7 @@
 package jp.co.ixui.domain;
 
+import java.util.List;
+
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -15,6 +17,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class MstBookStock {
+
+	private List<MstBook> book;
 
 	/**
 	 * <p>蔵書ID</p>

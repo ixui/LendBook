@@ -4,9 +4,17 @@
 
 <resultMap id="getLendingList" type="Lend">
 	<id property="empNum" column="emp_num" />
-	<collection property="bookStock" ofType="MstBookStock">
-		<id property="bookStockId" column="book_stock_id" />
-	</collection>
+	<collection property="bookStock" resultMap="bookStockListMap" />
+</resultMap>
+
+<resultMap type="MstBookStock" id="bookStockListMap">
+	<id property="bookStockId" column="book_stock_id" />
+	<collection property="book" resultMap="bookListMap" />
+</resultMap>
+
+<resultMap type="MstBook" id="bookListMap">
+	<id property="isbn" column="isbn" />
+	<result property="bookName" column="book_name" />
 </resultMap>
 
 <select id="registerLend" resultType="Lend">
