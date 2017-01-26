@@ -1,5 +1,7 @@
 package jp.co.ixui.domain;
 
+import java.util.List;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
@@ -94,4 +96,6 @@ public class Lend {
 	 * それ以降は返却処理が行われるなどのDB上の処理が行われた時に更新されます。
 	 */
 	private String updateTime;
+
+	private List<MstBookStock> bookStock;
 }

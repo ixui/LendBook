@@ -2,6 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="jp.co.ixui.mapper.LendMapper">
 
+<resultMap id="getLendingList" type="Lend">
+	<id property="empNum" column="emp_num" />
+	<collection property="bookStock" ofType="MstBookStock">
+		<id property="bookStockId" column="book_stock_id" />
+	</collection>
+</resultMap>
+
 <select id="registerLend" resultType="Lend">
 	insert into lend
 	(book_stock_id,emp_num,owner_emp_num,lend_date,return_due_date, regist_emp_num, update_emp_num, regist_time, update_time)
@@ -28,7 +35,7 @@
 	limit 1
 </select>
 
-<select id="getLendingList" resultType="Lend">
+<select id="getLendingList" resultMap="getLendingList">
 	select *
 	from lend as l
 	join m_book_stock as mbs
