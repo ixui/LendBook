@@ -3,7 +3,8 @@
 <mapper namespace="jp.co.ixui.mapper.LendMapper">
 
 <resultMap id="getLendingList" type="Lend">
-	<id property="empNum" column="emp_num" />
+	<id property="lendId" column="lend_id" />
+	<result property="returnDueDate" column="return_due_date" />
 	<collection property="bookStock" resultMap="bookStockListMap" />
 </resultMap>
 

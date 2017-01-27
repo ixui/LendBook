@@ -44,10 +44,11 @@ public class LendingListForm {
 		List<LendingListForm> lendList = new ArrayList<LendingListForm>();
 
 		for(int i = 0; i < getList.size(); i++){
-			String bookName = getList.get(i).getBookStock().get(i).getBook().get(i).getBookName();
-			String isbn = getList.get(i).getBookStock().get(i).getIsbn();
-			String returnDueDate = getList.get(i).getReturnDueDate();
-			int lendId = getList.get(i).getLendId();
+			Lend lend = getList.get(i);
+			String bookName = lend.getBookStock().get(0).getBook().get(0).getBookName();
+			String isbn = lend.getBookStock().get(0).getIsbn();
+			String returnDueDate = lend.getReturnDueDate();
+			int lendId = lend.getLendId();
 
 			lendList.add(new LendingListForm());
 			lendList.get(i).setBookName(bookName);
