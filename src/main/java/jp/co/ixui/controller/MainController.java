@@ -149,9 +149,8 @@ public class MainController {
 			@AuthenticationPrincipal LoginUserDetails user){
 
 		List<Lend> getList = bookService.getLendingList(user.getUser().getEmpNum());
-		List<LendingListForm> lendList = new LendingListForm(getList).getLendList();
 
-		mav.addObject("lendList", lendList);
+		mav.addObject("lendList",  new LendingListForm(getList));
 		mav.setViewName("user");
 		return mav;
 	}

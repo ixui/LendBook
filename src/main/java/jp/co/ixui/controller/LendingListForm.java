@@ -21,7 +21,7 @@ public class LendingListForm {
 	@Autowired
 	MstBookMapper mstBookMapper;
 
-	private List<LendingListForm> lendList;
+	private List<LendingListForm> lendingList;
 
 	private int empNum;
 
@@ -57,10 +57,6 @@ public class LendingListForm {
 			lendList.get(i).setLendId(lendId);
 		}
 
-		this.lendList = lendList;
-	}
-
-	public List<LendingListForm> getLendList(){
-		return this.lendList;
+		this.lendingList = lendList;
 	}
 }
