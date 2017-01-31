@@ -1,5 +1,7 @@
 package jp.co.ixui.domain;
 
+import java.util.List;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
@@ -20,6 +22,8 @@ import lombok.Setter;
 @ReturnDueDateOver
 @LendAvailable
 public class Lend {
+
+	private List<MstBookStock> bookStock;
 
 	/**
 	 * <p>貸出ID</p>

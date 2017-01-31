@@ -4,15 +4,19 @@ import java.util.List;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import jp.co.ixui.LoginUserDetails;
 import jp.co.ixui.controller.book.BookController;
+import jp.co.ixui.domain.Lend;
 import jp.co.ixui.domain.MstBook;
 import jp.co.ixui.domain.MstEmp;
 import jp.co.ixui.security.WebSecurityConfig;
@@ -141,10 +145,24 @@ public class MainController {
 
 	@RequestMapping(value = "/user/lend", method=RequestMethod.GET)
 	public ModelAndView userLendingInformation(
-			ModelAndView mav){
+			ModelAndView mav,
+			@AuthenticationPrincipal LoginUserDetails user){
 
+		List<Lend> getList = bookService.getLendingList(user.getUser().getEmpNum());
 
+		mav.addObject("lendList",  new LendingListForm(getList));
 		mav.setViewName("user");
+		return mav;
+	}
+
+	@RequestMapping(value = "/user/lend", method=RequestMethod.POST)
+	public ModelAndView userReturnBook(
+			ModelAndView mav,
+			@RequestParam("lendId") int lendId){
+
+		bookService.returnBook(lendId);
+
+		mav.setViewName("redirect:/user/lend");
 		return mav;
 	}
 }

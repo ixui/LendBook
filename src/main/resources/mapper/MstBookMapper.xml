@@ -19,4 +19,16 @@
 	from m_book
 	order by regist_time desc limit #{limit}
 </select>
+
+<select id="getLendingBookList" resultType="MstBook">
+	select mb.book_name, mb.isbn
+	from m_book as mb
+	join m_book_stock as mbs
+	on  mb.isbn = mbs.isbn
+	join lend as l
+	on mbs.book_stock_id = l.book_stock_id
+	where return_date is null
+	and l.emp_num = #{empNum}
+	order by mbs.book_stock_id
+</select>
 </mapper>
